@@ -18,6 +18,8 @@
 		88146F491683BC9800B0ABED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88146F481683BC9800B0ABED /* Default-568h@2x.png */; };
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
 		88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88146F4E1683BC9900B0ABED /* FSBViewController.m */; };
+		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
+		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		88146F4D1683BC9800B0ABED /* FSBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSBViewController.h; sourceTree = "<group>"; };
 		88146F4E1683BC9900B0ABED /* FSBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSBViewController.m; sourceTree = "<group>"; };
+		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */,
 				88146F331683BC9800B0ABED /* UIKit.framework in Frameworks */,
 				88146F351683BC9800B0ABED /* Foundation.framework in Frameworks */,
 				88146F371683BC9800B0ABED /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +78,7 @@
 		88146F311683BC9800B0ABED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88146F551683BD5800B0ABED /* CoreData.framework */,
 				88146F321683BC9800B0ABED /* UIKit.framework */,
 				88146F341683BC9800B0ABED /* Foundation.framework */,
 				88146F361683BC9800B0ABED /* CoreGraphics.framework */,
@@ -97,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				88146F3A1683BC9800B0ABED /* tenkay-Info.plist */,
+				88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */,
 				88146F3B1683BC9800B0ABED /* InfoPlist.strings */,
 				88146F3E1683BC9800B0ABED /* main.m */,
 				88146F401683BC9800B0ABED /* tenkay-Prefix.pch */,
@@ -177,6 +184,7 @@
 				88146F3F1683BC9800B0ABED /* main.m in Sources */,
 				88146F431683BC9800B0ABED /* FSBAppDelegate.m in Sources */,
 				88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */,
+				88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +303,20 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */,
+			);
+			currentVersion = 88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */;
+			name = Tasks.xcdatamodeld;
+			path = ../Tasks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88146F251683BC9800B0ABED /* Project object */;
 }
