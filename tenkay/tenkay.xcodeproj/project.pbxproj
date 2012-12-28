@@ -20,6 +20,9 @@
 		88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88146F4E1683BC9900B0ABED /* FSBViewController.m */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
+		88C450D1168E1BCA00210F1F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450D0168E1BCA00210F1F /* Task.m */; };
+		88C450D5168E1BCA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450D4168E1BCA00210F1F /* Tag.m */; };
+		88C450D8168E1BCA00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450D7168E1BCA00210F1F /* Session.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,12 @@
 		88146F4E1683BC9900B0ABED /* FSBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSBViewController.m; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		88C450CF168E1BCA00210F1F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		88C450D0168E1BCA00210F1F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		88C450D3168E1BCA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		88C450D4168E1BCA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		88C450D6168E1BCA00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		88C450D7168E1BCA00210F1F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +98,12 @@
 		88146F381683BC9800B0ABED /* tenkay */ = {
 			isa = PBXGroup;
 			children = (
+				88C450D6168E1BCA00210F1F /* Session.h */,
+				88C450D7168E1BCA00210F1F /* Session.m */,
+				88C450D3168E1BCA00210F1F /* Tag.h */,
+				88C450D4168E1BCA00210F1F /* Tag.m */,
+				88C450CF168E1BCA00210F1F /* Task.h */,
+				88C450D0168E1BCA00210F1F /* Task.m */,
 				88146F411683BC9800B0ABED /* FSBAppDelegate.h */,
 				88146F421683BC9800B0ABED /* FSBAppDelegate.m */,
 				88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */,
@@ -185,6 +200,9 @@
 				88146F431683BC9800B0ABED /* FSBAppDelegate.m in Sources */,
 				88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */,
 				88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */,
+				88C450D1168E1BCA00210F1F /* Task.m in Sources */,
+				88C450D5168E1BCA00210F1F /* Tag.m in Sources */,
+				88C450D8168E1BCA00210F1F /* Session.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +319,7 @@
 				88146F541683BC9900B0ABED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

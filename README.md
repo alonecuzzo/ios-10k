@@ -1,42 +1,37 @@
 ios-10k
 =======
 
-### Models  
+### Entities  
 
-**Tasks** contain **Sessions** which are created by users whenever they want to log activity on a particular Task.
+**Task Entity**
 
 ```json
 [ Task: {  
-            id: 293819,
             title: "Task title",  
-            displayTime: '0:00:00',
-            order: 0,
-            totalSeconds: 0,
-            creationDate: Date,
+            index: 0,
+            creationDate: NSDate,
             sessions: [
-                NSArray(Sessions)
+                Session, Session, Session...
             ],
             tags: [
-                NSArray(Tags)
+                Tag, Tag, Tag...
             ]
 }]
 ```
 
-**Sessions**
+**Session Entity**
 
 ```json
 [ Session: {
-   id: 3829,
-   startDate: Date,
-   endDate: Date 
+   startDate: NSDate,
+   endDate: NSDate 
 }]
 ```
 
-**Tags**
+**Tag Entity**
 
 ```json
 [ Tag: {
-            id: 23,
-            name: "health"   
+    name: "health"   
 }]
 ```

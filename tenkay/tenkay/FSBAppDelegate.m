@@ -21,7 +21,7 @@
     NSManagedObject *model = [NSEntityDescription
                               insertNewObjectForEntityForName:@"Task"
                               inManagedObjectContext:context];
-    [model setValue:@"Any old value" forKey:@"name"];
+    [model setValue:@"Any old value" forKey:@"title"];
     
     NSError *error;
     if (![context save:&error]) {
@@ -37,7 +37,7 @@
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
     for (NSManagedObject *model in fetchedObjects) {
-        NSLog(@"Value: %@", [model valueForKey:@"name"]);
+        NSLog(@"Value: %@", [model valueForKey:@"title"]);
     }
     
     // End test
