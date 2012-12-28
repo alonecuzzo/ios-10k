@@ -3,18 +3,22 @@
     <entity name="Session" representedClassName="Session" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="sessionTask" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="taskSession" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tagTask" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="taskTag" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="taskSession" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="sessionTask" inverseEntity="Session" syncable="YES"/>
+        <relationship name="taskTag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tagTask" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Tag" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="Session" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Task" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Tag" positionX="-11" positionY="504" width="128" height="75"/>
+        <element name="Session" positionX="360" positionY="504" width="128" height="90"/>
     </elements>
 </model>

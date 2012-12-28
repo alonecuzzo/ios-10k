@@ -7,10 +7,12 @@
 //
 
 #import "Tag.h"
+#import "Task.h"
 
 
 @implementation Tag
 
 @dynamic name;
+@dynamic tagTask;
 
 @end

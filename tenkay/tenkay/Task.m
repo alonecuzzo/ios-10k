@@ -7,6 +7,8 @@
 //
 
 #import "Task.h"
+#import "Session.h"
+#import "Tag.h"
 
 
 @implementation Task
@@ -14,12 +16,13 @@
 @dynamic title;
 @dynamic creationDate;
 @dynamic index;
+@dynamic taskSession;
+@dynamic taskTag;
 
 - (void)awakeFromInsert
 {
     [super awakeFromInsert];
     [self setCreationDate:[NSDate date]];
 }
-
 
 @end

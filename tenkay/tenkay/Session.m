@@ -7,17 +7,13 @@
 //
 
 #import "Session.h"
+#import "Task.h"
 
 
 @implementation Session
 
 @dynamic startDate;
 @dynamic endDate;
-
-- (void)awakeFromInsert
-{
-    [super awakeFromInsert];
-    [self setStartDate:[NSDate date]];
-}
+@dynamic sessionTask;
 
 @end
