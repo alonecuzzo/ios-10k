@@ -17,12 +17,13 @@
 		88146F471683BC9800B0ABED /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88146F461683BC9800B0ABED /* Default@2x.png */; };
 		88146F491683BC9800B0ABED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88146F481683BC9800B0ABED /* Default-568h@2x.png */; };
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
-		88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88146F4E1683BC9900B0ABED /* FSBViewController.m */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
 		88C450F0168E32BA00210F1F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450EF168E32BA00210F1F /* Task.m */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
+		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
+		88C45102168E36FF00210F1F /* FSBAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* FSBAddTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +41,6 @@
 		88146F461683BC9800B0ABED /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		88146F481683BC9800B0ABED /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		88146F4D1683BC9800B0ABED /* FSBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSBViewController.h; sourceTree = "<group>"; };
-		88146F4E1683BC9900B0ABED /* FSBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSBViewController.m; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		88C450EE168E32BA00210F1F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -50,6 +49,10 @@
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		88C450F5168E32BB00210F1F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		88C450FD168E356900210F1F /* FSBTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTasksViewController.h; sourceTree = "<group>"; };
+		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
+		88C45100168E36FF00210F1F /* FSBAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskViewController.h; sourceTree = "<group>"; };
+		88C45101168E36FF00210F1F /* FSBAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +109,11 @@
 				88C450EF168E32BA00210F1F /* Task.m */,
 				88146F411683BC9800B0ABED /* FSBAppDelegate.h */,
 				88146F421683BC9800B0ABED /* FSBAppDelegate.m */,
+				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
+				88C450FE168E356900210F1F /* FSBTasksViewController.m */,
+				88C45100168E36FF00210F1F /* FSBAddTaskViewController.h */,
+				88C45101168E36FF00210F1F /* FSBAddTaskViewController.m */,
 				88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */,
-				88146F4D1683BC9800B0ABED /* FSBViewController.h */,
-				88146F4E1683BC9900B0ABED /* FSBViewController.m */,
 				88146F391683BC9800B0ABED /* Supporting Files */,
 			);
 			path = tenkay;
@@ -198,11 +203,12 @@
 			files = (
 				88146F3F1683BC9800B0ABED /* main.m in Sources */,
 				88146F431683BC9800B0ABED /* FSBAppDelegate.m in Sources */,
-				88146F4F1683BC9900B0ABED /* FSBViewController.m in Sources */,
 				88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */,
 				88C450F0168E32BA00210F1F /* Task.m in Sources */,
 				88C450F3168E32BA00210F1F /* Tag.m in Sources */,
 				88C450F6168E32BB00210F1F /* Session.m in Sources */,
+				88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */,
+				88C45102168E36FF00210F1F /* FSBAddTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

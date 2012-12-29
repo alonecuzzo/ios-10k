@@ -1,23 +1,122 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="D53-Bn-FbO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
-        <scene sceneID="5">
+        <!--Tasks View Controller - Tasks-->
+        <scene sceneID="ohD-iR-1VT">
             <objects>
-                <viewController id="2" customClass="FSBViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tableViewController id="UCD-Os-9Pa" customClass="FSBTasksViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="poX-gl-55B">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="HI2-X1-Cnw">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tasks" id="P82-V4-qmL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AfN-B1-6Ty">
+                            <connections>
+                                <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="pCV-BW-VWK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="619" y="-95"/>
+        </scene>
+        <!--Add Task View Controller-->
+        <scene sceneID="qeG-e7-DT6">
+            <objects>
+                <viewController id="3Id-Kb-0pc" customClass="FSBAddTaskViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pW2-Fh-d9l">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22A-FS-2TJ">
+                                <items>
+                                    <navigationItem title="Add Task" id="pdu-p8-aDR">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aXf-YW-F6j">
+                                            <connections>
+                                                <action selector="onCancel:" destination="3Id-Kb-0pc" id="EOq-Zo-CVL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iPX-dI-jRA">
+                                            <connections>
+                                                <action selector="onSave:" destination="3Id-Kb-0pc" id="TMb-F4-hYP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-ik-PSJ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="gYh-Zc-cqO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="leading" secondItem="pW2-Fh-d9l" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0Og-HS-edO"/>
+                            <constraint firstItem="22A-FS-2TJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" type="default" id="9n6-aB-zNU"/>
+                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" constant="71" id="Hat-8y-rls"/>
+                            <constraint firstItem="22A-FS-2TJ" firstAttribute="trailing" secondItem="pW2-Fh-d9l" secondAttribute="trailing" type="default" id="UeS-90-3yi"/>
+                            <constraint firstItem="22A-FS-2TJ" firstAttribute="leading" secondItem="pW2-Fh-d9l" secondAttribute="leading" type="default" id="ghJ-Zr-Wv3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="taskTitle" destination="Ndg-ik-PSJ" id="797-dw-mKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0n-YR-PBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="-409"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7B9-6h-7h3">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="D53-Bn-FbO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Flb-Ep-ZKP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UCD-Os-9Pa" kind="relationship" relationship="rootViewController" id="r4k-Vy-aKZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lJ5-4p-AD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85" y="-95"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FSBAddTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBTasksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
