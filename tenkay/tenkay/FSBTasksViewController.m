@@ -140,6 +140,12 @@ BOOL isTiming;
     sessionTimer = nil;
     [currentTask addTaskSessionObject:currentSession];
     isTiming = false;
+    
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
 }
 
 /*
