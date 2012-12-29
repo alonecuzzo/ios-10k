@@ -8,6 +8,7 @@
 
 #import "FSBTasksViewController.h"
 #import "Task.h"
+#import "Session.h"
 
 @interface FSBTasksViewController ()
 
@@ -17,6 +18,11 @@
     NSManagedObjectContext *managedObjectContext;
     NSArray *fetchedObjects;
 }
+
+Task *currentTask;
+Session *currentSession;
+NSTimer *sessionTimer;
+BOOL isTiming;
 
 - (void)viewDidLoad
 {
@@ -92,6 +98,50 @@
     return cell;
 }
 
+- (void)updateTimerAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:currentSession.startDate];
+    NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    NSString *timeString = [dateFormatter stringFromDate:timerDate];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    UILabel *label = (UILabel *)[cell viewWithTag:1023];
+    label.text = timeString;
+}
+
+- (void)startTaskTimerAtIndexPath:(NSIndexPath *)indexPath
+{
+    currentTask = [fetchedObjects objectAtIndex:indexPath.row];
+
+    currentSession = [NSEntityDescription insertNewObjectForEntityForName:@"Session" inManagedObjectContext:managedObjectContext];
+    currentSession.startDate = [NSDate date];
+    
+    //need to send indexpath with selector
+    //will use nsinvocation
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(updateTimerAtIndexPath:)]];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(updateTimerAtIndexPath:)];
+    [invocation setArgument:&indexPath atIndex:2];
+
+    sessionTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  invocation: invocation
+                                                  repeats:YES];
+    isTiming = true;
+}
+
+- (void)stopCurrentSession
+{
+    currentSession.endDate = [NSDate date];
+    [sessionTimer invalidate];
+    sessionTimer = nil;
+    //currentTask.addTaskSessionObject( currentSession );
+    isTiming = false;
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,13 +185,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //no sessions timed
+    if (!isTiming) {
+        [self startTaskTimerAtIndexPath:indexPath];
+    }
+    //current session timed but not the same as the new session
+    else if (currentTask != [fetchedObjects objectAtIndex:indexPath.row]) {
+        [self stopCurrentSession];
+        [self startTaskTimerAtIndexPath:indexPath];
+    }
+    //current session same as new session
+    else {
+        [self stopCurrentSession];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self stopCurrentSession];
+    
 }
 
 @end
