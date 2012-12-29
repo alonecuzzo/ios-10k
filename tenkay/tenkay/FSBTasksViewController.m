@@ -138,7 +138,7 @@ BOOL isTiming;
     currentSession.endDate = [NSDate date];
     [sessionTimer invalidate];
     sessionTimer = nil;
-    //currentTask.addTaskSessionObject( currentSession );
+    [currentTask addTaskSessionObject:currentSession];
     isTiming = false;
 }
 
