@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="HI2-X1-Cnw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="HI2-X1-Cnw" customClass="FSBTaskCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,7 +21,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1023" contentMode="left" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-bx-lqQ">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-Y9-qie">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="cxf-Bv-i2I"/>
+                                                <constraint firstAttribute="width" constant="197" id="uCs-UL-Nn0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -29,9 +38,15 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="11" id="85A-Cp-LJu"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="3dh-bx-lqQ" secondAttribute="top" type="default" id="6WK-wh-C4F"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="15" id="9UF-H3-e6q"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="11" id="msq-36-edB"/>
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="taskLabel" destination="yYM-Y9-qie" id="U5X-Ge-PPG"/>
+                                    <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -119,6 +134,13 @@
                 <relationship kind="action" name="onCancel:"/>
                 <relationship kind="action" name="onSave:"/>
                 <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="FSBTasksViewController" superclassName="UITableViewController">

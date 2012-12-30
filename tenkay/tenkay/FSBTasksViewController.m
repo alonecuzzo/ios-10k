@@ -7,6 +7,7 @@
 //
 
 #import "FSBTasksViewController.h"
+#import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
 
@@ -43,6 +44,15 @@ BOOL isTiming;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)save
+{
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,14 +97,20 @@ BOOL isTiming;
     return [fetchedObjects count];
 }
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    FSBTaskCell *taskCell = (FSBTaskCell *)cell;
+    Task *task = [fetchedObjects objectAtIndex:indexPath.row];
+    taskCell.taskLabel.text = task.title;
+    //cell.timeLabel.text = task.totalTime;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    Task *task = [fetchedObjects objectAtIndex:indexPath.row];
-    cell.textLabel.text = task.title;
-    
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -141,11 +157,7 @@ BOOL isTiming;
     [currentTask addTaskSessionObject:currentSession];
     isTiming = false;
     
-    NSError *error;
-    if (![managedObjectContext save:&error]) {
-        NSLog(@"Error: %@", error);
-        abort();
-    }
+    [self save];
 }
 
 /*
