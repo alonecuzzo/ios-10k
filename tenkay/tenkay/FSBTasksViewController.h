@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSBTasksViewController : UITableViewController
+@interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Task;
+
 @interface FSBAddTaskViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *taskTitle;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) Task *taskToEdit;
 
 @end

@@ -53,39 +53,41 @@
                     <navigationItem key="navigationItem" title="Tasks" id="P82-V4-qmL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="AfN-B1-6Ty">
                             <connections>
-                                <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="pCV-BW-VWK"/>
+                                <segue destination="Mkv-eb-mPG" kind="modal" identifier="addTask" id="Kh3-gH-LhB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Mkv-eb-mPG" kind="modal" identifier="editTask" id="OZA-Lg-Djk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="619" y="-95"/>
         </scene>
-        <!--Add Task View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="7c3-0A-Nv0">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Mkv-eb-mPG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LW6-E9-46A">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3Id-Kb-0pc" kind="relationship" relationship="rootViewController" id="zWt-8f-q9w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCM-He-Yhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-95"/>
+        </scene>
+        <!--Add Task View Controller - Add Item-->
         <scene sceneID="qeG-e7-DT6">
             <objects>
                 <viewController id="3Id-Kb-0pc" customClass="FSBAddTaskViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pW2-Fh-d9l">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22A-FS-2TJ">
-                                <items>
-                                    <navigationItem title="Add Task" id="pdu-p8-aDR">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aXf-YW-F6j">
-                                            <connections>
-                                                <action selector="onCancel:" destination="3Id-Kb-0pc" id="EOq-Zo-CVL"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iPX-dI-jRA">
-                                            <connections>
-                                                <action selector="onSave:" destination="3Id-Kb-0pc" id="TMb-F4-hYP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-ik-PSJ">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="286" id="gYh-Zc-cqO"/>
@@ -96,20 +98,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="leading" secondItem="pW2-Fh-d9l" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0Og-HS-edO"/>
-                            <constraint firstItem="22A-FS-2TJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" type="default" id="9n6-aB-zNU"/>
-                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" constant="71" id="Hat-8y-rls"/>
-                            <constraint firstItem="22A-FS-2TJ" firstAttribute="trailing" secondItem="pW2-Fh-d9l" secondAttribute="trailing" type="default" id="UeS-90-3yi"/>
-                            <constraint firstItem="22A-FS-2TJ" firstAttribute="leading" secondItem="pW2-Fh-d9l" secondAttribute="leading" type="default" id="ghJ-Zr-Wv3"/>
+                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" constant="20" symbolic="YES" type="default" id="lY4-e9-3Qx"/>
+                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="centerX" secondItem="pW2-Fh-d9l" secondAttribute="centerX" type="default" id="y8a-fZ-u0O"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Item" id="Xwz-XT-lw4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aXf-YW-F6j">
+                            <connections>
+                                <action selector="onCancel:" destination="3Id-Kb-0pc" id="b5a-Is-7Qh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iPX-dI-jRA">
+                            <connections>
+                                <action selector="onSave:" destination="3Id-Kb-0pc" id="Ep7-VR-fu5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="taskTitle" destination="Ndg-ik-PSJ" id="797-dw-mKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0n-YR-PBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="-409"/>
+            <point key="canvasLocation" x="1555" y="-95"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7B9-6h-7h3">
@@ -155,4 +166,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="OZA-Lg-Djk"/>
+    </inferredMetricsTieBreakers>
 </document>
