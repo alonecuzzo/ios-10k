@@ -19,11 +19,11 @@
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
-		88C450F0168E32BA00210F1F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450EF168E32BA00210F1F /* Task.m */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
 		88C45102168E36FF00210F1F /* FSBAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* FSBAddTaskViewController.m */; };
+		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +44,6 @@
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
-		88C450EE168E32BA00210F1F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		88C450EF168E32BA00210F1F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
 		88C45100168E36FF00210F1F /* FSBAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskViewController.h; sourceTree = "<group>"; };
 		88C45101168E36FF00210F1F /* FSBAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskViewController.m; sourceTree = "<group>"; };
+		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskCell.h; sourceTree = "<group>"; };
 		BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,8 +108,8 @@
 				88C450F5168E32BB00210F1F /* Session.m */,
 				88C450F1168E32BA00210F1F /* Tag.h */,
 				88C450F2168E32BA00210F1F /* Tag.m */,
-				88C450EE168E32BA00210F1F /* Task.h */,
-				88C450EF168E32BA00210F1F /* Task.m */,
+				BA9AA2E416951FAB00662CE5 /* Task.h */,
+				BA9AA2E516951FAB00662CE5 /* Task.m */,
 				88146F411683BC9800B0ABED /* FSBAppDelegate.h */,
 				88146F421683BC9800B0ABED /* FSBAppDelegate.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
@@ -209,12 +209,12 @@
 				88146F3F1683BC9800B0ABED /* main.m in Sources */,
 				88146F431683BC9800B0ABED /* FSBAppDelegate.m in Sources */,
 				88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */,
-				88C450F0168E32BA00210F1F /* Task.m in Sources */,
 				88C450F3168E32BA00210F1F /* Tag.m in Sources */,
 				88C450F6168E32BB00210F1F /* Session.m in Sources */,
 				88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */,
 				88C45102168E36FF00210F1F /* FSBAddTaskViewController.m in Sources */,
 				BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */,
+				BA9AA2E616951FAB00662CE5 /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

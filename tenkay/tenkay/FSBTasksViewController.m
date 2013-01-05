@@ -24,6 +24,8 @@
 
 Task *currentTask;
 Session *currentSession;
+//saving indexpath for stopCurrentSession upon gesture.
+NSIndexPath *currentIndexPath;
 NSTimer *sessionTimer;
 BOOL isTiming;
 
@@ -39,7 +41,7 @@ BOOL isTiming;
     NSLog(@"**** LONG PRESS");
     CGPoint point = [gestureRecognizer locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    UITableViewCell *cell = [self. tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     if (indexPath != nil) {
         if (isTiming) {
@@ -70,15 +72,6 @@ BOOL isTiming;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self createGestureRecognizers];
-}
-
-- (void)save
-{
-    NSError *error;
-    if (![managedObjectContext save:&error]) {
-        NSLog(@"Error: %@", error);
-        abort();
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +124,13 @@ BOOL isTiming;
     FSBTaskCell *taskCell = (FSBTaskCell *)cell;
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     taskCell.taskLabel.text = task.title;
-    //cell.timeLabel.text = task.totalTime;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    NSTimeInterval timeInterval = [task.totalTime doubleValue];
+    NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,22 +144,24 @@ BOOL isTiming;
 
 - (void)updateTimerAtIndexPath:(NSIndexPath *)indexPath
 {
+    FSBTaskCell *taskCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+
     NSDate *currentDate = [NSDate date];
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:currentSession.startDate];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    NSString *timeString = [dateFormatter stringFromDate:timerDate];
     
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    UILabel *label = (UILabel *)[cell viewWithTag:1023];
-    label.text = timeString;
+    NSString *timeString = [dateFormatter stringFromDate:timerDate];
+    taskCell.taskTime.text = timeString;
 }
 
 - (void)startTaskTimerAtIndexPath:(NSIndexPath *)indexPath
 {
     currentTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    currentIndexPath = indexPath;
 
     currentSession = [NSEntityDescription insertNewObjectForEntityForName:@"Session" inManagedObjectContext:managedObjectContext];
     currentSession.startDate = [NSDate date];
@@ -181,12 +182,35 @@ BOOL isTiming;
 - (void)stopCurrentSession
 {
     currentSession.endDate = [NSDate date];
+    [currentTask addTaskSessionObject:currentSession];
+    
+    //dnfl: there's a way to override the addTaskSessionObject
+    //      to add the current session to totalTime
+    NSTimeInterval sessionInterval = [currentSession.endDate timeIntervalSinceDate:currentSession.startDate];
+    NSNumber *sessionIntervalNum = [NSNumber numberWithDouble:sessionInterval];
+    currentTask.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [sessionIntervalNum doubleValue])];
+    
     [sessionTimer invalidate];
     sessionTimer = nil;
-    [currentTask addTaskSessionObject:currentSession];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    
+    NSTimeInterval timeInterval = [currentTask.totalTime doubleValue];
+    NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSString *timeString = [dateFormatter stringFromDate:timerDate];
+    
+    FSBTaskCell *taskCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:currentIndexPath];
+    taskCell.taskTime.text = timeString;
+    
     isTiming = false;
     
-    //[self save];
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        FATAL_CORE_DATA_ERROR(error);
+        return;
+    }
 }
 
 /*

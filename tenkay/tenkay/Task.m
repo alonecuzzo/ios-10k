@@ -2,8 +2,8 @@
 //  Task.m
 //  tenkay
 //
-//  Created by Jabari Bell on 12/28/12.
-//  Copyright (c) 2012 Jabari Bell. All rights reserved.
+//  Created by Dawson Blackhouse on 1/2/13.
+//  Copyright (c) 2013 Jabari Bell. All rights reserved.
 //
 
 #import "Task.h"
@@ -13,16 +13,23 @@
 
 @implementation Task
 
-@dynamic title;
 @dynamic creationDate;
 @dynamic index;
+@dynamic title;
+@dynamic totalTime;
 @dynamic taskSession;
 @dynamic taskTag;
 
-- (void)awakeFromInsert
+/*
+- (void)addTaskSessionObject:(Session *)value
 {
-    [super awakeFromInsert];
-    [self setCreationDate:[NSDate date]];
+    NSLog(@"*** - addTaskSessionObject fired!!");
+    NSTimeInterval sessionInterval = [value.endDate timeIntervalSinceDate:value.startDate];
+    NSNumber *sessionIntervalNum = [NSNumber numberWithDouble:sessionInterval];
+    self.totalTime = [NSNumber numberWithDouble:([self.totalTime doubleValue] + [sessionIntervalNum doubleValue])];
+    NSLog(@"***** - self.totalTime: %@", [self.totalTime stringValue]);
+    self.taskSession = [self.taskSession setByAddingObject:value];
 }
+*/
 
 @end

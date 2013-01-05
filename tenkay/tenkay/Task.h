@@ -2,8 +2,8 @@
 //  Task.h
 //  tenkay
 //
-//  Created by Jabari Bell on 12/28/12.
-//  Copyright (c) 2012 Jabari Bell. All rights reserved.
+//  Created by Dawson Blackhouse on 1/2/13.
+//  Copyright (c) 2013 Jabari Bell. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,9 +13,10 @@
 
 @interface Task : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSNumber * index;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * totalTime;
 @property (nonatomic, retain) NSSet *taskSession;
 @property (nonatomic, retain) NSSet *taskTag;
 @end
