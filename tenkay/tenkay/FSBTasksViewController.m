@@ -131,6 +131,15 @@ BOOL isTiming;
     NSTimeInterval timeInterval = [task.totalTime doubleValue];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
+    
+    double timeInt = timeInterval;
+    NSLog(@"timeInt: %f", timeInt);
+    double tenKHours = 36000000;
+    
+    double prog = timeInt / tenKHours;
+    NSLog(@"progress: %f", prog);
+    
+    [taskCell.taskProgress setProgress:prog];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,6 +213,14 @@ BOOL isTiming;
     FSBTaskCell *taskCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:currentIndexPath];
     taskCell.taskTime.text = timeString;
     
+    double timeInt = timeInterval;
+    NSLog(@"timeInt: %f", timeInt);
+    double tenKHours = 36000000;
+    
+    double prog = timeInt / tenKHours;
+    NSLog(@"progress: %f", prog);
+    
+    [taskCell.taskProgress setProgress:prog];
     isTiming = false;
     
     NSError *error;

@@ -49,6 +49,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="taskLabel" destination="yYM-Y9-qie" id="U5X-Ge-PPG"/>
+                                    <outlet property="taskProgress" destination="jsA-L8-28H" id="9ey-lV-yMY"/>
                                     <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
                                 </connections>
                             </tableViewCell>
@@ -155,6 +156,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
             </relationships>
         </class>
