@@ -1,5 +1,5 @@
 //
-//  FSBAddTaskViewController.h
+//  FSBTaskDetailViewController.h
 //  tenkay
 //
 //  Created by Jabari Bell on 12/28/12.
@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CKCalendarView.h"
 
 @class Task;
 
-@interface FSBAddTaskViewController : UIViewController
+@interface FSBTaskDetailViewController : UIViewController <CKCalendarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *taskTitle;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

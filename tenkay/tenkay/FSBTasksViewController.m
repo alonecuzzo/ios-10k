@@ -7,7 +7,7 @@
 //
 
 #import "FSBTasksViewController.h"
-#import "FSBAddTaskViewController.h"
+#import "FSBTaskDetailViewController.h"
 #import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
@@ -84,11 +84,11 @@ BOOL isTiming;
 {
     if ([[segue identifier] isEqualToString:@"addTask"]) {
         UINavigationController *navigationController = segue.destinationViewController;
-        FSBAddTaskViewController *controller = (FSBAddTaskViewController *)navigationController.topViewController;
+        FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
         controller.managedObjectContext = managedObjectContext;
     } else if ([[segue identifier] isEqualToString:@"editTask"]) {
         UINavigationController *navigationController = segue.destinationViewController;
-        FSBAddTaskViewController *controller = (FSBAddTaskViewController *)navigationController.topViewController;
+        FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
         controller.managedObjectContext = managedObjectContext;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
@@ -133,11 +133,9 @@ BOOL isTiming;
     taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
     
     double timeInt = timeInterval;
-    NSLog(@"timeInt: %f", timeInt);
     double tenKHours = 36000000;
     
     double prog = timeInt / tenKHours;
-    NSLog(@"progress: %f", prog);
     
     [taskCell.taskProgress setProgress:prog];
 }
@@ -213,14 +211,17 @@ BOOL isTiming;
     FSBTaskCell *taskCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:currentIndexPath];
     taskCell.taskTime.text = timeString;
     
+    /*
     double timeInt = timeInterval;
-    NSLog(@"timeInt: %f", timeInt);
     double tenKHours = 36000000;
     
+    
+    Progress bar moved to Phase 2
     double prog = timeInt / tenKHours;
     NSLog(@"progress: %f", prog);
-    
     [taskCell.taskProgress setProgress:prog];
+    */
+    
     isTiming = false;
     
     NSError *error;

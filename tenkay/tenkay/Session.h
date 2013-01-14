@@ -16,5 +16,5 @@
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) Task *sessionTask;
-
+//TODO: add totalTime for session
 @end

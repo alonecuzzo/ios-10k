@@ -20,16 +20,4 @@
 @dynamic taskSession;
 @dynamic taskTag;
 
-/*
-- (void)addTaskSessionObject:(Session *)value
-{
-    NSLog(@"*** - addTaskSessionObject fired!!");
-    NSTimeInterval sessionInterval = [value.endDate timeIntervalSinceDate:value.startDate];
-    NSNumber *sessionIntervalNum = [NSNumber numberWithDouble:sessionInterval];
-    self.totalTime = [NSNumber numberWithDouble:([self.totalTime doubleValue] + [sessionIntervalNum doubleValue])];
-    NSLog(@"***** - self.totalTime: %@", [self.totalTime stringValue]);
-    self.taskSession = [self.taskSession setByAddingObject:value];
-}
-*/
-
 @end
