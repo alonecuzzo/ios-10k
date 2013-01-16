@@ -11,6 +11,7 @@
 #import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
+#import "FSBTextUtil.h"
 
 @interface FSBTasksViewController ()
     
@@ -18,16 +19,15 @@
 
 @implementation FSBTasksViewController{
     NSFetchedResultsController *fetchedResultsController;
+    Task *currentTask;
+    Session *currentSession;
+    //saving indexpath for stopCurrentSession upon gesture.
+    NSIndexPath *currentIndexPath;
+    NSTimer *sessionTimer;
+    BOOL isTiming;
 }
 
 @synthesize managedObjectContext;
-
-Task *currentTask;
-Session *currentSession;
-//saving indexpath for stopCurrentSession upon gesture.
-NSIndexPath *currentIndexPath;
-NSTimer *sessionTimer;
-BOOL isTiming;
 
 - (void)createGestureRecognizers
 {
@@ -64,6 +64,19 @@ BOOL isTiming;
 {
     [super viewDidLoad];
     [self performFetch];
+    
+    UIImage *navigationBarBackgroundImage = [UIImage imageNamed:@"navBackground.png"];
+    UINavigationBar *navigationBar = [[self navigationController] navigationBar];
+    
+    if([navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
+        [navigationBar setBackgroundImage:navigationBarBackgroundImage forBarMetrics: UIBarMetricsDefault];
+    }
+   
+    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
+    [addButton setImage:[UIImage imageNamed:@"addTaskButton.png"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -131,6 +144,9 @@ BOOL isTiming;
     NSTimeInterval timeInterval = [task.totalTime doubleValue];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
+    
+    NSString *formattedTotalTime = [FSBTextUtil formatHoursString:task.totalTime isTruncated:YES];
+    taskCell.taskTime.text = formattedTotalTime;
     
     double timeInt = timeInterval;
     double tenKHours = 36000000;

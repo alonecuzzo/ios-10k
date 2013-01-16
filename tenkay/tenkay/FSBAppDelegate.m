@@ -7,6 +7,7 @@
 //
 
 #import "FSBAppDelegate.h"
+#import "FSBTasksViewController.h"
 
 @implementation FSBAppDelegate
 
@@ -16,32 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Test
-//    NSManagedObjectContext *context = [self managedObjectContext];
-//    NSManagedObject *model = [NSEntityDescription
-//                              insertNewObjectForEntityForName:@"Task"
-//                              inManagedObjectContext:context];
-//    [model setValue:@"Any old value" forKey:@"title"];
-//    
-//    NSError *error;
-//    if (![context save:&error]) {
-//        NSLog(@"Couldn't save: %@", [error localizedDescription]);
-//    }
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription
-//                                   entityForName:@"Task" inManagedObjectContext:context];
-//    
-//    [fetchRequest setEntity:entity];
-//    
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//    
-//    for (NSManagedObject *model in fetchedObjects) {
-//        NSLog(@"Value: %@", [model valueForKey:@"title"]);
-//    }
-    
-    // End test
-    
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     // Override point for customization after application launch.
     return YES;
