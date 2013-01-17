@@ -8,7 +8,7 @@
         <scene sceneID="ohD-iR-1VT">
             <objects>
                 <tableViewController id="UCD-Os-9Pa" customClass="FSBTasksViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="poX-gl-55B">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="poX-gl-55B">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,7 +141,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="D53-Bn-FbO" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Flb-Ep-ZKP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Flb-Ep-ZKP" customClass="FSBNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="eeM-yI-bs8">
@@ -161,6 +161,9 @@
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
     </resources>
     <classes>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
+        </class>
         <class className="FSBTaskCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
             <relationships>
