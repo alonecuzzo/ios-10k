@@ -15,17 +15,45 @@
     NSString *returnString;
     int roundedSeconds = floor([numSeconds doubleValue]);
     
-    returnString = [NSString stringWithFormat:@"%d", roundedSeconds];
-    returnString = [[NSArray arrayWithObjects:returnString, @"s", nil] componentsJoinedByString:@""];
-    
-    if(numSeconds < [NSNumber numberWithInt:60]){
-        // return seconds
-//        returnString = [NSString stringWithFormat:@"%@", numSeconds];
-        if(isStringTruncated == YES) {
-//           returnString = @"s";
+    if(roundedSeconds == 0) {
+        if (isStringTruncated == YES) {
+            returnString = @"0h";
         } else {
-            
+            returnString = @"0 hours";
         }
+        return returnString;
+    }
+    
+    //seconds
+    if(roundedSeconds < 60) {
+        if(isStringTruncated == YES) {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"s", nil] componentsJoinedByString:@""];
+        } else {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"seconds", nil] componentsJoinedByString:@" "];
+        }
+        return returnString;
+    }
+    
+    //minutes
+    if(roundedSeconds < 3600) {
+        roundedSeconds = floor(roundedSeconds / 60);
+        if (isStringTruncated == YES) {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"m", nil] componentsJoinedByString:@""];
+        } else {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"minutes", nil] componentsJoinedByString:@" "];
+        }
+        return returnString;
+    }
+    
+    //hours
+    if(roundedSeconds < 86400) {
+        roundedSeconds = floor(roundedSeconds / 3600);
+        if (isStringTruncated == YES) {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"h", nil] componentsJoinedByString:@""];
+        } else {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"hours", nil] componentsJoinedByString:@" "];
+        }
+        return returnString;
     }
     
     return returnString;
