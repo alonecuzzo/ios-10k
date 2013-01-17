@@ -10,8 +10,11 @@
 
 @interface FSBTaskCell : UITableViewCell
 
+@property (nonatomic) BOOL isOpen;
 @property (nonatomic, strong) IBOutlet UILabel *taskLabel;
 @property (nonatomic, strong) IBOutlet UILabel *taskTime;
 @property (strong, nonatomic) IBOutlet UIProgressView *taskProgress;
+
+- (void)toggleNav;
 
 @end

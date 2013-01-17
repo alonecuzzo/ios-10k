@@ -62,14 +62,14 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="D9P-Ba-yU3"/>
                                     <constraint firstAttribute="trailing" secondItem="zaB-it-ppo" secondAttribute="trailing" constant="20" type="default" id="Dya-d8-TXq"/>
                                     <constraint firstItem="OBn-0f-cv5" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="20" type="default" id="KeG-s8-nxi"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Llu-gg-xqe"/>
-                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="bottom" secondItem="3dh-bx-lqQ" secondAttribute="bottom" type="default" id="SoX-cz-CNQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="zaB-it-ppo" secondAttribute="bottom" constant="2" id="a5r-eH-UWV"/>
+                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="Ypa-eT-zpW"/>
                                     <constraint firstItem="zaB-it-ppo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OBn-0f-cv5" secondAttribute="bottom" constant="8" type="user" id="eLU-OA-vLh"/>
-                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="20" type="default" id="t5o-q8-UjH"/>
+                                    <constraint firstAttribute="bottom" secondItem="zaB-it-ppo" secondAttribute="bottom" constant="2" id="hkN-og-cVg"/>
+                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="bottom" secondItem="yYM-Y9-qie" secondAttribute="bottom" type="default" id="kCJ-aN-wgE"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="20" type="default" id="oGc-dM-pXg"/>
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
                                 <connections>

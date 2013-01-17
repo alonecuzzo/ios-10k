@@ -28,7 +28,7 @@
 }
 
 #define kCellHeight 64.0 
-#define kCellOpenedHeight 109.0
+#define kCellOpenedHeight 103.0
 
 @synthesize managedObjectContext;
 
@@ -155,7 +155,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
     
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -308,7 +310,9 @@
         selectedRowNumber = indexPath.row;
     }
     
-    NSLog(@"clicking: %d", indexPath.row);
+    FSBTaskCell *selectedCell = (FSBTaskCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [selectedCell toggleNav];
+    
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
