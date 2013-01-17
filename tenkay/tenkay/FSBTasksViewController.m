@@ -24,7 +24,10 @@
     NSIndexPath *currentIndexPath;
     NSTimer *sessionTimer;
     BOOL isTiming;
+    NSInteger selectedRowNumber;
 }
+
+#define kCellHeight 64.0 
 
 @synthesize managedObjectContext;
 
@@ -68,6 +71,7 @@
     [addButton setImage:[UIImage imageNamed:@"addTaskButton.png"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    selectedRowNumber = -1;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -282,18 +286,39 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //no sessions timed
-    if (!isTiming) {
-        [self startTaskTimerAtIndexPath:indexPath];
+//    if (!isTiming) {
+//        [self startTaskTimerAtIndexPath:indexPath];
+//    }
+//    //current session timed but not the same as the new session
+//    else if (currentTask != [self.fetchedResultsController objectAtIndexPath:indexPath]) {
+//        [self stopCurrentSession];
+//        [self startTaskTimerAtIndexPath:indexPath];
+//    }
+//    //current session same as new session
+//    else {
+//        [self stopCurrentSession];
+//    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // if it's already selected
+    if(selectedRowNumber == indexPath.row) {
+        selectedRowNumber = -1;
+    } else {
+        selectedRowNumber = indexPath.row;
     }
-    //current session timed but not the same as the new session
-    else if (currentTask != [self.fetchedResultsController objectAtIndexPath:indexPath]) {
-        [self stopCurrentSession];
-        [self startTaskTimerAtIndexPath:indexPath];
+    
+    NSLog(@"clicking: %d", indexPath.row);
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == selectedRowNumber) {
+        return kCellHeight * 2.0;
     }
-    //current session same as new session
-    else {
-        [self stopCurrentSession];
-    }
+    return kCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
