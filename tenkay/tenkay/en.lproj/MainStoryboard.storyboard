@@ -8,7 +8,7 @@
         <scene sceneID="ohD-iR-1VT">
             <objects>
                 <tableViewController id="UCD-Os-9Pa" customClass="FSBTasksViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="poX-gl-55B">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="poX-gl-55B">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,11 +52,19 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="zaB-it-ppo">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="jKY-zC-kLG"/>
+                                                <constraint firstAttribute="width" constant="282" id="rF9-2r-zyF"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="18" id="Zpq-PV-RVq"/>
+                                    <constraint firstItem="zaB-it-ppo" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="45" id="CX9-rc-Qkf"/>
+                                    <constraint firstAttribute="trailing" secondItem="zaB-it-ppo" secondAttribute="trailing" constant="20" type="default" id="Dya-d8-TXq"/>
+                                    <constraint firstItem="zaB-it-ppo" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="leading" type="default" id="EAb-78-c2z"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="56" id="hSI-hE-4p5"/>
                                     <constraint firstItem="OBn-0f-cv5" firstAttribute="centerY" secondItem="HI2-X1-Cnw" secondAttribute="centerY" type="default" id="jkq-2z-nQn"/>
                                     <constraint firstAttribute="bottom" secondItem="3dh-bx-lqQ" secondAttribute="bottom" constant="20" type="default" id="pfI-aZ-BNZ"/>
@@ -159,6 +167,7 @@
     </scenes>
     <resources>
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
+        <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
     <classes>
         <class className="FSBNavigationBar" superclassName="UINavigationBar">
