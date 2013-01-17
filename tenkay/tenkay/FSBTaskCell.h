@@ -10,9 +10,8 @@
 
 @interface FSBTaskCell : UITableViewCell
 
-@property (nonatomic) BOOL isSelected;
 @property (nonatomic, strong) IBOutlet UILabel *taskLabel;
-@property (strong, nonatomic) IBOutlet UILabel *taskTime;
+@property (nonatomic, strong) IBOutlet UILabel *taskTime;
 @property (strong, nonatomic) IBOutlet UIProgressView *taskProgress;
 
 @end

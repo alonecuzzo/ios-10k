@@ -20,7 +20,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1023" contentMode="left" text="0h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-bx-lqQ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1023" contentMode="right" text="0h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-bx-lqQ">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="106" id="SiY-ST-8Cm"/>
                                                 <constraint firstAttribute="height" constant="21" id="m1S-Gs-Pgx"/>
@@ -31,14 +31,13 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-Y9-qie">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="eFv-aP-oiA"/>
                                                 <constraint firstAttribute="width" constant="197" id="uCs-UL-Nn0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="26"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBn-0f-cv5">
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBn-0f-cv5">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="7OQ-1I-zYg"/>
                                                 <constraint firstAttribute="height" constant="27" id="eAY-vs-la6"/>
@@ -63,11 +62,12 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="zaB-it-ppo" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="45" id="CX9-rc-Qkf"/>
+                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="D9P-Ba-yU3"/>
                                     <constraint firstAttribute="trailing" secondItem="zaB-it-ppo" secondAttribute="trailing" constant="20" type="default" id="Dya-d8-TXq"/>
-                                    <constraint firstItem="zaB-it-ppo" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="leading" type="default" id="EAb-78-c2z"/>
-                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="56" id="hSI-hE-4p5"/>
-                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="centerY" secondItem="HI2-X1-Cnw" secondAttribute="centerY" type="default" id="jkq-2z-nQn"/>
-                                    <constraint firstAttribute="bottom" secondItem="3dh-bx-lqQ" secondAttribute="bottom" constant="20" type="default" id="pfI-aZ-BNZ"/>
+                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="20" type="default" id="KeG-s8-nxi"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Llu-gg-xqe"/>
+                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="27" id="cEY-yX-f1p"/>
+                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="bottom" secondItem="yYM-Y9-qie" secondAttribute="bottom" type="default" id="oHv-5x-pUo"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="20" type="default" id="t5o-q8-UjH"/>
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
@@ -169,6 +169,33 @@
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
+    <classes>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
+        </class>
+        <class className="FSBTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBTaskDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBTasksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
