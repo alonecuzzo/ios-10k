@@ -28,6 +28,7 @@
 }
 
 #define kCellHeight 64.0 
+#define kCellOpenedHeight 109.0
 
 @synthesize managedObjectContext;
 
@@ -316,7 +317,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == selectedRowNumber) {
-        return kCellHeight * 2.0;
+        return kCellOpenedHeight;
     }
     return kCellHeight;
 }
