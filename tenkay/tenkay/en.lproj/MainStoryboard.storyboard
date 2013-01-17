@@ -31,6 +31,7 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-Y9-qie">
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="oLB-bv-yiX"/>
                                                 <constraint firstAttribute="width" constant="197" id="uCs-UL-Nn0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="26"/>
@@ -53,7 +54,7 @@
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="zaB-it-ppo">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="jKY-zC-kLG"/>
+                                                <constraint firstAttribute="height" constant="4" id="mLL-wg-Oes"/>
                                                 <constraint firstAttribute="width" constant="282" id="rF9-2r-zyF"/>
                                             </constraints>
                                         </imageView>
@@ -61,13 +62,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="zaB-it-ppo" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="45" id="CX9-rc-Qkf"/>
                                     <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="D9P-Ba-yU3"/>
                                     <constraint firstAttribute="trailing" secondItem="zaB-it-ppo" secondAttribute="trailing" constant="20" type="default" id="Dya-d8-TXq"/>
                                     <constraint firstItem="OBn-0f-cv5" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="20" type="default" id="KeG-s8-nxi"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Llu-gg-xqe"/>
-                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="27" id="cEY-yX-f1p"/>
-                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="bottom" secondItem="yYM-Y9-qie" secondAttribute="bottom" type="default" id="oHv-5x-pUo"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="bottom" secondItem="3dh-bx-lqQ" secondAttribute="bottom" type="default" id="SoX-cz-CNQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="zaB-it-ppo" secondAttribute="bottom" constant="2" id="a5r-eH-UWV"/>
+                                    <constraint firstItem="zaB-it-ppo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OBn-0f-cv5" secondAttribute="bottom" constant="8" type="user" id="eLU-OA-vLh"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="20" type="default" id="t5o-q8-UjH"/>
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
