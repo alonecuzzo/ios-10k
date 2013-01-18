@@ -26,6 +26,7 @@
     UIImageView *trashButtonImageView;
     
     CABasicAnimation *animation;
+    CABasicAnimation *fadeOutAnimation;
     CABasicAnimation *translationAnimation;
 }
 
@@ -115,16 +116,7 @@
     [editTaskButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
 }
 
--(void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    NSLog(@"dan");
-    addTimeButtonImageView.layer.opacity = 1.0;
-    editTaskButtonImageView.layer.opacity = 1.0;
-    calendarButtonImageView.layer.opacity = 1.0;
-    trashButtonImageView.layer.opacity = 1.0;
-}
-
--(void)hideNav
+-(void)removeButtons
 {
     [addTimeButtonImageView removeFromSuperview];
     [editTaskButtonImageView removeFromSuperview];
@@ -143,6 +135,35 @@
     trashButton = nil;
     trashIcon = nil;
     animation = nil;
+    fadeOutAnimation = nil;
+}
+
+-(void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    NSLog(@"pow: %@", [anim valueForKey:@"id"]);
+    if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
+        [self removeButtons];
+    } else {
+        addTimeButtonImageView.layer.opacity = 1.0;
+        editTaskButtonImageView.layer.opacity = 1.0;
+        calendarButtonImageView.layer.opacity = 1.0;
+        trashButtonImageView.layer.opacity = 1.0;
+    }
+}
+
+-(void)hideNav
+{
+    fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOutAnimation.duration = 0.10;
+    [fadeOutAnimation setValue:@"fadeOutAnimation" forKey:@"id"];
+    //this is a hack, it should ideally listen for when the opening cell animation is done to fire off
+    fadeOutAnimation.fromValue = @1.0;
+    fadeOutAnimation.toValue = @0.0;
+    fadeOutAnimation.delegate = self;
+    [addTimeButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    [calendarButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    [editTaskButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    [trashButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
 }
 
 -(void)toggleNav
