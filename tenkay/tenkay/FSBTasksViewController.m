@@ -309,6 +309,9 @@
 //    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    
+    FSBTaskCell *selectedCell = (FSBTaskCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
     // if it's already selected
     if(selectedRowNumber == indexPath.row) {
         selectedRowNumber = -1;
@@ -316,7 +319,6 @@
         selectedRowNumber = indexPath.row;
     }
     
-    FSBTaskCell *selectedCell = (FSBTaskCell *)[tableView cellForRowAtIndexPath:indexPath];
     [selectedCell toggleNav];
     
     [self.tableView beginUpdates];
