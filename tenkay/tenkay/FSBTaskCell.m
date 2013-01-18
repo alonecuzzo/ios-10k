@@ -90,15 +90,15 @@
     addTimeButtonImageView.layer.opacity = 0.0;
     [addTimeButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
 
-    animation.beginTime = CACurrentMediaTime() + 0.25f;
+    animation.beginTime = CACurrentMediaTime() + 0.20f;
     editTaskButtonImageView.layer.opacity = 0.0;
     [editTaskButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
-    animation.beginTime = CACurrentMediaTime() + 0.35f;
+    animation.beginTime = CACurrentMediaTime() + 0.25f;
     calendarButtonImageView.layer.opacity = 0.0;
     [calendarButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
-    animation.beginTime = CACurrentMediaTime() + 0.45f;
+    animation.beginTime = CACurrentMediaTime() + 0.30f;
     trashButtonImageView.layer.opacity = 0.0;
     [trashButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
@@ -112,8 +112,13 @@
     translationAnimation.toValue = @0.0;
     
     [addTimeButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
-    translationAnimation.beginTime = CACurrentMediaTime() + 0.25f;
+    translationAnimation.beginTime = CACurrentMediaTime() + 0.20f;
     [editTaskButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
+    translationAnimation.beginTime = CACurrentMediaTime() + 0.30f;
+    [calendarButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
+    translationAnimation.beginTime = CACurrentMediaTime() + 0.35f;
+    [trashButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
+    
 }
 
 -(void)removeButtons

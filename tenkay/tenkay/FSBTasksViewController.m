@@ -162,17 +162,6 @@
 {
     static NSString *CellIdentifier = @"Cell";
     FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    NSLog(@"selected row: %d", selectedRowNumber);
-    
-    if(selectedRowNumber != indexPath.row) {
-       //should be toggled shut
-        cell.isOpen = NO;
-        [cell hideNav];
-    } else {
-        NSLog(@"we have an open row: %d", indexPath.row);
-    }
-    
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
