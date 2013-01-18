@@ -12,12 +12,18 @@
 @implementation FSBTaskCell {
     UIImage *addTimeIcon;
     UIImage *editTaskIcon;
+    UIImage *calendarIcon;
+    UIImage *trashIcon;
     
     UIButton *addTimeButton;
     UIButton *editTaskButton;
+    UIButton *calendarButton;
+    UIButton *trashButton;
     
     UIImageView *addTimeButtonImageView;
     UIImageView *editTaskButtonImageView;
+    UIImageView *calendarButtonImageView;
+    UIImageView *trashButtonImageView;
     
     CABasicAnimation *animation;
     CABasicAnimation *translationAnimation;
@@ -50,12 +56,28 @@
     [self.viewForBaselineLayout addSubview:addTimeButtonImageView];
     
     editTaskIcon = [UIImage imageNamed:@"editTimeIcon"];
-    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(90, 55, 55, 52)];
+    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95, 55, 55, 52)];
     editTaskButton = [[UIButton alloc] init];
     editTaskButton.frame = CGRectMake(0, 0, 55, 52);
     [editTaskButton setImage:editTaskIcon forState:UIControlStateNormal];
     [editTaskButtonImageView addSubview:editTaskButton];
     [self.viewForBaselineLayout addSubview:editTaskButtonImageView];
+    
+    calendarIcon = [UIImage imageNamed:@"calendarIcon"];
+    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(175, 55, 55, 52)];
+    calendarButton = [[UIButton alloc] init];
+    calendarButton.frame = CGRectMake(0, 0, 55, 52);
+    [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
+    [calendarButtonImageView addSubview:calendarButton];
+    [self.viewForBaselineLayout addSubview:calendarButtonImageView];
+    
+    trashIcon = [UIImage imageNamed:@"trashIcon"];
+    trashButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(261, 55, 55, 52)];
+    trashButton = [[UIButton alloc] init];
+    trashButton.frame = CGRectMake(0, 0, 55, 52);
+    [trashButton setImage:trashIcon forState:UIControlStateNormal];
+    [trashButtonImageView addSubview:trashButton];
+    [self.viewForBaselineLayout addSubview:trashButtonImageView];
     
     animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 0.4;
@@ -70,6 +92,14 @@
     animation.beginTime = CACurrentMediaTime() + 0.25f;
     editTaskButtonImageView.layer.opacity = 0.0;
     [editTaskButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
+    
+    animation.beginTime = CACurrentMediaTime() + 0.35f;
+    calendarButtonImageView.layer.opacity = 0.0;
+    [calendarButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
+    
+    animation.beginTime = CACurrentMediaTime() + 0.45f;
+    trashButtonImageView.layer.opacity = 0.0;
+    [trashButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
     translationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
     translationAnimation.duration = 0.10;
@@ -90,18 +120,28 @@
     NSLog(@"dan");
     addTimeButtonImageView.layer.opacity = 1.0;
     editTaskButtonImageView.layer.opacity = 1.0;
+    calendarButtonImageView.layer.opacity = 1.0;
+    trashButtonImageView.layer.opacity = 1.0;
 }
 
 -(void)hideNav
 {
     [addTimeButtonImageView removeFromSuperview];
     [editTaskButtonImageView removeFromSuperview];
+    [calendarButtonImageView removeFromSuperview];
+    [trashButtonImageView removeFromSuperview];
     addTimeButtonImageView = nil;
     addTimeButton = nil;
     addTimeIcon = nil;
     editTaskButtonImageView = nil;
     editTaskButton = nil;
     editTaskIcon = nil;
+    calendarButtonImageView = nil;
+    calendarButton = nil;
+    calendarIcon = nil;
+    trashButtonImageView = nil;
+    trashButton = nil;
+    trashIcon = nil;
     animation = nil;
 }
 

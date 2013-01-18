@@ -20,6 +20,8 @@
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
 		885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */; };
+		885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */; };
+		885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */; };
 		8868141916A4785900E5E8AA /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868141816A4785900E5E8AA /* stopwatch-teal.png */; };
 		88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC516A7409B00BB9A8E /* navBackground@2x.png */; };
 		88715BC816A7410500BB9A8E /* navBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC716A7410500BB9A8E /* navBackground.png */; };
@@ -71,6 +73,8 @@
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editTimeIcon@2x.png"; sourceTree = "<group>"; };
+		885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashIcon@2x.png"; sourceTree = "<group>"; };
+		885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendarIcon@2x.png"; sourceTree = "<group>"; };
 		8868141816A4785900E5E8AA /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stopwatch-teal.png"; path = "../../stopwatch-teal.png"; sourceTree = "<group>"; };
 		88715BC516A7409B00BB9A8E /* navBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackground@2x.png"; sourceTree = "<group>"; };
 		88715BC716A7410500BB9A8E /* navBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBackground.png; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */,
+				885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */,
 				885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */,
 				887AE88016A8B857004D452B /* addTimeIcon@2x.png */,
 				88715BD516A7A60B00BB9A8E /* taskSeparator.png */,
@@ -342,6 +348,8 @@
 				88715BD616A7A60B00BB9A8E /* taskSeparator.png in Resources */,
 				887AE88116A8B857004D452B /* addTimeIcon@2x.png in Resources */,
 				885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */,
+				885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */,
+				885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
