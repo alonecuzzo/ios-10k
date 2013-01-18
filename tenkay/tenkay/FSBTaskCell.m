@@ -14,6 +14,7 @@
     UIButton *addTimeButton;
     UIImageView *addTimeButtonImageView;
     CABasicAnimation *animation;
+    CABasicAnimation *translationAnimation;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -51,10 +52,21 @@
     animation.delegate = self;
     addTimeButtonImageView.layer.opacity = 0.0;
     [addTimeButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
+    
+    translationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    translationAnimation.duration = 0.05;
+    translationAnimation.beginTime = CACurrentMediaTime() + 0.15f;
+    translationAnimation.autoreverses = NO;
+    translationAnimation.removedOnCompletion = NO;
+    translationAnimation.fillMode = kCAFillModeForwards;
+    translationAnimation.fromValue = @5.0;
+    translationAnimation.toValue = @0.0;
+    [addTimeButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
 }
 
 -(void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    NSLog(@"dan");
     addTimeButtonImageView.layer.opacity = 1.0;
 }
 
