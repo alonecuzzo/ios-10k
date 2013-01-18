@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface FSBTaskCell : UITableViewCell
+@interface FSBTaskCell : UITableViewCell 
 
 @property (nonatomic) BOOL isOpen;
 @property (nonatomic, strong) IBOutlet UILabel *taskLabel;
