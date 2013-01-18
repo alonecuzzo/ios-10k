@@ -163,7 +163,15 @@
     static NSString *CellIdentifier = @"Cell";
     FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    NSLog(@"selected row: %d", selectedRowNumber);
     
+    if(selectedRowNumber != indexPath.row) {
+       //should be toggled shut
+        cell.isOpen = NO;
+        [cell hideNav];
+    } else {
+        NSLog(@"we have an open row: %d", indexPath.row);
+    }
     
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -307,14 +315,20 @@
 //    else {
 //        [self stopCurrentSession];
 //    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    FSBTaskCell *selectedCell = (FSBTaskCell *)[tableView cellForRowAtIndexPath:indexPath];
+    FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     // if it's already selected
     if(selectedRowNumber == indexPath.row) {
         selectedRowNumber = -1;
+    } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
+        //need to close currently open one!
+        FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
+        [currentlySelectedCell hideNav];
+        currentlySelectedCell.isOpen = NO;
+        selectedRowNumber = indexPath.row;
     } else {
         selectedRowNumber = indexPath.row;
     }
@@ -323,7 +337,6 @@
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

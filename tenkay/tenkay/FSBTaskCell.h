@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIProgressView *taskProgress;
 
 - (void)toggleNav;
+- (void)hideNav;
 
 @end

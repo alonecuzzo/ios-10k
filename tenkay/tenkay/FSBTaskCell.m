@@ -65,7 +65,7 @@
     [self.viewForBaselineLayout addSubview:editTaskButtonImageView];
     
     calendarIcon = [UIImage imageNamed:@"calendarIcon"];
-    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(175, 55, 55, 52)];
+    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(178, 55, 55, 52)];
     calendarButton = [[UIButton alloc] init];
     calendarButton.frame = CGRectMake(0, 0, 55, 52);
     [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
@@ -140,7 +140,6 @@
 
 -(void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    NSLog(@"pow: %@", [anim valueForKey:@"id"]);
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
     } else {
