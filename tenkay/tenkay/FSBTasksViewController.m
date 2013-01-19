@@ -19,6 +19,7 @@
 @implementation FSBTasksViewController{
     NSFetchedResultsController *fetchedResultsController;
     Task *currentTask;
+    Task *taskToDelete;
     Session *currentSession;
     //saving indexpath for stopCurrentSession upon gesture.
     NSIndexPath *currentIndexPath;
@@ -63,11 +64,9 @@
     }
 }
 
-
-- (void)onAddButtonPress {
+- (void)onAddButtonPress:(id)sender {
    [self performSegueWithIdentifier:@"addTask" sender:self]; 
 }
-
 
 - (void)viewDidLoad
 {
@@ -119,6 +118,32 @@
     [self.tableView reloadData];
 }
 
+- (void)deleteTask:(Task *)task
+{
+    taskToDelete = task;
+    NSString *destructiveTitle = @"Delete Task"; //Action Sheet Button Titles
+    NSString *cancelTitle = @"Cancel";
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@""
+                                  delegate:self
+                                  cancelButtonTitle:cancelTitle
+                                  destructiveButtonTitle:destructiveTitle
+                                  otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if  ([buttonTitle isEqualToString:@"Delete Task"]) {
+        [managedObjectContext deleteObject:taskToDelete];
+        NSError *error;
+        if(![self.managedObjectContext save:&error]) {
+            NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
+        }
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -138,6 +163,8 @@
 {
     FSBTaskCell *taskCell = (FSBTaskCell *)cell;
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    taskCell.task = task;
+    taskCell.delegate = self;
     taskCell.taskLabel.text = task.title;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

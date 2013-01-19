@@ -49,7 +49,7 @@
 }
 
 -(void)onTaskDelete:(id)sender{
-    NSLog(@"dlee");
+    [self.delegate deleteTask:self.task];
 }
 
 -(void)onEditTask:(id)sender{
