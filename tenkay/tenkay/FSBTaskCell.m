@@ -9,6 +9,9 @@
 #import "FSBTaskCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface FSBTaskCell()
+@end
+
 @implementation FSBTaskCell {
     UIImage *addTimeIcon;
     UIImage *editTaskIcon;
@@ -32,8 +35,7 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]; if (self) {
         // Initialization code
     }
     return self;
@@ -46,39 +48,55 @@
     // Configure the view for the selected state
 }
 
+-(void)onTaskDelete:(id)sender{
+    NSLog(@"dlee");
+}
+
+-(void)onEditTask:(id)sender{
+    NSLog(@"edit");
+}
+
+-(void)onAddTime:(id)sender{
+    NSLog(@"add time");
+}
+
+-(void)onCalendarPress:(id)sender{
+    NSLog(@"calendar");
+}
+
 -(void)showNav
 {
     addTimeIcon = [UIImage imageNamed:@"addTimeIcon"];
-    addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 55, 55, 52)];
-    addTimeButton = [[UIButton alloc] init];
-    addTimeButton.frame = CGRectMake(0, 0, 55, 52);
-    [addTimeButton setImage:addTimeIcon forState:UIControlStateNormal];
-    [addTimeButtonImageView addSubview:addTimeButton];
+    addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
+    addTimeButtonImageView.image = addTimeIcon;
     [self.viewForBaselineLayout addSubview:addTimeButtonImageView];
+    addTimeButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
+    [addTimeButton setImage:addTimeIcon forState:UIControlStateNormal];
+    [addTimeButton addTarget:self action:@selector(onAddTime:) forControlEvents:UIControlEventTouchUpInside];
     
     editTaskIcon = [UIImage imageNamed:@"editTimeIcon"];
-    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95, 55, 55, 52)];
-    editTaskButton = [[UIButton alloc] init];
-    editTaskButton.frame = CGRectMake(0, 0, 55, 52);
-    [editTaskButton setImage:editTaskIcon forState:UIControlStateNormal];
-    [editTaskButtonImageView addSubview:editTaskButton];
+    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
+    editTaskButtonImageView.image = editTaskIcon;
     [self.viewForBaselineLayout addSubview:editTaskButtonImageView];
+    editTaskButton = [[UIButton alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
+    [editTaskButton setImage:editTaskIcon forState:UIControlStateNormal];
+    [editTaskButton addTarget:self action:@selector(onEditTask:) forControlEvents:UIControlEventTouchUpInside];
     
     calendarIcon = [UIImage imageNamed:@"calendarIcon"];
-    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(178, 55, 55, 52)];
-    calendarButton = [[UIButton alloc] init];
-    calendarButton.frame = CGRectMake(0, 0, 55, 52);
-    [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
-    [calendarButtonImageView addSubview:calendarButton];
+    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
+    calendarButtonImageView.image = calendarIcon;
     [self.viewForBaselineLayout addSubview:calendarButtonImageView];
+    calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
+    [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
+    [calendarButton addTarget:self action:@selector(onCalendarPress:) forControlEvents:UIControlEventTouchUpInside];
     
     trashIcon = [UIImage imageNamed:@"trashIcon"];
-    trashButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(261, 55, 55, 52)];
-    trashButton = [[UIButton alloc] init];
-    trashButton.frame = CGRectMake(0, 0, 55, 52);
-    [trashButton setImage:trashIcon forState:UIControlStateNormal];
-    [trashButtonImageView addSubview:trashButton];
+    trashButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
+    trashButtonImageView.image = trashIcon;
     [self.viewForBaselineLayout addSubview:trashButtonImageView];
+    trashButton = [[UIButton alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
+    [trashButton setImage:trashIcon forState:UIControlStateNormal];
+    [trashButton addTarget:self action:@selector(onTaskDelete:) forControlEvents:UIControlEventTouchUpInside];
     
     animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 0.4;
@@ -115,6 +133,7 @@
     translationAnimation.beginTime = CACurrentMediaTime() + 0.20f;
     [editTaskButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
     translationAnimation.beginTime = CACurrentMediaTime() + 0.30f;
+    translationAnimation.fromValue = @10.0;
     [calendarButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
     translationAnimation.beginTime = CACurrentMediaTime() + 0.35f;
     [trashButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
@@ -148,10 +167,11 @@
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
     } else {
-        addTimeButtonImageView.layer.opacity = 1.0;
-        editTaskButtonImageView.layer.opacity = 1.0;
-        calendarButtonImageView.layer.opacity = 1.0;
-        trashButtonImageView.layer.opacity = 1.0;
+        // once our fake buttons fade in, we set them to invisible and then swap our real buttons in!!!
+        [self.viewForBaselineLayout addSubview:addTimeButton];
+        [self.viewForBaselineLayout addSubview:editTaskButton];
+        [self.viewForBaselineLayout addSubview:calendarButton];
+        [self.viewForBaselineLayout addSubview:trashButton];
     }
 }
 
@@ -168,6 +188,12 @@
     [calendarButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
     [editTaskButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
     [trashButtonImageView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    
+    //remove buttons
+    [addTimeButton removeFromSuperview];
+    [editTaskButton removeFromSuperview];
+    [calendarButton removeFromSuperview];
+    [trashButton removeFromSuperview];
 }
 
 -(void)toggleNav

@@ -64,7 +64,7 @@
 }
 
 
-- (void)onAddButonPress {
+- (void)onAddButtonPress {
    [self performSegueWithIdentifier:@"addTask" sender:self]; 
 }
 
@@ -76,7 +76,7 @@
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
     [addButton setImage:[UIImage imageNamed:@"addTaskButton.png"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(onAddButonPress) forControlEvents:UIControlEventTouchUpInside];
+    [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     selectedRowNumber = -1;
     
