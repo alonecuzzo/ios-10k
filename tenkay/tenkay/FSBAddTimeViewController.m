@@ -17,6 +17,7 @@
 @implementation FSBAddTimeViewController {
     UIDatePicker *datePicker;
     CABasicAnimation *datePickerAnimation;
+    BOOL datePickerOpen;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,13 +36,21 @@
 
 - (IBAction)onDateSelectorPressed:(id)sender
 {
+    datePickerAnimation = nil;
     datePickerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    if(datePickerOpen){
+        datePickerAnimation.fromValue = @(-235);
+        datePickerAnimation.toValue = @0.0;
+        datePickerOpen = NO;
+    } else {
+        datePickerAnimation.fromValue = @0.0;
+        datePickerAnimation.toValue = @(-235);
+        datePickerOpen = YES;
+    }
     datePickerAnimation.duration = 0.30;
     datePickerAnimation.autoreverses = NO;
     datePickerAnimation.removedOnCompletion = NO;
     datePickerAnimation.fillMode = kCAFillModeForwards;
-    datePickerAnimation.fromValue = @0.0;
-    datePickerAnimation.toValue = @(-235);
     [datePicker.layer addAnimation:datePickerAnimation forKey:@"animateLayer"];
 }
 
@@ -51,6 +60,7 @@
 	// Do any additional setup after loading the view.
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
     
+    datePickerOpen = NO;
     // Initialization code
 	datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, 325, 250)];
 	datePicker.datePickerMode = UIDatePickerModeDateAndTime;
