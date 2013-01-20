@@ -124,6 +124,10 @@
         }
         isEndDateLabelSelected = NO;
         [datePicker addTarget:self action:@selector(updateStartDateLabel:) forControlEvents:UIControlEventValueChanged];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = NSDateFormatterMediumStyle;
+        df.timeStyle = NSDateFormatterShortStyle;
+        [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
     }
 }
 
@@ -144,6 +148,10 @@
         }
         isStartDateLabelSelected = NO;
         [datePicker addTarget:self action:@selector(updateEndDateLabel:) forControlEvents:UIControlEventValueChanged];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = NSDateFormatterMediumStyle;
+        df.timeStyle = NSDateFormatterShortStyle;
+        [datePicker setMinimumDate:[df dateFromString:self.startDateLabel.text]];
     }
 }
 
