@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-nD-Ty7"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-YT-Ib6">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-YT-Ib6">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="Zcx-bW-A3o"/>
                                 </constraints>
@@ -27,11 +27,6 @@
                                     <constraint firstAttribute="width" constant="199" id="eYD-Ic-maY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lny-8A-sEL">
-                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="19"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -59,25 +54,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="Lny-8A-sEL" secondAttribute="trailing" type="default" id="620-Fg-qkh"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="centerY" secondItem="0lS-Rs-obZ" secondAttribute="centerY" type="default" id="BGE-2Z-AHQ"/>
                             <constraint firstAttribute="trailing" secondItem="0lS-Rs-obZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWP-T0-6NE"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="baseline" secondItem="0lS-Rs-obZ" secondAttribute="baseline" type="default" id="EYl-K1-YOU"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="-1" id="HxH-da-yBJ"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K0b-u9-vkp"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="64" id="MfI-92-Ckw"/>
-                            <constraint firstItem="Lny-8A-sEL" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Myu-vi-iaC"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="trailing" secondItem="O9V-Er-2ND" secondAttribute="trailing" type="default" id="QvA-W6-qwl"/>
-                            <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="153" id="Reh-hy-0IS"/>
-                            <constraint firstItem="Lny-8A-sEL" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="UaW-If-Uyd"/>
-                            <constraint firstItem="Lny-8A-sEL" firstAttribute="top" secondItem="Tq5-qf-ipt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WU7-li-IdW"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="117" id="RJs-Bc-JPU"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXc-f4-Uj8"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="miG-xc-pXX"/>
                             <constraint firstAttribute="trailing" secondItem="Tq5-qf-ipt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o5L-yL-reN"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" type="default" id="tME-rL-ba0"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="0lS-Rs-obZ" id="LfL-xL-B0Q"/>
                         <outlet property="navigationBar" destination="BpB-nD-Ty7" id="zUE-wL-Ym9"/>
                     </connections>
                 </viewController>
@@ -257,7 +250,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
             <relationships>
                 <relationship kind="action" name="onDateSelectorPressed:"/>
-                <relationship kind="outlet" name="dateSelectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
             </relationships>
         </class>

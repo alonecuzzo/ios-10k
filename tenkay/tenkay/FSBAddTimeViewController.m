@@ -7,16 +7,15 @@
 //
 
 #import "FSBAddTimeViewController.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface FSBAddTimeViewController ()
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 - (IBAction)onDateSelectorPressed:(id)sender;
 @end
 
 @implementation FSBAddTimeViewController {
     UIDatePicker *datePicker;
-    CABasicAnimation *datePickerAnimation;
     BOOL datePickerOpen;
 }
 
@@ -31,27 +30,50 @@
 
 - (void)updateDateLabel:(id)sender
 {
-    
+    //Use NSDateFormatter to write out the date in a friendly format
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	df.dateStyle = NSDateFormatterMediumStyle;
+	df.timeStyle = NSDateFormatterShortStyle;
+	self.dateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+}
+
+- (void)removeDatePicker:(id)sender
+{
+    [datePicker removeFromSuperview];
+}
+
+- (void)addDatePicker
+{
+	[self.view addSubview:datePicker];
+}
+
+- (void)hideDatePicker {
+    CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
+    [UIView beginAnimations:@"MoveOut" context:nil];
+    [UIView setAnimationDelegate:self];
+    datePicker.frame = datePickerTargetFrame;
+    [UIView setAnimationDidStopSelector:@selector(removeDatePicker:)];
+    [UIView commitAnimations];
+}
+
+- (void)showDatePicker {
+    [self addDatePicker];
+    CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
+    [UIView beginAnimations:@"MoveIn" context:nil];
+    [UIView setAnimationDelegate:self];
+    datePicker.frame = datePickerTargetFrame;
+    [UIView commitAnimations];
 }
 
 - (IBAction)onDateSelectorPressed:(id)sender
 {
-    datePickerAnimation = nil;
-    datePickerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
-    if(datePickerOpen){
-        datePickerAnimation.fromValue = @(-235);
-        datePickerAnimation.toValue = @0.0;
+    if(datePickerOpen) {
         datePickerOpen = NO;
+        [self hideDatePicker];
     } else {
-        datePickerAnimation.fromValue = @0.0;
-        datePickerAnimation.toValue = @(-235);
         datePickerOpen = YES;
+        [self showDatePicker];
     }
-    datePickerAnimation.duration = 0.30;
-    datePickerAnimation.autoreverses = NO;
-    datePickerAnimation.removedOnCompletion = NO;
-    datePickerAnimation.fillMode = kCAFillModeForwards;
-    [datePicker.layer addAnimation:datePickerAnimation forKey:@"animateLayer"];
 }
 
 - (void)viewDidLoad
@@ -67,7 +89,10 @@
 	datePicker.hidden = NO;
 	datePicker.date = [NSDate date];
 	[datePicker addTarget:self action:@selector(updateDateLabel:) forControlEvents:UIControlEventValueChanged];
-	[self.view addSubview:datePicker];
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	df.dateStyle = NSDateFormatterMediumStyle;
+	df.timeStyle = NSDateFormatterShortStyle;
+	self.dateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
 }
 
 - (void)didReceiveMemoryWarning
