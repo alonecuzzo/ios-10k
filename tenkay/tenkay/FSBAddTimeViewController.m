@@ -39,6 +39,14 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    //if the start date becomes greater than the end date, then the end date date should be the start date + hour
+    if(datePicker.date > [df dateFromString:self.endDateLabel.text]) {
+        if ([NSDate dateWithTimeInterval:3600 sinceDate:datePicker.date] < [NSDate date]) {
+            self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:[NSDate dateWithTimeInterval:3600 sinceDate:datePicker.date]]];
+        } else {
+            self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:[NSDate date]]];
+        }
+    }
 }
 
 - (void)updateEndDateLabel:(id)sender
@@ -47,6 +55,10 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    //if the end date is less than the start date, then the start date should be the end date - hour
+    if(datePicker.date < [df dateFromString:self.startDateLabel.text]) {
+        self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:[NSDate dateWithTimeInterval:-3600 sinceDate:datePicker.date]]];
+    }
 }
 
 - (void)removeDatePicker:(id)sender
