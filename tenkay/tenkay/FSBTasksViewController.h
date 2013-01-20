@@ -13,7 +13,7 @@
 
 @required
 - (void)deleteTask:(Task *)task;
-
+- (void)addTime:(Task *)task;
 @end
 
 @interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate, FSBTasksViewDelegate, UIActionSheetDelegate>

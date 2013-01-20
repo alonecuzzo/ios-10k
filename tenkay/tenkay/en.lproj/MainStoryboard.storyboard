@@ -4,6 +4,87 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
+        <!--Add Time View Controller-->
+        <scene sceneID="ek4-IZ-g8H">
+            <objects>
+                <viewController id="l8Z-uH-JRM" customClass="FSBAddTimeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O9V-Er-2ND">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-nD-Ty7"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-YT-Ib6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="Zcx-bW-A3o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="January 3rd 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-Rs-obZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Djb-p8-Wq5"/>
+                                    <constraint firstAttribute="width" constant="199" id="eYD-Ic-maY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lny-8A-sEL">
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnC-1b-C0j">
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tq5-qf-ipt">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0XJ-F7-OQS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDateSelectorPressed:" destination="l8Z-uH-JRM" eventType="touchUpInside" id="bfa-mE-qB4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="Lny-8A-sEL" secondAttribute="trailing" type="default" id="620-Fg-qkh"/>
+                            <constraint firstItem="Tq5-qf-ipt" firstAttribute="centerY" secondItem="0lS-Rs-obZ" secondAttribute="centerY" type="default" id="BGE-2Z-AHQ"/>
+                            <constraint firstAttribute="trailing" secondItem="0lS-Rs-obZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWP-T0-6NE"/>
+                            <constraint firstItem="SsB-YT-Ib6" firstAttribute="baseline" secondItem="0lS-Rs-obZ" secondAttribute="baseline" type="default" id="EYl-K1-YOU"/>
+                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="-1" id="HxH-da-yBJ"/>
+                            <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K0b-u9-vkp"/>
+                            <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="64" id="MfI-92-Ckw"/>
+                            <constraint firstItem="Lny-8A-sEL" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Myu-vi-iaC"/>
+                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="trailing" secondItem="O9V-Er-2ND" secondAttribute="trailing" type="default" id="QvA-W6-qwl"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="153" id="Reh-hy-0IS"/>
+                            <constraint firstItem="Lny-8A-sEL" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="UaW-If-Uyd"/>
+                            <constraint firstItem="Lny-8A-sEL" firstAttribute="top" secondItem="Tq5-qf-ipt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WU7-li-IdW"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXc-f4-Uj8"/>
+                            <constraint firstAttribute="trailing" secondItem="Tq5-qf-ipt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o5L-yL-reN"/>
+                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" type="default" id="tME-rL-ba0"/>
+                            <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="BpB-nD-Ty7" id="zUE-wL-Ym9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1098" y="-783"/>
+        </scene>
         <!--Tasks View Controller-->
         <scene sceneID="ohD-iR-1VT">
             <objects>
@@ -82,6 +163,7 @@
                     <navigationItem key="navigationItem" id="P82-V4-qmL"/>
                     <connections>
                         <segue destination="Mkv-eb-mPG" kind="modal" identifier="addTask" id="OZA-Lg-Djk"/>
+                        <segue destination="l8Z-uH-JRM" kind="modal" identifier="addTime" id="Wty-rH-8lV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -170,6 +252,41 @@
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
+    <classes>
+        <class className="FSBAddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onDateSelectorPressed:"/>
+                <relationship kind="outlet" name="dateSelectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+            </relationships>
+        </class>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
+        </class>
+        <class className="FSBTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBTaskDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBTasksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

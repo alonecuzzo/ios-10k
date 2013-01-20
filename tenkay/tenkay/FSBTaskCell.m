@@ -57,7 +57,7 @@
 }
 
 -(void)onAddTime:(id)sender{
-    NSLog(@"add time");
+    [self.delegate addTime:self.task];
 }
 
 -(void)onCalendarPress:(id)sender{

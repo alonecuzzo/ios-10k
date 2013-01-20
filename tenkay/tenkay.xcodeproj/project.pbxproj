@@ -31,10 +31,12 @@
 		88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */; };
 		88715BD616A7A60B00BB9A8E /* taskSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BD516A7A60B00BB9A8E /* taskSeparator.png */; };
 		887AE88116A8B857004D452B /* addTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887AE88016A8B857004D452B /* addTimeIcon@2x.png */; };
+		88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
 		88C45102168E36FF00210F1F /* FSBTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */; };
+		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -86,6 +88,7 @@
 		88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBNavigationBar.m; sourceTree = "<group>"; };
 		88715BD516A7A60B00BB9A8E /* taskSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskSeparator.png; sourceTree = "<group>"; };
 		887AE88016A8B857004D452B /* addTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeIcon@2x.png"; sourceTree = "<group>"; };
+		88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeNavBackgroundTeal@2x.png"; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
 		88C45100168E36FF00210F1F /* FSBTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskDetailViewController.h; sourceTree = "<group>"; };
 		88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskDetailViewController.m; sourceTree = "<group>"; };
+		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
+		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -176,6 +181,8 @@
 				88715BD016A74E9300BB9A8E /* Data */,
 				88146F411683BC9800B0ABED /* FSBAppDelegate.h */,
 				88146F421683BC9800B0ABED /* FSBAppDelegate.m */,
+				88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */,
+				88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */,
 				88715BD216A78B3900BB9A8E /* FSBNavigationBar.h */,
 				88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
@@ -248,6 +255,7 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */,
 				885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */,
 				885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */,
 				885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */,
@@ -350,6 +358,7 @@
 				885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */,
 				885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */,
 				885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */,
+				88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +385,7 @@
 				BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */,
 				88715BCF16A74D9900BB9A8E /* FSBTextUtil.m in Sources */,
 				88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */,
+				88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
