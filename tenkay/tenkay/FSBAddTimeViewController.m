@@ -88,6 +88,7 @@
 	datePicker.datePickerMode = UIDatePickerModeDateAndTime;
 	datePicker.hidden = NO;
 	datePicker.date = [NSDate date];
+    [datePicker setMaximumDate:[NSDate date]];
 	[datePicker addTarget:self action:@selector(updateDateLabel:) forControlEvents:UIControlEventValueChanged];
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	df.dateStyle = NSDateFormatterMediumStyle;

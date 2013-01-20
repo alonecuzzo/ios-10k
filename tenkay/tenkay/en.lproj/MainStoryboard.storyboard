@@ -21,7 +21,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="January 3rd 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-Rs-obZ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 3rd 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-Rs-obZ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Djb-p8-Wq5"/>
                                     <constraint firstAttribute="width" constant="199" id="eYD-Ic-maY"/>
@@ -51,14 +51,25 @@
                                     <action selector="onDateSelectorPressed:" destination="l8Z-uH-JRM" eventType="touchUpInside" id="bfa-mE-qB4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 5th 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-1a-53U">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hMO-JD-Vin"/>
+                                    <constraint firstAttribute="width" constant="141" id="zmx-Ud-1eJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="centerY" secondItem="0lS-Rs-obZ" secondAttribute="centerY" type="default" id="BGE-2Z-AHQ"/>
                             <constraint firstAttribute="trailing" secondItem="0lS-Rs-obZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWP-T0-6NE"/>
+                            <constraint firstAttribute="trailing" secondItem="XQk-1a-53U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DgO-Tz-t81"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="baseline" secondItem="0lS-Rs-obZ" secondAttribute="baseline" type="default" id="EYl-K1-YOU"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="-1" id="HxH-da-yBJ"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K0b-u9-vkp"/>
+                            <constraint firstItem="XQk-1a-53U" firstAttribute="baseline" secondItem="VnC-1b-C0j" secondAttribute="baseline" type="default" id="KY8-ZU-2ez"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="64" id="MfI-92-Ckw"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="trailing" secondItem="O9V-Er-2ND" secondAttribute="trailing" type="default" id="QvA-W6-qwl"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="117" id="RJs-Bc-JPU"/>
