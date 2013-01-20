@@ -19,6 +19,7 @@
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
+		8893650C16ACB41D00DD9F88 /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
@@ -36,7 +37,6 @@
 		BA9AA301169E841F00662CE5 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2FD169E841F00662CE5 /* right_arrow.png */; };
 		BA9AA302169E841F00662CE5 /* right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2FE169E841F00662CE5 /* right_arrow@2x.png */; };
 		BA9AA304169F373200662CE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9AA303169F373200662CE5 /* QuartzCore.framework */; };
-		BA9AA306169F6A9200662CE5 /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA305169F6A9200662CE5 /* stopwatch-teal.png */; };
 		BA9AA31016A0CC5100662CE5 /* FWTPopoverAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */; };
 		BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */; };
 		BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */; };
@@ -61,6 +61,7 @@
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal.png"; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		BA9AA2FD169E841F00662CE5 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		BA9AA2FE169E841F00662CE5 /* right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow@2x.png"; sourceTree = "<group>"; };
 		BA9AA303169F373200662CE5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BA9AA305169F6A9200662CE5 /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stopwatch-teal.png"; path = "../../../../../../../Downloads/stopwatch-teal.png"; sourceTree = "<group>"; };
 		BA9AA30716A0CC4E00662CE5 /* FWTPopoverAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverAnimationHelper.h; sourceTree = "<group>"; };
 		BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverAnimationHelper.m; sourceTree = "<group>"; };
 		BA9AA30916A0CC4E00662CE5 /* FWTPopoverArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverArrow.h; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		BA9AA2FA169E841F00662CE5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				BA9AA305169F6A9200662CE5 /* stopwatch-teal.png */,
+				8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */,
 				BA9AA2FB169E841F00662CE5 /* left_arrow.png */,
 				BA9AA2FC169E841F00662CE5 /* left_arrow@2x.png */,
 				BA9AA2FD169E841F00662CE5 /* right_arrow.png */,
@@ -278,7 +278,7 @@
 				BA9AA300169E841F00662CE5 /* left_arrow@2x.png in Resources */,
 				BA9AA301169E841F00662CE5 /* right_arrow.png in Resources */,
 				BA9AA302169E841F00662CE5 /* right_arrow@2x.png in Resources */,
-				BA9AA306169F6A9200662CE5 /* stopwatch-teal.png in Resources */,
+				8893650C16ACB41D00DD9F88 /* stopwatch-teal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
