@@ -24,7 +24,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 3rd 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-Rs-obZ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Djb-p8-Wq5"/>
-                                    <constraint firstAttribute="width" constant="199" id="eYD-Ic-maY"/>
+                                    <constraint firstAttribute="width" constant="199" id="UFq-iC-qXK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,41 +48,61 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onDateSelectorPressed:" destination="l8Z-uH-JRM" eventType="touchUpInside" id="bfa-mE-qB4"/>
+                                    <action selector="onStartDateSelectorPressed:" destination="l8Z-uH-JRM" eventType="touchUpInside" id="Xjj-Cc-EQC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 5th 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-1a-53U">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="hMO-JD-Vin"/>
-                                    <constraint firstAttribute="width" constant="141" id="zmx-Ud-1eJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqZ-g3-4cf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="apf-0e-eFl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onEndDateSelectorPressed:" destination="l8Z-uH-JRM" eventType="touchUpInside" id="xq7-D8-9e2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WqZ-g3-4cf" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="AdX-E7-ofd"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="centerY" secondItem="0lS-Rs-obZ" secondAttribute="centerY" type="default" id="BGE-2Z-AHQ"/>
                             <constraint firstAttribute="trailing" secondItem="0lS-Rs-obZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWP-T0-6NE"/>
-                            <constraint firstAttribute="trailing" secondItem="XQk-1a-53U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DgO-Tz-t81"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="centerY" secondItem="WqZ-g3-4cf" secondAttribute="centerY" type="default" id="EI4-VI-jzc"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="baseline" secondItem="0lS-Rs-obZ" secondAttribute="baseline" type="default" id="EYl-K1-YOU"/>
+                            <constraint firstItem="XQk-1a-53U" firstAttribute="leading" secondItem="0lS-Rs-obZ" secondAttribute="leading" type="default" id="FFn-wr-zpa"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="-1" id="HxH-da-yBJ"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K0b-u9-vkp"/>
                             <constraint firstItem="XQk-1a-53U" firstAttribute="baseline" secondItem="VnC-1b-C0j" secondAttribute="baseline" type="default" id="KY8-ZU-2ez"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="64" id="MfI-92-Ckw"/>
+                            <constraint firstItem="WqZ-g3-4cf" firstAttribute="top" secondItem="SsB-YT-Ib6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QW6-pu-iPU"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="trailing" secondItem="O9V-Er-2ND" secondAttribute="trailing" type="default" id="QvA-W6-qwl"/>
-                            <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="117" id="RJs-Bc-JPU"/>
+                            <constraint firstAttribute="trailing" secondItem="XQk-1a-53U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ctc-z6-mxg"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXc-f4-Uj8"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="miG-xc-pXX"/>
                             <constraint firstAttribute="trailing" secondItem="Tq5-qf-ipt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o5L-yL-reN"/>
                             <constraint firstItem="BpB-nD-Ty7" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" type="default" id="tME-rL-ba0"/>
+                            <constraint firstAttribute="trailing" secondItem="WqZ-g3-4cf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="w7P-Pu-jE0"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dateLabel" destination="0lS-Rs-obZ" id="LfL-xL-B0Q"/>
+                        <outlet property="endDateLabel" destination="XQk-1a-53U" id="PJa-D2-IhD"/>
                         <outlet property="navigationBar" destination="BpB-nD-Ty7" id="zUE-wL-Ym9"/>
+                        <outlet property="startDateLabel" destination="0lS-Rs-obZ" id="lnC-di-SEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,41 +276,6 @@
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
-    <classes>
-        <class className="FSBAddTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onDateSelectorPressed:"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="FSBNavigationBar" superclassName="UINavigationBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
-        </class>
-        <class className="FSBTaskCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FSBTaskDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onSave:"/>
-                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FSBTasksViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

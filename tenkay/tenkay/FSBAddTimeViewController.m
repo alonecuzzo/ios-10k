@@ -10,13 +10,18 @@
 
 @interface FSBAddTimeViewController ()
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-- (IBAction)onDateSelectorPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
+
+- (IBAction)onStartDateSelectorPressed:(id)sender;
+- (IBAction)onEndDateSelectorPressed:(id)sender;
 @end
 
 @implementation FSBAddTimeViewController {
     UIDatePicker *datePicker;
-    BOOL datePickerOpen;
+    BOOL isDatePickerOpen;
+    BOOL isStartDateLabelSelected;
+    BOOL isEndDateLabelSelected;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,13 +33,20 @@
     return self;
 }
 
-- (void)updateDateLabel:(id)sender
+- (void)updateStartDateLabel:(id)sender
 {
-    //Use NSDateFormatter to write out the date in a friendly format
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
-	self.dateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+}
+
+- (void)updateEndDateLabel:(id)sender
+{
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	df.dateStyle = NSDateFormatterMediumStyle;
+	df.timeStyle = NSDateFormatterShortStyle;
+	self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
 }
 
 - (void)removeDatePicker:(id)sender
@@ -65,14 +77,61 @@
     [UIView commitAnimations];
 }
 
-- (IBAction)onDateSelectorPressed:(id)sender
+- (void)showDatePickerPostSwap:(id)sender {
+    [self addDatePicker];
+    CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
+    [UIView beginAnimations:@"MoveIn" context:nil];
+    [UIView setAnimationDelegate:self];
+    datePicker.frame = datePickerTargetFrame;
+    [UIView commitAnimations];
+}
+
+- (void)swapDatePicker {
+    CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
+    [UIView beginAnimations:@"MoveOut" context:nil];
+    [UIView setAnimationDelegate:self];
+    datePicker.frame = datePickerTargetFrame;
+    [UIView setAnimationDidStopSelector:@selector(showDatePickerPostSwap:)];
+    [UIView commitAnimations];
+}
+
+- (IBAction)onStartDateSelectorPressed:(id)sender
 {
-    if(datePickerOpen) {
-        datePickerOpen = NO;
+    if(isDatePickerOpen && isStartDateLabelSelected) {
+        isDatePickerOpen = NO;
+        isStartDateLabelSelected = NO;
         [self hideDatePicker];
     } else {
-        datePickerOpen = YES;
-        [self showDatePicker];
+        isDatePickerOpen = YES;
+        isStartDateLabelSelected = YES;
+        if(isEndDateLabelSelected){
+            [datePicker removeTarget:self action:@selector(updateEndDateLabel:) forControlEvents:UIControlEventValueChanged];
+            [self swapDatePicker];
+        } else {
+            [self showDatePicker];
+        }
+        isEndDateLabelSelected = NO;
+        [datePicker addTarget:self action:@selector(updateStartDateLabel:) forControlEvents:UIControlEventValueChanged];
+    }
+}
+
+- (IBAction)onEndDateSelectorPressed:(id)sender
+{
+    if(isDatePickerOpen && isEndDateLabelSelected) {
+        isDatePickerOpen = NO;
+        isEndDateLabelSelected = NO;
+        [self hideDatePicker];
+    } else {
+        isDatePickerOpen = YES;
+        isEndDateLabelSelected = YES;
+        if(isStartDateLabelSelected){
+            [datePicker removeTarget:self action:@selector(updateStartDateLabel:) forControlEvents:UIControlEventValueChanged];
+            [self swapDatePicker];
+        } else {
+            [self showDatePicker];
+        }
+        isStartDateLabelSelected = NO;
+        [datePicker addTarget:self action:@selector(updateEndDateLabel:) forControlEvents:UIControlEventValueChanged];
     }
 }
 
@@ -82,18 +141,21 @@
 	// Do any additional setup after loading the view.
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
     
-    datePickerOpen = NO;
-    // Initialization code
+    isStartDateLabelSelected = NO;
+    isEndDateLabelSelected = NO;
+    isDatePickerOpen = NO;
+    
 	datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, 325, 250)];
 	datePicker.datePickerMode = UIDatePickerModeDateAndTime;
 	datePicker.hidden = NO;
 	datePicker.date = [NSDate date];
     [datePicker setMaximumDate:[NSDate date]];
-	[datePicker addTarget:self action:@selector(updateDateLabel:) forControlEvents:UIControlEventValueChanged];
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
-	self.dateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    NSDate *startDate = [[NSDate alloc] initWithTimeInterval:-3600 sinceDate:[NSDate date]];
+	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:startDate]];
+    self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]]; 
 }
 
 - (void)didReceiveMemoryWarning
