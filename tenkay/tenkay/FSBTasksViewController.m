@@ -120,6 +120,7 @@
 
 - (void)deleteTask:(Task *)task
 {
+    selectedRowNumber = -1;
     taskToDelete = task;
     NSString *destructiveTitle = @"Delete Task"; //Action Sheet Button Titles
     NSString *cancelTitle = @"Cancel";
