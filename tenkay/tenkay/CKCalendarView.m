@@ -195,7 +195,8 @@
     // THE CALENDAR ITSELF
     UIView *calendarContainer = [[UIView alloc] initWithFrame:CGRectZero];
     calendarContainer.layer.borderWidth = 1.0f;
-    calendarContainer.layer.borderColor = [UIColor blackColor].CGColor;
+    //calendarContainer.layer.borderColor = [UIColor blackColor].CGColor;
+    calendarContainer.layer.borderColor = [UIColor colorWithRed:231 green:231 blue:231 alpha:1].CGColor;
     calendarContainer.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     calendarContainer.layer.cornerRadius = 4.0f;
     calendarContainer.clipsToBounds = YES;
@@ -341,7 +342,7 @@
 }
 
 - (void)updateDayOfWeekLabels {
-    NSArray *weekdays = [self.dateFormatter shortWeekdaySymbols];
+    NSArray *weekdays = [self.dateFormatter veryShortWeekdaySymbols];
     // adjust array depending on which weekday should be first
     NSUInteger firstWeekdayIndex = [self.calendar firstWeekday] - 1;
     if (firstWeekdayIndex > 0) {
@@ -351,7 +352,7 @@
 
     NSUInteger i = 0;
     for (NSString *day in weekdays) {
-        [[self.dayOfWeekLabels objectAtIndex:i] setText:[day uppercaseString]];
+        [[self.dayOfWeekLabels objectAtIndex:i] setText:[day lowercaseString]];
         i++;
     }
 }
@@ -396,14 +397,15 @@
 }
 
 - (void)setDefaultStyle {
-    self.backgroundColor = UIColorFromRGB(0x393B40);
-
-    [self setTitleColor:[UIColor whiteColor]];
+    //self.backgroundColor = UIColorFromRGB(0x393B40);
+    self.backgroundColor   = UIColorFromRGB(0xe7e7e7);
+    //[self setTitleColor:[UIColor whiteColor]];
+    [self setTitleColor:UIColorFromRGB(0x666666)];
     [self setTitleFont:[UIFont boldSystemFontOfSize:17.0]];
 
     [self setDayOfWeekFont:[UIFont boldSystemFontOfSize:12.0]];
     [self setDayOfWeekTextColor:UIColorFromRGB(0x999999)];
-    [self setDayOfWeekBottomColor:UIColorFromRGB(0xCCCFD5) topColor:[UIColor whiteColor]];
+    //[self setDayOfWeekBottomColor:UIColorFromRGB(0xe7e7e7) topColor:UIColorFromRGB(0xe7e7e7)];
 
     [self setDateFont:[UIFont boldSystemFontOfSize:16.0f]];
     [self setDateTextColor:UIColorFromRGB(0x393B40)];

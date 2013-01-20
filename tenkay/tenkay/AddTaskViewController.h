@@ -1,5 +1,5 @@
 //
-//  FSBTaksViewController.h
+//  FSBTaskDetailViewController.h
 //  tenkay
 //
 //  Created by Jabari Bell and Dawson Blackhouse on 12/28/12.
@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@class Task;
+
+@interface AddTaskViewController : UIViewController
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet UITextField *taskTitle;
 
 @end
