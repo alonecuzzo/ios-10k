@@ -19,11 +19,24 @@
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
-		8893650C16ACB41D00DD9F88 /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */; };
+		885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */; };
+		885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */; };
+		885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */; };
+		8868141916A4785900E5E8AA /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868141816A4785900E5E8AA /* stopwatch-teal.png */; };
+		88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC516A7409B00BB9A8E /* navBackground@2x.png */; };
+		88715BC816A7410500BB9A8E /* navBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC716A7410500BB9A8E /* navBackground.png */; };
+		88715BCA16A7424700BB9A8E /* addTaskButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC916A7424700BB9A8E /* addTaskButton@2x.png */; };
+		88715BCC16A7483200BB9A8E /* playButtonTeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BCB16A7483200BB9A8E /* playButtonTeal@2x.png */; };
+		88715BCF16A74D9900BB9A8E /* FSBTextUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 88715BCE16A74D9900BB9A8E /* FSBTextUtil.m */; };
+		88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */; };
+		88715BD616A7A60B00BB9A8E /* taskSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BD516A7A60B00BB9A8E /* taskSeparator.png */; };
+		887AE88116A8B857004D452B /* addTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887AE88016A8B857004D452B /* addTimeIcon@2x.png */; };
+		88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
-		88C45102168E36FF00210F1F /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* AddTaskViewController.m */; };
+		88C45102168E36FF00210F1F /* FSBTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */; };
+		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -62,23 +75,39 @@
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
-		8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal.png"; sourceTree = "<group>"; };
+		885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editTimeIcon@2x.png"; sourceTree = "<group>"; };
+		885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashIcon@2x.png"; sourceTree = "<group>"; };
+		885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendarIcon@2x.png"; sourceTree = "<group>"; };
+		8868141816A4785900E5E8AA /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stopwatch-teal.png"; path = "../../stopwatch-teal.png"; sourceTree = "<group>"; };
+		88715BC516A7409B00BB9A8E /* navBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackground@2x.png"; sourceTree = "<group>"; };
+		88715BC716A7410500BB9A8E /* navBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBackground.png; sourceTree = "<group>"; };
+		88715BC916A7424700BB9A8E /* addTaskButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTaskButton@2x.png"; sourceTree = "<group>"; };
+		88715BCB16A7483200BB9A8E /* playButtonTeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButtonTeal@2x.png"; sourceTree = "<group>"; };
+		88715BCD16A74D9900BB9A8E /* FSBTextUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTextUtil.h; sourceTree = "<group>"; };
+		88715BCE16A74D9900BB9A8E /* FSBTextUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTextUtil.m; sourceTree = "<group>"; };
+		88715BD216A78B3900BB9A8E /* FSBNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBNavigationBar.h; sourceTree = "<group>"; };
+		88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBNavigationBar.m; sourceTree = "<group>"; };
+		88715BD516A7A60B00BB9A8E /* taskSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskSeparator.png; sourceTree = "<group>"; };
+		887AE88016A8B857004D452B /* addTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeIcon@2x.png"; sourceTree = "<group>"; };
+		88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeNavBackgroundTeal@2x.png"; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		88C450F5168E32BB00210F1F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		88C450FD168E356900210F1F /* FSBTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTasksViewController.h; sourceTree = "<group>"; };
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
-		88C45100168E36FF00210F1F /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
-		88C45101168E36FF00210F1F /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
+		88C45100168E36FF00210F1F /* FSBTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskDetailViewController.h; sourceTree = "<group>"; };
+		88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskDetailViewController.m; sourceTree = "<group>"; };
+		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
+		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "tenkay/Icon-72.png"; sourceTree = "<group>"; };
-		BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "tenkay/Icon-72@2x.png"; sourceTree = "<group>"; };
-		BA9AA2ED169B36B300662CE5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = tenkay/Icon.png; sourceTree = "<group>"; };
-		BA9AA2EE169B36B300662CE5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "tenkay/Icon@2x.png"; sourceTree = "<group>"; };
-		BA9AA2F3169B37AF00662CE5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		BA9AA2F5169B37B800662CE5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		BA9AA2ED169B36B300662CE5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		BA9AA2EE169B36B300662CE5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		BA9AA2F3169B37AF00662CE5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../Icon.png; sourceTree = "<group>"; };
+		BA9AA2F5169B37B800662CE5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../Icon@2x.png"; sourceTree = "<group>"; };
 		BA9AA2F7169E807300662CE5 /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
 		BA9AA2F8169E807300662CE5 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
 		BA9AA2FB169E841F00662CE5 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
@@ -120,12 +149,7 @@
 		88146F231683BC9800B0ABED = {
 			isa = PBXGroup;
 			children = (
-				BA9AA2F5169B37B800662CE5 /* Icon@2x.png */,
-				BA9AA2F3169B37AF00662CE5 /* Icon.png */,
-				BA9AA2EB169B36B200662CE5 /* Icon-72.png */,
-				BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */,
-				BA9AA2ED169B36B300662CE5 /* Icon.png */,
-				BA9AA2EE169B36B300662CE5 /* Icon@2x.png */,
+				BA9AA2FA169E841F00662CE5 /* Resources */,
 				88146F381683BC9800B0ABED /* tenkay */,
 				88146F311683BC9800B0ABED /* Frameworks */,
 				88146F2F1683BC9800B0ABED /* Products */,
@@ -155,34 +179,23 @@
 		88146F381683BC9800B0ABED /* tenkay */ = {
 			isa = PBXGroup;
 			children = (
-				BA9AA30716A0CC4E00662CE5 /* FWTPopoverAnimationHelper.h */,
-				BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */,
-				BA9AA30916A0CC4E00662CE5 /* FWTPopoverArrow.h */,
-				BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */,
-				BA9AA30B16A0CC4F00662CE5 /* FWTPopoverBackgroundHelper.h */,
-				BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */,
-				BA9AA30D16A0CC5000662CE5 /* FWTPopoverView-Prefix.pch */,
-				BA9AA30E16A0CC5000662CE5 /* FWTPopoverView.h */,
-				BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */,
-				BA9AA2FA169E841F00662CE5 /* resources */,
-				BA9AA2F7169E807300662CE5 /* CKCalendarView.h */,
-				BA9AA2F8169E807300662CE5 /* CKCalendarView.m */,
-				88C450F4168E32BB00210F1F /* Session.h */,
-				88C450F5168E32BB00210F1F /* Session.m */,
-				88C450F1168E32BA00210F1F /* Tag.h */,
-				88C450F2168E32BA00210F1F /* Tag.m */,
-				BA9AA2E416951FAB00662CE5 /* Task.h */,
-				BA9AA2E516951FAB00662CE5 /* Task.m */,
+				88715BC016A72FCB00BB9A8E /* FWTPopover */,
+				88715BD116A74EA600BB9A8E /* CKCalendarView */,
+				88715BD016A74E9300BB9A8E /* Data */,
 				88146F411683BC9800B0ABED /* FSBAppDelegate.h */,
 				88146F421683BC9800B0ABED /* FSBAppDelegate.m */,
+				88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */,
+				88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */,
+				88715BD216A78B3900BB9A8E /* FSBNavigationBar.h */,
+				88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
 				BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */,
 				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
 				88C450FE168E356900210F1F /* FSBTasksViewController.m */,
-				BA9AA32816A68A9400662CE5 /* CalendarViewController.h */,
-				BA9AA32916A68A9400662CE5 /* CalendarViewController.m */,
-				88C45100168E36FF00210F1F /* AddTaskViewController.h */,
-				88C45101168E36FF00210F1F /* AddTaskViewController.m */,
+				88C45100168E36FF00210F1F /* FSBTaskDetailViewController.h */,
+				88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */,
+				88715BCD16A74D9900BB9A8E /* FSBTextUtil.h */,
+				88715BCE16A74D9900BB9A8E /* FSBTextUtil.m */,
 				88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */,
 				88146F391683BC9800B0ABED /* Supporting Files */,
 			);
@@ -204,16 +217,72 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BA9AA2FA169E841F00662CE5 /* resources */ = {
+		88715BC016A72FCB00BB9A8E /* FWTPopover */ = {
 			isa = PBXGroup;
 			children = (
-				8893650B16ACB41D00DD9F88 /* stopwatch-teal.png */,
+				BA9AA305169F6A9200662CE5 /* stopwatch-teal.png */,
+				BA9AA30716A0CC4E00662CE5 /* FWTPopoverAnimationHelper.h */,
+				BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */,
+				BA9AA30916A0CC4E00662CE5 /* FWTPopoverArrow.h */,
+				BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */,
+				BA9AA30B16A0CC4F00662CE5 /* FWTPopoverBackgroundHelper.h */,
+				BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */,
+				BA9AA30D16A0CC5000662CE5 /* FWTPopoverView-Prefix.pch */,
+				BA9AA30E16A0CC5000662CE5 /* FWTPopoverView.h */,
+				BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */,
+			);
+			name = FWTPopover;
+			sourceTree = "<group>";
+		};
+		88715BD016A74E9300BB9A8E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				88C450F4168E32BB00210F1F /* Session.h */,
+				88C450F5168E32BB00210F1F /* Session.m */,
+				88C450F1168E32BA00210F1F /* Tag.h */,
+				88C450F2168E32BA00210F1F /* Tag.m */,
+				BA9AA2E416951FAB00662CE5 /* Task.h */,
+				BA9AA2E516951FAB00662CE5 /* Task.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		88715BD116A74EA600BB9A8E /* CKCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				BA9AA2F7169E807300662CE5 /* CKCalendarView.h */,
+				BA9AA2F8169E807300662CE5 /* CKCalendarView.m */,
+			);
+			name = CKCalendarView;
+			sourceTree = "<group>";
+		};
+		BA9AA2FA169E841F00662CE5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */,
+				885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */,
+				885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */,
+				885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */,
+				887AE88016A8B857004D452B /* addTimeIcon@2x.png */,
+				88715BD516A7A60B00BB9A8E /* taskSeparator.png */,
+				88715BCB16A7483200BB9A8E /* playButtonTeal@2x.png */,
+				88715BC916A7424700BB9A8E /* addTaskButton@2x.png */,
+				88715BC716A7410500BB9A8E /* navBackground.png */,
+				88715BC516A7409B00BB9A8E /* navBackground@2x.png */,
+				BA9AA2F5169B37B800662CE5 /* Icon@2x.png */,
+				BA9AA2F3169B37AF00662CE5 /* Icon.png */,
+				BA9AA2EB169B36B200662CE5 /* Icon-72.png */,
+				BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */,
+				BA9AA2ED169B36B300662CE5 /* Icon.png */,
+				BA9AA2EE169B36B300662CE5 /* Icon@2x.png */,
+				8868141816A4785900E5E8AA /* stopwatch-teal.png */,
 				BA9AA2FB169E841F00662CE5 /* left_arrow.png */,
 				BA9AA2FC169E841F00662CE5 /* left_arrow@2x.png */,
 				BA9AA2FD169E841F00662CE5 /* right_arrow.png */,
 				BA9AA2FE169E841F00662CE5 /* right_arrow@2x.png */,
 			);
-			path = resources;
+			name = Resources;
+			path = tenkay/resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +352,17 @@
 				BA9AA300169E841F00662CE5 /* left_arrow@2x.png in Resources */,
 				BA9AA301169E841F00662CE5 /* right_arrow.png in Resources */,
 				BA9AA302169E841F00662CE5 /* right_arrow@2x.png in Resources */,
-				8893650C16ACB41D00DD9F88 /* stopwatch-teal.png in Resources */,
+				8868141916A4785900E5E8AA /* stopwatch-teal.png in Resources */,
+				88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */,
+				88715BC816A7410500BB9A8E /* navBackground.png in Resources */,
+				88715BCA16A7424700BB9A8E /* addTaskButton@2x.png in Resources */,
+				88715BCC16A7483200BB9A8E /* playButtonTeal@2x.png in Resources */,
+				88715BD616A7A60B00BB9A8E /* taskSeparator.png in Resources */,
+				887AE88116A8B857004D452B /* addTimeIcon@2x.png in Resources */,
+				885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */,
+				885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */,
+				885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */,
+				88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +387,9 @@
 				BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */,
 				BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */,
 				BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */,
-				BA9AA32A16A68A9500662CE5 /* CalendarViewController.m in Sources */,
+				88715BCF16A74D9900BB9A8E /* FSBTextUtil.m in Sources */,
+				88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */,
+				88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

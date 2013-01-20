@@ -12,23 +12,27 @@
 #import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
+#import "FSBTextUtil.h"
 
 @interface FSBTasksViewController ()
-    
 @end
 
 @implementation FSBTasksViewController{
     NSFetchedResultsController *fetchedResultsController;
+    Task *currentTask;
+    Task *taskToDelete;
+    Session *currentSession;
+    //saving indexpath for stopCurrentSession upon gesture.
+    NSIndexPath *currentIndexPath;
+    NSTimer *sessionTimer;
+    BOOL isTiming;
+    NSInteger selectedRowNumber;
 }
 
-@synthesize managedObjectContext;
+#define kCellHeight 64.0 
+#define kCellOpenedHeight 103.0
 
-Task *currentTask;
-Session *currentSession;
-//saving indexpath for stopCurrentSession upon gesture.
-NSIndexPath *currentIndexPath;
-NSTimer *sessionTimer;
-BOOL isTiming;
+@synthesize managedObjectContext;
 
 - (void)createGestureRecognizers
 {
@@ -62,10 +66,21 @@ BOOL isTiming;
     }
 }
 
+- (void)onAddButtonPress:(id)sender {
+    selectedRowNumber = -1;
+   [self performSegueWithIdentifier:@"addTask" sender:self]; 
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self performFetch];
+    
+    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
+    [addButton setImage:[UIImage imageNamed:@"addTaskButton.png"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    selectedRowNumber = -1;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -111,6 +126,38 @@ BOOL isTiming;
     [self.tableView reloadData];
 }
 
+- (void)deleteTask:(Task *)task
+{
+    selectedRowNumber = -1;
+    taskToDelete = task;
+    NSString *destructiveTitle = @"Delete Task"; //Action Sheet Button Titles
+    NSString *cancelTitle = @"Cancel";
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@""
+                                  delegate:self
+                                  cancelButtonTitle:cancelTitle
+                                  destructiveButtonTitle:destructiveTitle
+                                  otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if  ([buttonTitle isEqualToString:@"Delete Task"]) {
+        [managedObjectContext deleteObject:taskToDelete];
+        NSError *error;
+        if(![self.managedObjectContext save:&error]) {
+            NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
+        }
+    }
+}
+
+- (void)addTime:(Task *)task
+{
+   [self performSegueWithIdentifier:@"addTime" sender:self];  
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -130,7 +177,11 @@ BOOL isTiming;
 {
     FSBTaskCell *taskCell = (FSBTaskCell *)cell;
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    taskCell.task = task;
+    taskCell.delegate = self;
     taskCell.taskLabel.text = task.title;
+    taskCell.isOpen = NO;
+    [taskCell hideNav];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
@@ -138,6 +189,9 @@ BOOL isTiming;
     NSTimeInterval timeInterval = [task.totalTime doubleValue];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
+    
+    NSString *formattedTotalTime = [FSBTextUtil formatHoursString:task.totalTime isTruncated:YES];
+    taskCell.taskTime.text = formattedTotalTime;
     
     double timeInt = timeInterval;
     double tenKHours = 36000000;
@@ -150,8 +204,7 @@ BOOL isTiming;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -282,18 +335,48 @@ BOOL isTiming;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //no sessions timed
-    if (!isTiming) {
-        [self startTaskTimerAtIndexPath:indexPath];
+//    if (!isTiming) {
+//        [self startTaskTimerAtIndexPath:indexPath];
+//    }
+//    //current session timed but not the same as the new session
+//    else if (currentTask != [self.fetchedResultsController objectAtIndexPath:indexPath]) {
+//        [self stopCurrentSession];
+//        [self startTaskTimerAtIndexPath:indexPath];
+//    }
+//    //current session same as new session
+//    else {
+//        [self stopCurrentSession];
+//    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    // if it's already selected
+    if(selectedRowNumber == indexPath.row) {
+        selectedRowNumber = -1;
+    } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
+        //need to close currently open one!
+        FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
+        [currentlySelectedCell hideNav];
+        currentlySelectedCell.isOpen = NO;
+        selectedRowNumber = indexPath.row;
+    } else {
+        selectedRowNumber = indexPath.row;
     }
-    //current session timed but not the same as the new session
-    else if (currentTask != [self.fetchedResultsController objectAtIndexPath:indexPath]) {
-        [self stopCurrentSession];
-        [self startTaskTimerAtIndexPath:indexPath];
+    
+    [selectedCell toggleNav];
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == selectedRowNumber) {
+        return kCellOpenedHeight;
     }
-    //current session same as new session
-    else {
-        [self stopCurrentSession];
-    }
+    return kCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

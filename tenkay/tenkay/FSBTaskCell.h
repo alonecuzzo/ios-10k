@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "Task.h"
+#import "FSBTasksViewController.h"
 
-@interface FSBTaskCell : UITableViewCell
+@interface FSBTaskCell : UITableViewCell 
 
+@property (nonatomic) BOOL isOpen;
+@property (nonatomic, strong) id <FSBTasksViewDelegate> delegate;
+@property (nonatomic, strong) Task *task;
 @property (nonatomic, strong) IBOutlet UILabel *taskLabel;
-@property (strong, nonatomic) IBOutlet UILabel *taskTime;
+@property (nonatomic, strong) IBOutlet UILabel *taskTime;
 @property (strong, nonatomic) IBOutlet UIProgressView *taskProgress;
+
+- (void)toggleNav;
+- (void)hideNav;
 
 @end
