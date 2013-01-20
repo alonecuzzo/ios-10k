@@ -65,6 +65,7 @@
 }
 
 - (void)onAddButtonPress:(id)sender {
+    selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"addTask" sender:self]; 
 }
 
@@ -167,6 +168,8 @@
     taskCell.task = task;
     taskCell.delegate = self;
     taskCell.taskLabel.text = task.title;
+    taskCell.isOpen = NO;
+    [taskCell hideNav];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
