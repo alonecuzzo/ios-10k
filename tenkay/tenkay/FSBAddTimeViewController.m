@@ -127,6 +127,7 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateStyle = NSDateFormatterMediumStyle;
         df.timeStyle = NSDateFormatterShortStyle;
+        datePicker.date = [df dateFromString:self.startDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
     }
 }
@@ -151,6 +152,7 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateStyle = NSDateFormatterMediumStyle;
         df.timeStyle = NSDateFormatterShortStyle;
+        datePicker.date = [df dateFromString:self.endDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:self.startDateLabel.text]];
     }
 }
