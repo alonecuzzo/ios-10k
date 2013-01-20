@@ -2,12 +2,13 @@
 //  FSBTaksViewController.m
 //  tenkay
 //
-//  Created by Jabari Bell on 12/28/12.
-//  Copyright (c) 2012 Jabari Bell. All rights reserved.
+//  Created by Jabari Bell and Dawson Blackhouse on 12/28/12.
+//  Copyright (c) 2012 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
 #import "FSBTasksViewController.h"
-#import "FSBTaskDetailViewController.h"
+#import "AddTaskViewController.h"
+#import "CalendarViewController.h"
 #import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
@@ -47,6 +48,7 @@ BOOL isTiming;
         if (isTiming) {
             [self stopCurrentSession];
         }
+        NSLog(@"performing segue with id: editTask");
         [self performSegueWithIdentifier:@"editTask" sender:cell];
     }
 }
@@ -82,17 +84,22 @@ BOOL isTiming;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"begin prepareForSegue");
     if ([[segue identifier] isEqualToString:@"addTask"]) {
         UINavigationController *navigationController = segue.destinationViewController;
-        FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
+        AddTaskViewController *controller = (AddTaskViewController *)navigationController.topViewController;
         controller.managedObjectContext = managedObjectContext;
     } else if ([[segue identifier] isEqualToString:@"editTask"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
+        //UINavigationController *navigationController = segue.destinationViewController;
+        //FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
+        NSLog(@"preparing for segue");
+        CalendarViewController *controller = (CalendarViewController *)segue.destinationViewController;
+        NSLog(@"setting managedObjectContext");
         controller.managedObjectContext = managedObjectContext;
-        
+        NSLog(@"getting selected task from tableview");
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        NSLog(@"setting taskToEdit in dest. controller");
         controller.taskToEdit = task;
     }
 }

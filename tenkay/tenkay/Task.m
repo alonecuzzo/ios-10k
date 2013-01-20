@@ -3,7 +3,7 @@
 //  tenkay
 //
 //  Created by Dawson Blackhouse on 1/2/13.
-//  Copyright (c) 2013 Jabari Bell. All rights reserved.
+//  Copyright (c) 2013 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
 #import "Task.h"

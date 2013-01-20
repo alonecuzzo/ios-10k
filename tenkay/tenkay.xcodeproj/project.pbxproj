@@ -22,7 +22,7 @@
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
-		88C45102168E36FF00210F1F /* FSBTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */; };
+		88C45102168E36FF00210F1F /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C45101168E36FF00210F1F /* AddTaskViewController.m */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -41,6 +41,7 @@
 		BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */; };
 		BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */; };
 		BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */; };
+		BA9AA32A16A68A9500662CE5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA32916A68A9400662CE5 /* CalendarViewController.m */; };
 		BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */; };
 /* End PBXBuildFile section */
 
@@ -67,8 +68,8 @@
 		88C450F5168E32BB00210F1F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		88C450FD168E356900210F1F /* FSBTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTasksViewController.h; sourceTree = "<group>"; };
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
-		88C45100168E36FF00210F1F /* FSBTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskDetailViewController.h; sourceTree = "<group>"; };
-		88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskDetailViewController.m; sourceTree = "<group>"; };
+		88C45100168E36FF00210F1F /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		88C45101168E36FF00210F1F /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "tenkay/Icon-72.png"; sourceTree = "<group>"; };
@@ -94,6 +95,8 @@
 		BA9AA30D16A0CC5000662CE5 /* FWTPopoverView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FWTPopoverView-Prefix.pch"; sourceTree = "<group>"; };
 		BA9AA30E16A0CC5000662CE5 /* FWTPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverView.h; sourceTree = "<group>"; };
 		BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverView.m; sourceTree = "<group>"; };
+		BA9AA32816A68A9400662CE5 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		BA9AA32916A68A9400662CE5 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskCell.h; sourceTree = "<group>"; };
 		BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,8 +179,10 @@
 				BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */,
 				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
 				88C450FE168E356900210F1F /* FSBTasksViewController.m */,
-				88C45100168E36FF00210F1F /* FSBTaskDetailViewController.h */,
-				88C45101168E36FF00210F1F /* FSBTaskDetailViewController.m */,
+				BA9AA32816A68A9400662CE5 /* CalendarViewController.h */,
+				BA9AA32916A68A9400662CE5 /* CalendarViewController.m */,
+				88C45100168E36FF00210F1F /* AddTaskViewController.h */,
+				88C45101168E36FF00210F1F /* AddTaskViewController.m */,
 				88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */,
 				88146F391683BC9800B0ABED /* Supporting Files */,
 			);
@@ -295,7 +300,7 @@
 				88C450F3168E32BA00210F1F /* Tag.m in Sources */,
 				88C450F6168E32BB00210F1F /* Session.m in Sources */,
 				88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */,
-				88C45102168E36FF00210F1F /* FSBTaskDetailViewController.m in Sources */,
+				88C45102168E36FF00210F1F /* AddTaskViewController.m in Sources */,
 				BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */,
 				BA9AA2E616951FAB00662CE5 /* Task.m in Sources */,
 				BA9AA2F9169E807300662CE5 /* CKCalendarView.m in Sources */,
@@ -303,6 +308,7 @@
 				BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */,
 				BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */,
 				BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */,
+				BA9AA32A16A68A9500662CE5 /* CalendarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 //  tenkay
 //
 //  Created by Dawson Blackhouse on 12/30/12.
-//  Copyright (c) 2012 Jabari Bell. All rights reserved.
+//  Copyright (c) 2012 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
 #import "FSBTaskCell.h"
