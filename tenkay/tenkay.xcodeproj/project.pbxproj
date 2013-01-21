@@ -24,7 +24,6 @@
 		885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */; };
 		885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */; };
 		885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */; };
-		8868141916A4785900E5E8AA /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868141816A4785900E5E8AA /* stopwatch-teal.png */; };
 		88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC516A7409B00BB9A8E /* navBackground@2x.png */; };
 		88715BC816A7410500BB9A8E /* navBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC716A7410500BB9A8E /* navBackground.png */; };
 		88715BCA16A7424700BB9A8E /* addTaskButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC916A7424700BB9A8E /* addTaskButton@2x.png */; };
@@ -56,6 +55,8 @@
 		BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */; };
 		BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */; };
 		BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */; };
+		BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */; };
+		BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,7 +83,6 @@
 		885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editTimeIcon@2x.png"; sourceTree = "<group>"; };
 		885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashIcon@2x.png"; sourceTree = "<group>"; };
 		885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendarIcon@2x.png"; sourceTree = "<group>"; };
-		8868141816A4785900E5E8AA /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stopwatch-teal.png"; path = "../../stopwatch-teal.png"; sourceTree = "<group>"; };
 		88715BC516A7409B00BB9A8E /* navBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackground@2x.png"; sourceTree = "<group>"; };
 		88715BC716A7410500BB9A8E /* navBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBackground.png; sourceTree = "<group>"; };
 		88715BC916A7424700BB9A8E /* addTaskButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTaskButton@2x.png"; sourceTree = "<group>"; };
@@ -128,6 +128,8 @@
 		BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverView.m; sourceTree = "<group>"; };
 		BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskCell.h; sourceTree = "<group>"; };
 		BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskCell.m; sourceTree = "<group>"; };
+		BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal.png"; sourceTree = "<group>"; };
+		BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,8 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */,
+				BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */,
 				88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */,
 				885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */,
 				885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */,
@@ -292,7 +296,6 @@
 				BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */,
 				BA9AA2ED169B36B300662CE5 /* Icon.png */,
 				BA9AA2EE169B36B300662CE5 /* Icon@2x.png */,
-				8868141816A4785900E5E8AA /* stopwatch-teal.png */,
 				BA9AA2FB169E841F00662CE5 /* left_arrow.png */,
 				BA9AA2FC169E841F00662CE5 /* left_arrow@2x.png */,
 				BA9AA2FD169E841F00662CE5 /* right_arrow.png */,
@@ -369,7 +372,6 @@
 				BA9AA300169E841F00662CE5 /* left_arrow@2x.png in Resources */,
 				BA9AA301169E841F00662CE5 /* right_arrow.png in Resources */,
 				BA9AA302169E841F00662CE5 /* right_arrow@2x.png in Resources */,
-				8868141916A4785900E5E8AA /* stopwatch-teal.png in Resources */,
 				88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */,
 				88715BC816A7410500BB9A8E /* navBackground.png in Resources */,
 				88715BCA16A7424700BB9A8E /* addTaskButton@2x.png in Resources */,
@@ -380,6 +382,8 @@
 				885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */,
 				885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */,
 				88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */,
+				BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */,
+				BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
