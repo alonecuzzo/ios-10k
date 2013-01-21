@@ -11,6 +11,7 @@
 @class Task;
 
 @interface FSBAddTaskViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *taskTitle;

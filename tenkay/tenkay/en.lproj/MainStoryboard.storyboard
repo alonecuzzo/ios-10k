@@ -239,7 +239,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hC5-j3-mty">
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="hC5-j3-mty">
                                 <items>
                                     <navigationItem title="Add Task" id="yUv-tt-fJT">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0U9-sa-mdn">
@@ -278,6 +278,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navigationBar" destination="hC5-j3-mty" id="prM-YO-iLD"/>
                         <outlet property="taskTitle" destination="Ndg-ik-PSJ" id="797-dw-mKc"/>
                     </connections>
                 </viewController>
@@ -316,6 +317,7 @@
             <relationships>
                 <relationship kind="action" name="onCancel:"/>
                 <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
             </relationships>
         </class>
