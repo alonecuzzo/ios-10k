@@ -18,11 +18,12 @@
 }
 
 @synthesize taskToEdit,
-managedObjectContext,
-titleLabel;
+            managedObjectContext,
+            titleLabel;
 
 - (void)buildTaskDetailView
 {
+    NSLog(@"buildTaskDetailView");
     //set title
     titleLabel.text = taskToEdit.title;
     
@@ -68,10 +69,13 @@ titleLabel;
 
 - (void) viewDidLoad
 {
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     if (self) {
+        NSLog(@"if(self)");
         // Initialization code
         if (self.taskToEdit != nil) {
+            NSLog(@"if (self.taskToEdit != nil) {");
             [self buildTaskDetailView];
         }
     }

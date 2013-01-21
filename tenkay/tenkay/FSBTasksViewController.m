@@ -75,7 +75,7 @@
 - (void)openCalendar:(Task *)task
 {
     selectedRowNumber = -1;
-   [self performSegueWithIdentifier:@"openCalendarView" sender:self]; 
+   [self performSegueWithIdentifier:@"openCalendarView" sender:task];
 }
 
 - (void)viewDidLoad
@@ -106,19 +106,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"begin prepareForSegue");
     if ([[segue identifier] isEqualToString:@"addTask"]) {
         FSBAddTaskViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.managedObjectContext = managedObjectContext;
-    } else if ([[segue identifier] isEqualToString:@"editTask"]) {
-        NSLog(@"preparing for segue");
+    } else if ([[segue identifier] isEqualToString:@"openCalendarView"]) {
         FSBCalendarViewController *controller = (FSBCalendarViewController *)segue.destinationViewController;
-        NSLog(@"setting managedObjectContext");
         controller.managedObjectContext = managedObjectContext;
-        NSLog(@"getting selected task from tableview");
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        NSLog(@"setting taskToEdit in dest. controller");
+        Task *task = (Task *)sender;
         controller.taskToEdit = task;
     }
 }
