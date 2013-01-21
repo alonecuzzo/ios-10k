@@ -61,7 +61,7 @@
 }
 
 -(void)onCalendarPress:(id)sender{
-    NSLog(@"calendar");
+    [self.delegate openCalendar:self.task];
 }
 
 -(void)showNav

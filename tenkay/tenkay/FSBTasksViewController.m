@@ -66,9 +66,16 @@
     }
 }
 
-- (void)onAddButtonPress:(id)sender {
+- (void)onAddButtonPress:(id)sender
+{
     selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"addTask" sender:self]; 
+}
+
+- (void)openCalendar:(Task *)task
+{
+    selectedRowNumber = -1;
+   [self performSegueWithIdentifier:@"openCalendarView" sender:self]; 
 }
 
 - (void)viewDidLoad
