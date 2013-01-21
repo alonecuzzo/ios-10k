@@ -32,7 +32,6 @@
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
     CKCalendarView *calendar = [[CKCalendarView alloc] init];
     calendar.shouldFillCalendar = YES;
-    //[calendar setDateBackgroundColor:[UIColor colorWithRed:231 green:231 blue:231 alpha:1]];
     
     //highlight dates with recorded time
     NSArray *taskSessions = [taskToEdit.taskSession allObjects];
@@ -69,13 +68,10 @@
 
 - (void) viewDidLoad
 {
-    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     if (self) {
-        NSLog(@"if(self)");
         // Initialization code
         if (self.taskToEdit != nil) {
-            NSLog(@"if (self.taskToEdit != nil) {");
             [self buildTaskDetailView];
         }
     }
