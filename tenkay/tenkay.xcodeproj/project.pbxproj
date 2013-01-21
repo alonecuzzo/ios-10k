@@ -102,8 +102,6 @@
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
-		88E0FA5816ACBC7400454DE9 /* FSBTaskDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSBTaskDetailViewController.h; sourceTree = "<group>"; };
-		88E0FA5916ACBC7400454DE9 /* FSBTaskDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSBTaskDetailViewController.m; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -231,8 +229,6 @@
 				88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
 				BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */,
-				88E0FA5816ACBC7400454DE9 /* FSBTaskDetailViewController.h */,
-				88E0FA5916ACBC7400454DE9 /* FSBTaskDetailViewController.m */,
 				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
 				88C450FE168E356900210F1F /* FSBTasksViewController.m */,
 			);
