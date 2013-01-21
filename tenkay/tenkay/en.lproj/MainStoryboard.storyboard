@@ -186,7 +186,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="P82-V4-qmL"/>
                     <connections>
-                        <segue destination="Mkv-eb-mPG" kind="modal" identifier="editTask" id="OZA-Lg-Djk"/>
                         <segue destination="Mkv-eb-mPG" kind="modal" identifier="addTask" id="OZA-Lg-Djk"/>
                         <segue destination="l8Z-uH-JRM" kind="modal" identifier="addTime" id="Wty-rH-8lV"/>
                     </connections>
@@ -208,7 +207,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCM-He-Yhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="-492"/>
+            <point key="canvasLocation" x="1702" y="36"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="tXA-4M-47d">
@@ -279,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0n-YR-PBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1635" y="-492"/>
+            <point key="canvasLocation" x="2231" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7B9-6h-7h3">
@@ -302,20 +301,29 @@
             <point key="canvasLocation" x="85" y="-95"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playButtonTeal@2x.png" width="55" height="53"/>
+        <image name="taskSeparator.png" width="585" height="7"/>
+    </resources>
     <classes>
         <class className="AddTaskViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTaskViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onSave:"/>
-                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
-            </relationships>
         </class>
         <class className="CalendarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+        </class>
+        <class className="FSBAddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="action" name="onEndDateSelectorPressed:"/>
+                <relationship kind="action" name="onStartDateSelectorPressed:"/>
+                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
         </class>
         <class className="FSBTaskCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
@@ -332,10 +340,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
-    <resources>
-        <image name="playButtonTeal@2x.png" width="55" height="53"/>
-        <image name="taskSeparator.png" width="585" height="7"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
