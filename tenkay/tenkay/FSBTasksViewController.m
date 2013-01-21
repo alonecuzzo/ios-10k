@@ -7,8 +7,8 @@
 //
 
 #import "FSBTasksViewController.h"
-#import "AddTaskViewController.h"
-#import "CalendarViewController.h"
+#import "FSBAddTaskViewController.h"
+#import "FSBCalendarViewController.h"
 #import "FSBTaskCell.h"
 #import "Task.h"
 #import "Session.h"
@@ -101,14 +101,11 @@
 {
     NSLog(@"begin prepareForSegue");
     if ([[segue identifier] isEqualToString:@"addTask"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        AddTaskViewController *controller = (AddTaskViewController *)navigationController.topViewController;
-        controller.managedObjectContext = managedObjectContext;
+        FSBAddTaskViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.managedObjectContext = managedObjectContext;
     } else if ([[segue identifier] isEqualToString:@"editTask"]) {
-        //UINavigationController *navigationController = segue.destinationViewController;
-        //FSBTaskDetailViewController *controller = (FSBTaskDetailViewController *)navigationController.topViewController;
         NSLog(@"preparing for segue");
-        CalendarViewController *controller = (CalendarViewController *)segue.destinationViewController;
+        FSBCalendarViewController *controller = (FSBCalendarViewController *)segue.destinationViewController;
         NSLog(@"setting managedObjectContext");
         controller.managedObjectContext = managedObjectContext;
         NSLog(@"getting selected task from tableview");

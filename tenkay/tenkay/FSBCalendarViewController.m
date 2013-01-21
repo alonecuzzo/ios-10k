@@ -1,48 +1,37 @@
 //
-//  FSBTaskDetailViewController.m
+//  CalendarViewController.m
 //  tenkay
 //
-//  Created by Jabari Bell on 12/28/12.
-//  Copyright (c) 2012 Jabari Bell. All rights reserved.
+//  Created by Dawson Blackhouse on 1/16/13.
+//  Copyright (c) 2013 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
-#import "FSBTaskDetailViewController.h"
-#import "FSBAppDelegate.h"
+#import "FSBCalendarViewController.h"
+#import "FWTPopoverView.h"
 #import "Session.h"
 #import "Task.h"
-#import "FSBTasksViewController.h"
-#import "FWTPopoverView.h"
 
-@interface FSBTaskDetailViewController ()
-- (IBAction)onCancel:(id)sender;
-- (IBAction)onSave:(id)sender;
-@end
-
-@implementation FSBTaskDetailViewController {
-    UIView  *calendarSubView,
-            *statSubView;
-    FWTPopoverView *popoverView;
+@implementation FSBCalendarViewController {
+    UIView          *calendarSubView,
+    *statSubView;
+    FWTPopoverView  *popoverView;
 }
 
 @synthesize taskToEdit,
-            managedObjectContext;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+managedObjectContext,
+titleLabel;
 
 - (void)buildTaskDetailView
 {
+    //set title
+    titleLabel.text = taskToEdit.title;
+    
     //calendar data view
     CGRect  calendarViewRect = CGRectMake(0, 30, 300, 300);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
     CKCalendarView *calendar = [[CKCalendarView alloc] init];
     calendar.shouldFillCalendar = YES;
+    //[calendar setDateBackgroundColor:[UIColor colorWithRed:231 green:231 blue:231 alpha:1]];
     
     //highlight dates with recorded time
     NSArray *taskSessions = [taskToEdit.taskSession allObjects];
@@ -56,7 +45,7 @@
         NSDate *thisEndDate = thisSession.endDate;
         if (([thisStartDate earlierDate:calendarStartDate] == calendarStartDate) &&
             ([thisEndDate laterDate:calendarEndDate] == calendarEndDate)
-        ) {
+            ) {
             [datesToHightlight addObject:thisStartDate];
         }
     }
@@ -66,6 +55,9 @@
     [calendarSubView addSubview:calendar];
     [self.view addSubview:calendarSubView];
     calendar.delegate = self;
+    //TODO: show total hours for task
+    
+    //TODO: show monthly total for task
     
     //TODO: edit button
     
@@ -74,56 +66,26 @@
     [self.view addGestureRecognizer:gestureRecognizer];
 }
 
-
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    if (self.taskToEdit != nil) {
-        self.navigationItem.title = taskToEdit.title;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onSave:)];
-        
-        self.taskTitle.hidden = YES;
-        [self buildTaskDetailView];
-        
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onCancel:(id)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)onSave:(id)sender
-{
-    NSLog(@"***** - onSave:");
-    Task *task = nil;
-    if(self.managedObjectContext) {
-        if ([self.taskTitle.text length] > 0) {
-            if (self.taskToEdit != nil) {
-                NSLog(@"*** - Edit");
-                task = self.taskToEdit;
-            } else {
-                NSLog(@"*** - Save");
-                task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-            }
-            
-            task.title = self.taskTitle.text;
-            
-            NSError *error;
-            if(![self.managedObjectContext save:&error]) {
-                NSLog(@"Error Value: %@", [task valueForKey:@"title"]);
-            }
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (self) {
+        // Initialization code
+        if (self.taskToEdit != nil) {
+            [self buildTaskDetailView];
         }
     }
 }
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
+
 - (void)dismissPopOver
 {
     if (popoverView != nil) {
@@ -132,23 +94,9 @@
     }
 }
 
-- (void)resetPopUp:(UIGestureRecognizer *)gestureRecognizer
-{
-    CGPoint point = [gestureRecognizer locationInView:self.view];
-    if (popoverView != nil) {
-        if (CGRectContainsPoint(popoverView.frame, point)) {
-            [self dismissPopOver];
-        } else if (!CGRectContainsPoint(calendarSubView.frame, point)){
-            [self dismissPopOver];
-        }
-    }
-}
-
 -(void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
 {
-    NSLog(@"***DATE SELECTED");
     [self dismissPopOver];
-    //TODO: get all sessions recorded on this date for this task
     NSArray *taskSessions = [taskToEdit.taskSession allObjects];
     NSTimeInterval totalTimeForDay;
     int numberOfSessions = 0;
@@ -190,7 +138,7 @@
         
         [popoverView presentFromRect:rect
                               inView:self.view
-                            withLabel:popOverLabel
+                           withLabel:popOverLabel
              permittedArrowDirection:FWTPopoverArrowDirectionNone
                             animated:YES];
     } else {
@@ -217,7 +165,19 @@
         }
     }
     UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal.png"];
-    [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];   
+    [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
+}
+
+- (void)resetPopUp:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint point = [gestureRecognizer locationInView:self.view];
+    if (popoverView != nil) {
+        if (CGRectContainsPoint(popoverView.frame, point)) {
+            [self dismissPopOver];
+        } else if (!CGRectContainsPoint(calendarSubView.frame, point)){
+            [self dismissPopOver];
+        }
+    }
 }
 
 @end

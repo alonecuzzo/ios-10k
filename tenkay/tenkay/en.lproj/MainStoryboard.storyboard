@@ -186,33 +186,19 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="P82-V4-qmL"/>
                     <connections>
-                        <segue destination="Mkv-eb-mPG" kind="modal" identifier="addTask" id="OZA-Lg-Djk"/>
                         <segue destination="l8Z-uH-JRM" kind="modal" identifier="addTime" id="Wty-rH-8lV"/>
+                        <segue destination="j9T-9f-euq" kind="modal" identifier="calendarView" id="5fE-Ao-xbQ"/>
+                        <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="0ST-80-BUO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="619" y="-95"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7c3-0A-Nv0">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="Mkv-eb-mPG" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LW6-E9-46A">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="3Id-Kb-0pc" kind="relationship" relationship="rootViewController" id="zWt-8f-q9w"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XCM-He-Yhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1702" y="36"/>
-        </scene>
         <!--Calendar View Controller-->
         <scene sceneID="tXA-4M-47d">
             <objects>
-                <viewController id="j9T-9f-euq" customClass="CalendarViewController" sceneMemberID="viewController">
+                <viewController id="j9T-9f-euq" customClass="FSBCalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gqV-XV-Qsq">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -236,14 +222,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUT-Fp-gF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="203"/>
+            <point key="canvasLocation" x="1082" y="627"/>
         </scene>
         <!--Add Task View Controller - Add Item-->
         <scene sceneID="qeG-e7-DT6">
             <objects>
-                <viewController id="3Id-Kb-0pc" customClass="AddTaskViewController" sceneMemberID="viewController">
+                <viewController id="3Id-Kb-0pc" customClass="FSBAddTaskViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pW2-Fh-d9l">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-ik-PSJ">
@@ -253,11 +239,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hC5-j3-mty">
+                                <items>
+                                    <navigationItem title="Add Task" id="yUv-tt-fJT">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0U9-sa-mdn">
+                                            <connections>
+                                                <action selector="onCancel:" destination="3Id-Kb-0pc" id="wfX-Vx-JeS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0xD-jW-GWH">
+                                            <connections>
+                                                <action selector="onSave:" destination="3Id-Kb-0pc" id="qTN-2i-cBE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" constant="20" symbolic="YES" type="default" id="lY4-e9-3Qx"/>
-                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="centerX" secondItem="pW2-Fh-d9l" secondAttribute="centerX" type="default" id="y8a-fZ-u0O"/>
+                            <constraint firstItem="hC5-j3-mty" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" type="default" id="4pI-Ju-BUf"/>
+                            <constraint firstItem="hC5-j3-mty" firstAttribute="leading" secondItem="pW2-Fh-d9l" secondAttribute="leading" type="default" id="YZa-sc-NQa"/>
+                            <constraint firstItem="Ndg-ik-PSJ" firstAttribute="top" secondItem="pW2-Fh-d9l" secondAttribute="top" constant="80" id="uYs-FN-JQm"/>
+                            <constraint firstItem="hC5-j3-mty" firstAttribute="trailing" secondItem="pW2-Fh-d9l" secondAttribute="trailing" type="default" id="uhl-95-uai"/>
+                            <constraint firstItem="hC5-j3-mty" firstAttribute="centerX" secondItem="Ndg-ik-PSJ" secondAttribute="centerX" type="default" id="w5K-iv-T52"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Item" id="Xwz-XT-lw4">
@@ -278,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0n-YR-PBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231" y="144"/>
+            <point key="canvasLocation" x="1277" y="-80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7B9-6h-7h3">
@@ -306,11 +311,13 @@
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
     <classes>
-        <class className="AddTaskViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTaskViewController.h"/>
-        </class>
-        <class className="CalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+        <class className="FSBAddTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="FSBAddTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
@@ -320,6 +327,12 @@
                 <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBCalendarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBCalendarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="FSBNavigationBar" superclassName="UINavigationBar">
