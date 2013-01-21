@@ -78,6 +78,12 @@
    [self performSegueWithIdentifier:@"openCalendarView" sender:task];
 }
 
+- (void)addTime:(Task *)task
+{
+    selectedRowNumber = -1;
+   [self performSegueWithIdentifier:@"addTime" sender:self];  
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -151,10 +157,6 @@
     }
 }
 
-- (void)addTime:(Task *)task
-{
-   [self performSegueWithIdentifier:@"addTime" sender:self];  
-}
 
 #pragma mark - Table view data source
 
