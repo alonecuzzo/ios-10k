@@ -114,6 +114,7 @@
         controller.managedObjectContext = managedObjectContext;
         Task *task = (Task *)sender;
         controller.taskToEdit = task;
+        controller.delegate = self;
     }
 }
 
@@ -287,6 +288,11 @@
         FATAL_CORE_DATA_ERROR(error);
         return;
     }
+}
+
+- (void)calendarViewControllerDidGoBack:(FSBCalendarViewController *)controller
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

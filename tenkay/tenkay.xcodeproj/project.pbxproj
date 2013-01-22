@@ -57,6 +57,10 @@
 		BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */; };
 		BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */; };
 		BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */; };
+		BADB7B1516ADFC3F007D53FF /* nav-header.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1316ADFC3E007D53FF /* nav-header.png */; };
+		BADB7B1616ADFC3F007D53FF /* nav-header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */; };
+		BADB7B1916AE06AC007D53FF /* back-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1716AE06AC007D53FF /* back-arrow.png */; };
+		BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +134,10 @@
 		BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskCell.m; sourceTree = "<group>"; };
 		BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal.png"; sourceTree = "<group>"; };
 		BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal@2x.png"; sourceTree = "<group>"; };
+		BADB7B1316ADFC3E007D53FF /* nav-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-header.png"; sourceTree = "<group>"; };
+		BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-header@2x.png"; sourceTree = "<group>"; };
+		BADB7B1716AE06AC007D53FF /* back-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow.png"; sourceTree = "<group>"; };
+		BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +286,10 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BADB7B1716AE06AC007D53FF /* back-arrow.png */,
+				BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */,
+				BADB7B1316ADFC3E007D53FF /* nav-header.png */,
+				BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */,
 				BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */,
 				BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */,
 				88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */,
@@ -384,6 +396,10 @@
 				88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */,
 				BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */,
 				BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */,
+				BADB7B1516ADFC3F007D53FF /* nav-header.png in Resources */,
+				BADB7B1616ADFC3F007D53FF /* nav-header@2x.png in Resources */,
+				BADB7B1916AE06AC007D53FF /* back-arrow.png in Resources */,
+				BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
