@@ -15,7 +15,8 @@
 @implementation FSBCalendarViewController {
     UIView          *calendarSubView,
                     *statSubView,
-                    *dailyStatSubView;
+                    *dailyStatSubView,
+                    *dailyStatsTextBoxView;
     UILabel         *dailyStatTitle,
                     *dailyStatHours,
                     *dailyStatSessions;
@@ -88,7 +89,7 @@
     [dailyStatSubView addSubview:dailyStatTitle];
     
     CGRect dailyStatsTextBox = CGRectMake(0, 30, self.view.bounds.size.width, 30);
-    UIView *dailyStatsTextBoxView = [[UIView alloc] initWithFrame:dailyStatsTextBox];
+    dailyStatsTextBoxView = [[UIView alloc] initWithFrame:dailyStatsTextBox];
     [dailyStatSubView addSubview:dailyStatsTextBoxView];
     
     //hours stat
@@ -176,9 +177,35 @@
     if (totalTimeForDay > 0 && numberOfSessions > 0) {
         //TODO: show total time of sessions recorded for this taskdate
         NSLog(@"totalTimeForDayString: %@", totalTimeForDayString);
-        [dailyStatSessions setText:[NSString stringWithFormat:@"%d sessions", numberOfSessions]];
+        [dailyStatHours setText:[FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:totalTimeForDay] isTruncated:NO]];
+        [dailyStatHours sizeToFit];
+        dailyStatHours.frame = [self addPadding:20 toFrame:dailyStatHours.frame];
         
+        [dailyStatSessions setText:[NSString stringWithFormat:@"%d sessions", numberOfSessions]];
+        [dailyStatSessions sizeToFit];
+        dailyStatSessions.frame = [self addPadding:20 toFrame:dailyStatSessions.frame];
     }
+    else {
+        [dailyStatHours setText:@"0 hours"];
+        [dailyStatHours sizeToFit];
+        dailyStatHours.frame = [self addPadding:20 toFrame:dailyStatHours.frame];
+        
+        [dailyStatSessions setText:@"0 sessions"];
+        [dailyStatSessions sizeToFit];
+        dailyStatSessions.frame = [self addPadding:20 toFrame:dailyStatSessions.frame];
+    }
+    
+    dailyStatSessions.frame = CGRectMake(dailyStatHours.frame.origin.x +dailyStatHours.frame.size.width + 10, dailyStatSessions.frame.origin.y, dailyStatSessions.frame.size.width, dailyStatSessions.frame.size.height);
+    
+    float textWidth = dailyStatHours.frame.size.width + dailyStatSessions.frame.size.width + 10;
+    
+    dailyStatsTextBoxView.frame = CGRectMake(dailyStatsTextBoxView.center.x - (textWidth / 2), dailyStatsTextBoxView.frame.origin.y, textWidth, dailyStatsTextBoxView.frame.size.height);
+}
+
+-(CGRect)addPadding:(int)padding toFrame:(CGRect)frameToAdjust
+{
+    CGRect returnFrame = CGRectMake(frameToAdjust.origin.x, frameToAdjust.origin.y, frameToAdjust.size.width + padding, frameToAdjust.size.height);
+    return returnFrame;
 }
 
 -(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
