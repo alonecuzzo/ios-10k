@@ -36,6 +36,18 @@
     return self;
 }
 
+- (NSInteger)computeTimeDifference
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	df.dateStyle = NSDateFormatterMediumStyle;
+	df.timeStyle = NSDateFormatterShortStyle;
+    NSDate *startDate = [df dateFromString:self.startDateLabel.text];
+    NSDate *endDate = [df dateFromString:self.endDateLabel.text];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:startDate toDate:endDate options:0];
+    return components.hour;
+}
+
 - (void)updateStartDateLabel:(id)sender
 {
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -200,14 +212,7 @@
 
 - (void)onSavePress:(id)sender
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	df.dateStyle = NSDateFormatterMediumStyle;
-	df.timeStyle = NSDateFormatterShortStyle;
-    NSDate *startDate = [df dateFromString:self.startDateLabel.text];
-    NSDate *endDate = [df dateFromString:self.endDateLabel.text];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:startDate toDate:endDate options:0];
-    NSLog(@"hours added: %i", components.hour);
+    NSLog(@"hours added: %i", [self computeTimeDifference]);
 }
 
 - (void)didReceiveMemoryWarning
