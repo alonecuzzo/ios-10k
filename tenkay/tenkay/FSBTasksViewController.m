@@ -166,7 +166,7 @@
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     taskCell.taskTime.text = [dateFormatter stringFromDate:timerDate];
     
-    NSString *formattedTotalTime = [FSBTextUtil formatHoursString:task.totalTime isTruncated:YES];
+    NSString *formattedTotalTime = [FSBTextUtil stringFromNumSeconds:task.totalTime isTruncated:YES];
     taskCell.taskTime.text = formattedTotalTime;
     
     double timeInt = timeInterval;

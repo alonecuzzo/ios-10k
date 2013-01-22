@@ -171,7 +171,7 @@
         }
     }
     
-    NSString *totalTimeForDayString = [FSBTextUtil formatHoursString:[NSNumber numberWithDouble:totalTimeForDay] isTruncated:YES];
+    NSString *totalTimeForDayString = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:totalTimeForDay] isTruncated:YES];
     
     if (totalTimeForDay > 0 && numberOfSessions > 0) {
         //TODO: show total time of sessions recorded for this taskdate

@@ -10,6 +10,6 @@
 
 @interface FSBTextUtil : NSObject
 
-+ (NSString *)formatHoursString:(NSNumber *)numSeconds isTruncated:(BOOL)isStringTruncated;
++ (NSString *)stringFromNumSeconds:(NSNumber *)numSeconds isTruncated:(BOOL)isStringTruncated;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation FSBTextUtil
 
-+ (NSString *)formatHoursString:(NSNumber *)numSeconds isTruncated:(BOOL)isStringTruncated
++ (NSString *)stringFromNumSeconds:(NSNumber *)numSeconds isTruncated:(BOOL)isStringTruncated
 {
     NSString *returnString;
     int roundedSeconds = floor([numSeconds doubleValue]);
