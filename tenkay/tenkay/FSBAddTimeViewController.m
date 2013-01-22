@@ -22,6 +22,9 @@
     BOOL isDatePickerOpen;
     BOOL isStartDateLabelSelected;
     BOOL isEndDateLabelSelected;
+    
+    UIButton *cancelButton;
+    UIButton *saveButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -177,7 +180,22 @@
 	df.timeStyle = NSDateFormatterShortStyle;
     NSDate *startDate = [[NSDate alloc] initWithTimeInterval:-3600 sinceDate:[NSDate date]];
 	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:startDate]];
-    self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]]; 
+    self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(-4, -5, 91, 57)];
+    [cancelButton setImage:[UIImage imageNamed:@"addTimeCancelButton"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
+}
+
+- (void)onCancelPress:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onSavePress:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
