@@ -1,5 +1,5 @@
 //
-//  FSBTaksViewController.m
+//  FSBTaskViewController.m
 //  tenkay
 //
 //  Created by Jabari Bell and Dawson Blackhouse on 12/28/12.
@@ -33,29 +33,6 @@
 #define kCellOpenedHeight 103.0
 
 @synthesize managedObjectContext;
-
-- (void)createGestureRecognizers
-{
-    NSLog(@"**** createGesturesRecognizers");
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    [self.tableView addGestureRecognizer:longPress];
-}
-
-- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
-{
-    NSLog(@"**** LONG PRESS");
-    CGPoint point = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    if (indexPath != nil) {
-        if (isTiming) {
-            [self stopCurrentSession];
-        }
-        NSLog(@"performing segue with id: editTask");
-        [self performSegueWithIdentifier:@"editTask" sender:cell];
-    }
-}
 
 - (void)performFetch
 {
@@ -100,8 +77,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self createGestureRecognizers];
 }
 
 - (void)didReceiveMemoryWarning

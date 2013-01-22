@@ -7,6 +7,7 @@
 //
 
 #import "FSBCalendarViewController.h"
+#import "FSBTextUtil.h"
 #import "FWTPopoverView.h"
 #import "Session.h"
 #import "Task.h"
@@ -121,10 +122,6 @@
     [self.view addSubview:dailyStatSubView];
     
     //TODO: show monthly total for task
-    
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetPopUp:)];
-    gestureRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void) backButtonHandler:(id)sender
@@ -152,14 +149,6 @@
  }
  */
 
-- (void)dismissPopOver
-{
-    if (popoverView != nil) {
-        [popoverView dismissPopoverAnimated:YES];
-        popoverView = nil;
-    }
-}
-
 -(void)setDateLabelToDate:(NSDate *)date
 {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
@@ -168,7 +157,6 @@
 
 -(void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
 {
-    [self dismissPopOver];
     [self setDateLabelToDate:date];
     NSArray *taskSessions = [taskToEdit.taskSession allObjects];
     NSTimeInterval totalTimeForDay;
@@ -183,45 +171,18 @@
         }
     }
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm:ss"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    
-    NSDate *totalTimeDate = [NSDate dateWithTimeIntervalSince1970:totalTimeForDay];
-    NSString *totalTimeForDayString = [dateFormatter stringFromDate:totalTimeDate];
-    
-    totalTimeForDayString = [NSString stringWithFormat:@"Time recorded:\n%@", totalTimeForDayString];
-    NSString *sessionNumberString = [NSString stringWithFormat:@"Sessions: %d", numberOfSessions];
-    NSString *popOverText = [NSString stringWithFormat:@"%@\n\n%@", totalTimeForDayString, sessionNumberString];
-    
-    UILabel *popOverLabel = [[UILabel alloc] init];
-    [popOverLabel setTextColor:[UIColor whiteColor]];
-    [popOverLabel setBackgroundColor:[UIColor clearColor]];
-    [popOverLabel setFont:[UIFont fontWithName: @"Helvetica" size: 20.0f]];
-    [popOverLabel setNumberOfLines:0];
-    [popOverLabel sizeToFit];
-    [popOverLabel setText:popOverText];
+    NSString *totalTimeForDayString = [FSBTextUtil formatHoursString:[NSNumber numberWithDouble:totalTimeForDay] isTruncated:YES];
     
     if (totalTimeForDay > 0 && numberOfSessions > 0) {
         //TODO: show total time of sessions recorded for this taskdate
-        CGPoint buttonPoint = [calendar convertPoint:button.center toView:self.view];
-        CGRect rect = CGRectMake(buttonPoint.x, buttonPoint.y, 300, 300);
-        popoverView = [[FWTPopoverView alloc] init];
-        popoverView.contentSize = CGSizeMake(240, 240);
+        NSLog(@"totalTimeForDayString: %@", totalTimeForDayString);
+        [dailyStatSessions setText:[NSString stringWithFormat:@"%d sessions", numberOfSessions]];
         
-        [popoverView presentFromRect:rect
-                              inView:self.view
-                           withLabel:popOverLabel
-             permittedArrowDirection:FWTPopoverArrowDirectionNone
-                            animated:YES];
-    } else {
-        [self dismissPopOver];
     }
 }
 
 -(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
 {
-    [self dismissPopOver];
     NSArray *taskSessions = [taskToEdit.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:date];
@@ -239,18 +200,6 @@
     }
     UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal.png"];
     [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
-}
-
-- (void)resetPopUp:(UIGestureRecognizer *)gestureRecognizer
-{
-    CGPoint point = [gestureRecognizer locationInView:self.view];
-    if (popoverView != nil) {
-        if (CGRectContainsPoint(popoverView.frame, point)) {
-            [self dismissPopOver];
-        } else if (!CGRectContainsPoint(calendarSubView.frame, point)){
-            [self dismissPopOver];
-        }
-    }
 }
 
 @end
