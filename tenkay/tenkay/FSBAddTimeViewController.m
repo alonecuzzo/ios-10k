@@ -186,6 +186,11 @@
     [cancelButton setImage:[UIImage imageNamed:@"addTimeCancelButton"] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
+    
+    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width -86, -5, 91, 57)];
+    [saveButton setImage:[UIImage imageNamed:@"addTimeSaveButton"] forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(onSavePress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveButton];
 }
 
 - (void)onCancelPress:(id)sender
