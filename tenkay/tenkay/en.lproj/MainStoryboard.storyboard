@@ -182,7 +182,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="P82-V4-qmL"/>
                     <connections>
-                        <segue destination="j9T-9f-euq" kind="modal" identifier="openCalendarView" id="5fE-Ao-xbQ"/>
+                        <segue destination="j9T-9f-euq" kind="push" identifier="openCalendarView" id="5fE-Ao-xbQ"/>
                         <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="0ST-80-BUO"/>
                         <segue destination="l8Z-uH-JRM" kind="push" identifier="addTime" id="Pwz-ut-mHv"/>
                     </connections>
@@ -196,7 +196,7 @@
             <objects>
                 <viewController id="j9T-9f-euq" customClass="FSBCalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gqV-XV-Qsq">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rml-Nt-YhE">
