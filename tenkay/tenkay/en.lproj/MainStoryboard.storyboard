@@ -4,23 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="XmJ-Zf-HDO">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="flQ-Ra-6K6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="LXi-U6-syu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4uz-Fc-aK0">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="l8Z-uH-JRM" kind="relationship" relationship="rootViewController" id="PNf-Jc-COp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oNE-dy-Dxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1192" y="-1106"/>
-        </scene>
-        <!--Add Time View Controller-->
+        <!--Add Time View Controller - Add Time-->
         <scene sceneID="ek4-IZ-g8H">
             <objects>
                 <viewController id="l8Z-uH-JRM" customClass="FSBAddTimeViewController" sceneMemberID="viewController">
@@ -28,7 +12,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-nD-Ty7"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-YT-Ib6">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="Zcx-bW-A3o"/>
@@ -100,31 +83,27 @@
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="centerY" secondItem="WqZ-g3-4cf" secondAttribute="centerY" type="default" id="EI4-VI-jzc"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="baseline" secondItem="0lS-Rs-obZ" secondAttribute="baseline" type="default" id="EYl-K1-YOU"/>
                             <constraint firstItem="XQk-1a-53U" firstAttribute="leading" secondItem="0lS-Rs-obZ" secondAttribute="leading" type="default" id="FFn-wr-zpa"/>
-                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="-1" id="HxH-da-yBJ"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K0b-u9-vkp"/>
                             <constraint firstItem="XQk-1a-53U" firstAttribute="baseline" secondItem="VnC-1b-C0j" secondAttribute="baseline" type="default" id="KY8-ZU-2ez"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="64" id="MfI-92-Ckw"/>
                             <constraint firstItem="WqZ-g3-4cf" firstAttribute="top" secondItem="SsB-YT-Ib6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QW6-pu-iPU"/>
-                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="trailing" secondItem="O9V-Er-2ND" secondAttribute="trailing" type="default" id="QvA-W6-qwl"/>
                             <constraint firstAttribute="trailing" secondItem="XQk-1a-53U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ctc-z6-mxg"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXc-f4-Uj8"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="miG-xc-pXX"/>
                             <constraint firstAttribute="trailing" secondItem="Tq5-qf-ipt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o5L-yL-reN"/>
-                            <constraint firstItem="BpB-nD-Ty7" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" type="default" id="tME-rL-ba0"/>
                             <constraint firstAttribute="trailing" secondItem="WqZ-g3-4cf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="w7P-Pu-jE0"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="JAg-Eb-iid"/>
+                    <navigationItem key="navigationItem" title="Add Time" id="JAg-Eb-iid"/>
                     <connections>
                         <outlet property="endDateLabel" destination="XQk-1a-53U" id="PJa-D2-IhD"/>
-                        <outlet property="navigationBar" destination="BpB-nD-Ty7" id="zUE-wL-Ym9"/>
                         <outlet property="startDateLabel" destination="0lS-Rs-obZ" id="lnC-di-SEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="-1106"/>
+            <point key="canvasLocation" x="1220" y="-790"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="ohD-iR-1VT">
@@ -205,7 +184,7 @@
                     <connections>
                         <segue destination="j9T-9f-euq" kind="modal" identifier="openCalendarView" id="5fE-Ao-xbQ"/>
                         <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="0ST-80-BUO"/>
-                        <segue destination="flQ-Ra-6K6" kind="modal" identifier="addTime" id="Z4D-a4-AnG"/>
+                        <segue destination="l8Z-uH-JRM" kind="push" identifier="addTime" id="Pwz-ut-mHv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -210,7 +210,7 @@
     df.timeStyle = NSDateFormatterShortStyle;
     NSDate *startDate = [df dateFromString:self.startDateLabel.text];
     NSDate *endDate = [df dateFromString:self.endDateLabel.text];
-    [self.taskDelegate addTimeToTask:startDate endDate:endDate numSeconds:numSecondsToAdd taskToAddTimeTo:self.currentTask];
+    [self.delegate addTimeToTask:startDate endDate:endDate numSeconds:numSecondsToAdd taskToAddTimeTo:self.currentTask];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

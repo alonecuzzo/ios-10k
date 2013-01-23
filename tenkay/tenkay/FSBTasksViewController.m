@@ -98,9 +98,8 @@
         Task *task = (Task *)sender;
         controller.taskToEdit = task;
     } else if ([[segue identifier] isEqualToString:@"addTime"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        FSBAddTimeViewController *controller = (FSBAddTimeViewController *)navigationController.topViewController;
-        controller.taskDelegate = self;
+        FSBAddTimeViewController *controller = (FSBAddTimeViewController *)segue.destinationViewController;
+        controller.delegate = self;
         controller.currentTask = currentTask;
     }
 }
