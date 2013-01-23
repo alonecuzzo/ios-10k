@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "FSBCalendarViewController.h"
 #import "FSBTextUtil.h"
-#import "FWTPopoverView.h"
 #import "Session.h"
 #import "Task.h"
 
@@ -20,35 +20,34 @@
     UILabel         *dailyStatTitle,
                     *dailyStatHours,
                     *dailyStatSessions;
-    FWTPopoverView  *popoverView;
 }
 
 @synthesize taskForCalendar,
             managedObjectContext,
-            titleLabel,
             delegate;
 
 - (void)buildTaskDetailView
 {
     //set title
-    titleLabel.text = taskForCalendar.title;
+    self.title = taskForCalendar.title;
     
+    //style back button
+    [self.navigationController.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    /*
     //build nav
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"nav-header"] forBarMetrics:UIBarMetricsDefault];
-    
     CGRect navBackground = CGRectMake(0, 0, self.view.bounds.size.width, 44);
     UIView *navBgView = [[UIView alloc] initWithFrame:navBackground];
     UIImageView *navBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-header"]];
     [navBgView addSubview:navBgImageView];
     [self.view insertSubview:navBgImageView belowSubview:titleLabel];
-    
+    */
+    /*
     CGRect backButtonRect = CGRectMake(15, 10, 14, 22);
     UIButton *backButton = [[UIButton alloc] initWithFrame:backButtonRect];
     [backButton setBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
-    
+    */
     //calendar data view
     CGRect  calendarViewRect = CGRectMake(0, 50, 300, 300);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
