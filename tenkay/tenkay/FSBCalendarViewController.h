@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, strong) Task *taskToEdit;
+@property (nonatomic, strong) Task *taskForCalendar;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
 

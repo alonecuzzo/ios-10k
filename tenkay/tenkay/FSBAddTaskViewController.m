@@ -53,16 +53,7 @@
     Task *task = nil;
     if(self.managedObjectContext) {
         if ([self.taskTitle.text length] > 0) {
-            /*
-             if (self.taskToEdit != nil) {
-             NSLog(@"*** - Edit");
-             task = self.taskToEdit;
-             } else {
-             NSLog(@"*** - Save");
-             */
             task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-            //}
-            
             task.title = self.taskTitle.text;
             
             NSError *error;

@@ -23,7 +23,7 @@
     FWTPopoverView  *popoverView;
 }
 
-@synthesize taskToEdit,
+@synthesize taskForCalendar,
             managedObjectContext,
             titleLabel,
             delegate;
@@ -31,9 +31,12 @@
 - (void)buildTaskDetailView
 {
     //set title
-    titleLabel.text = taskToEdit.title;
+    titleLabel.text = taskForCalendar.title;
     
     //build nav
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    [navBar setBackgroundImage:[UIImage imageNamed:@"nav-header"] forBarMetrics:UIBarMetricsDefault];
+    
     CGRect navBackground = CGRectMake(0, 0, self.view.bounds.size.width, 44);
     UIView *navBgView = [[UIView alloc] initWithFrame:navBackground];
     UIImageView *navBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-header"]];
@@ -53,7 +56,7 @@
     calendar.shouldFillCalendar = YES;
     
     //highlight dates with recorded time
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:[NSDate date]];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:[NSDate date]];
@@ -135,7 +138,7 @@
     [super viewDidLoad];
     if (self) {
         // Initialization code
-        if (self.taskToEdit != nil) {
+        if (self.taskForCalendar != nil) {
             [self buildTaskDetailView];
         }
     }
@@ -159,7 +162,7 @@
 -(void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
 {
     [self setDateLabelToDate:date];
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSTimeInterval totalTimeForDay;
     int numberOfSessions = 0;
     for (int i = 0; i < [taskSessions count];  i++) {
@@ -210,7 +213,7 @@
 
 -(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
 {
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:date];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:date];

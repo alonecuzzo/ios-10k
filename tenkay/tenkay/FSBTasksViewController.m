@@ -96,7 +96,7 @@
         FSBCalendarViewController *controller = (FSBCalendarViewController *)segue.destinationViewController;
         controller.managedObjectContext = managedObjectContext;
         Task *task = (Task *)sender;
-        controller.taskToEdit = task;
+        controller.taskForCalendar = task;
     } else if ([[segue identifier] isEqualToString:@"addTime"]) {
         FSBAddTimeViewController *controller = (FSBAddTimeViewController *)segue.destinationViewController;
         controller.delegate = self;
