@@ -30,16 +30,16 @@
 
 @end
 
-@implementation UINavigationBar (CustomImage)
-
-//for iOS 5
-+ (Class)class {
-    return NSClassFromString(@"FSBNavigationBar");
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.frame = CGRectMake(0, 20, 320, 44);
-}
-
-@end
+//@implementation UINavigationBar (CustomImage)
+//
+////for iOS 5
+//+ (Class)class {
+//    return NSClassFromString(@"FSBNavigationBar");
+//}
+//
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    self.frame = CGRectMake(0, 20, 320, 44);
+//}
+//
+//@end

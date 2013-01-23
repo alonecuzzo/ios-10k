@@ -19,11 +19,13 @@
 		88146F4C1683BC9800B0ABED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88146F4A1683BC9800B0ABED /* MainStoryboard.storyboard */; };
 		88146F561683BD5800B0ABED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88146F551683BD5800B0ABED /* CoreData.framework */; };
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
+		8837DBE916B08A0700282293 /* saveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8837DBE816B08A0700282293 /* saveButton.png */; };
 		883FBF9C16ACBE56003CAD1B /* FSBCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883FBF9B16ACBE56003CAD1B /* FSBCalendarViewController.m */; };
 		883FBFA216ACC0DE003CAD1B /* FSBAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883FBFA116ACC0DE003CAD1B /* FSBAddTaskViewController.m */; };
 		885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */; };
 		885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */; };
 		885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */; };
+		8863A7EA16B085F80071B5FF /* saveButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8863A7E916B085F80071B5FF /* saveButton@2x.png */; };
 		88715BC616A7409B00BB9A8E /* navBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC516A7409B00BB9A8E /* navBackground@2x.png */; };
 		88715BC816A7410500BB9A8E /* navBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC716A7410500BB9A8E /* navBackground.png */; };
 		88715BCA16A7424700BB9A8E /* addTaskButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BC916A7424700BB9A8E /* addTaskButton@2x.png */; };
@@ -32,9 +34,6 @@
 		88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */; };
 		88715BD616A7A60B00BB9A8E /* taskSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 88715BD516A7A60B00BB9A8E /* taskSeparator.png */; };
 		887AE88116A8B857004D452B /* addTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887AE88016A8B857004D452B /* addTimeIcon@2x.png */; };
-		88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */; };
-		88AC007216ADD6E80059C646 /* addTimeCancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AC007016ADD6E80059C646 /* addTimeCancelButton@2x.png */; };
-		88AC007316ADD6E80059C646 /* addTimeSaveButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AC007116ADD6E80059C646 /* addTimeSaveButton@2x.png */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
@@ -82,6 +81,7 @@
 		88146F4B1683BC9800B0ABED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		88146F551683BD5800B0ABED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88146F581683BE7D00B0ABED /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		8837DBE816B08A0700282293 /* saveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveButton.png; sourceTree = "<group>"; };
 		883FBF9A16ACBE56003CAD1B /* FSBCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBCalendarViewController.h; sourceTree = "<group>"; };
 		883FBF9B16ACBE56003CAD1B /* FSBCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBCalendarViewController.m; sourceTree = "<group>"; };
 		883FBFA016ACC0DE003CAD1B /* FSBAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskViewController.h; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 		885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editTimeIcon@2x.png"; sourceTree = "<group>"; };
 		885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashIcon@2x.png"; sourceTree = "<group>"; };
 		885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendarIcon@2x.png"; sourceTree = "<group>"; };
+		8863A7E916B085F80071B5FF /* saveButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveButton@2x.png"; sourceTree = "<group>"; };
 		88715BC516A7409B00BB9A8E /* navBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackground@2x.png"; sourceTree = "<group>"; };
 		88715BC716A7410500BB9A8E /* navBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBackground.png; sourceTree = "<group>"; };
 		88715BC916A7424700BB9A8E /* addTaskButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTaskButton@2x.png"; sourceTree = "<group>"; };
@@ -99,9 +100,6 @@
 		88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBNavigationBar.m; sourceTree = "<group>"; };
 		88715BD516A7A60B00BB9A8E /* taskSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskSeparator.png; sourceTree = "<group>"; };
 		887AE88016A8B857004D452B /* addTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeIcon@2x.png"; sourceTree = "<group>"; };
-		88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeNavBackgroundTeal@2x.png"; sourceTree = "<group>"; };
-		88AC007016ADD6E80059C646 /* addTimeCancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeCancelButton@2x.png"; sourceTree = "<group>"; };
-		88AC007116ADD6E80059C646 /* addTimeSaveButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeSaveButton@2x.png"; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		88C450F4168E32BB00210F1F /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -290,15 +288,14 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8837DBE816B08A0700282293 /* saveButton.png */,
 				BADB7B1716AE06AC007D53FF /* back-arrow.png */,
+				8863A7E916B085F80071B5FF /* saveButton@2x.png */,
 				BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */,
 				BADB7B1316ADFC3E007D53FF /* nav-header.png */,
 				BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */,
-				88AC007016ADD6E80059C646 /* addTimeCancelButton@2x.png */,
-				88AC007116ADD6E80059C646 /* addTimeSaveButton@2x.png */,
 				BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */,
 				BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */,
-				88A5501816AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png */,
 				885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */,
 				885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */,
 				885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */,
@@ -399,15 +396,14 @@
 				885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */,
 				885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */,
 				885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */,
-				88A5501916AB7AAE007C2321 /* addTimeNavBackgroundTeal@2x.png in Resources */,
 				BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */,
 				BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */,
 				BADB7B1516ADFC3F007D53FF /* nav-header.png in Resources */,
 				BADB7B1616ADFC3F007D53FF /* nav-header@2x.png in Resources */,
 				BADB7B1916AE06AC007D53FF /* back-arrow.png in Resources */,
 				BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */,
-				88AC007216ADD6E80059C646 /* addTimeCancelButton@2x.png in Resources */,
-				88AC007316ADD6E80059C646 /* addTimeSaveButton@2x.png in Resources */,
+				8863A7EA16B085F80071B5FF /* saveButton@2x.png in Resources */,
+				8837DBE916B08A0700282293 /* saveButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

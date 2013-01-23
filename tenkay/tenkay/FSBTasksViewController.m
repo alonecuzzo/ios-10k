@@ -69,7 +69,7 @@
     [self performFetch];
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
-    [addButton setImage:[UIImage imageNamed:@"addTaskButton.png"] forState:UIControlStateNormal];
+    [addButton setImage:[UIImage imageNamed:@"addTaskButton"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     selectedRowNumber = -1;
@@ -113,7 +113,6 @@
 
 - (void)deleteTask:(Task *)task
 {
-    selectedRowNumber = -1;
     taskToDelete = task;
     NSString *destructiveTitle = @"Delete Task"; //Action Sheet Button Titles
     NSString *cancelTitle = @"Cancel";
@@ -136,12 +135,11 @@
             NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
         }
     }
+    selectedRowNumber = -1;
 }
 
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task
 {
-    NSLog(@"adding time to task: %@", seconds);
-  
     Session *session = [NSEntityDescription insertNewObjectForEntityForName:@"Session" inManagedObjectContext:managedObjectContext];
     session.startDate = startDate;
     session.endDate = eDate;
