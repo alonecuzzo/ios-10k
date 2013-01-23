@@ -131,6 +131,8 @@
         [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
         [datePicker setMaximumDate:[df dateFromString:self.endDateLabel.text]];
     }
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
+
 }
 
 - (IBAction)onEndDateSelectorPressed:(id)sender
@@ -163,7 +165,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
     
     isStartDateLabelSelected = NO;
     isEndDateLabelSelected = NO;
@@ -183,26 +184,32 @@
    
     UIButton *saveButton;
     saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width -86, -5, 91, 57)];
-    [saveButton setImage:[UIImage imageNamed:@"addTimeSaveButton"] forState:UIControlStateNormal];
+    [saveButton setImage:[UIImage imageNamed:@"saveButton"] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(onSavePress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-    
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
     [backButton setImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
-    UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [titleButton setFrame:CGRectMake(0, 0, 170, 35)];
-    [titleButton setTitle:@"Add Time"forState:UIControlStateNormal];
-    titleButton.enabled = NO;
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 36)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    UIFont *font=[UIFont fontWithName:@"GurmukhiMN-Bold" size:21];
+    titleLabel.font = font;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"Add Time";
+    self.navigationItem.titleView = titleLabel;
     
-    UIFont *font=[UIFont fontWithName:@"Gurmukhi MN" size:21];
-    titleButton.titleLabel.font =font;
-    
-    titleButton.titleLabel.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = titleButton;
+    NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Gurmukhi MN"]);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//    UIImageView *bgNav = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"]];
+//    self.navigationItem.titleView = bgNav;
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)onCancelPress:(id)sender

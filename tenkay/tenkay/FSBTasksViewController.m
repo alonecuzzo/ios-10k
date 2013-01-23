@@ -113,7 +113,6 @@
 
 - (void)deleteTask:(Task *)task
 {
-    selectedRowNumber = -1;
     taskToDelete = task;
     NSString *destructiveTitle = @"Delete Task"; //Action Sheet Button Titles
     NSString *cancelTitle = @"Cancel";
@@ -136,6 +135,7 @@
             NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
         }
     }
+    selectedRowNumber = -1;
 }
 
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task
