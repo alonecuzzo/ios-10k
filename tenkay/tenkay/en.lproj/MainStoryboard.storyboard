@@ -4,12 +4,28 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="XmJ-Zf-HDO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="flQ-Ra-6K6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LXi-U6-syu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4uz-Fc-aK0">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="l8Z-uH-JRM" kind="relationship" relationship="rootViewController" id="PNf-Jc-COp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNE-dy-Dxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1192" y="-1106"/>
+        </scene>
         <!--Add Time View Controller-->
         <scene sceneID="ek4-IZ-g8H">
             <objects>
                 <viewController id="l8Z-uH-JRM" customClass="FSBAddTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O9V-Er-2ND">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-nD-Ty7"/>
@@ -99,6 +115,7 @@
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="JAg-Eb-iid"/>
                     <connections>
                         <outlet property="endDateLabel" destination="XQk-1a-53U" id="PJa-D2-IhD"/>
                         <outlet property="navigationBar" destination="BpB-nD-Ty7" id="zUE-wL-Ym9"/>
@@ -107,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1098" y="-783"/>
+            <point key="canvasLocation" x="1794" y="-1106"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="ohD-iR-1VT">
@@ -186,9 +203,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="P82-V4-qmL"/>
                     <connections>
-                        <segue destination="l8Z-uH-JRM" kind="modal" identifier="addTime" id="Wty-rH-8lV"/>
                         <segue destination="j9T-9f-euq" kind="modal" identifier="openCalendarView" id="5fE-Ao-xbQ"/>
                         <segue destination="3Id-Kb-0pc" kind="modal" identifier="addTask" id="0ST-80-BUO"/>
+                        <segue destination="flQ-Ra-6K6" kind="modal" identifier="addTime" id="Z4D-a4-AnG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NJ-4G-LtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
