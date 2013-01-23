@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="-790"/>
+            <point key="canvasLocation" x="1277" y="-788"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="ohD-iR-1VT">
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUT-Fp-gF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="627"/>
+            <point key="canvasLocation" x="1277" y="641"/>
         </scene>
         <!--Add Task View Controller - Add Item-->
         <scene sceneID="qeG-e7-DT6">
@@ -323,7 +323,6 @@
                 <relationship kind="action" name="onEndDateSelectorPressed:"/>
                 <relationship kind="action" name="onStartDateSelectorPressed:"/>
                 <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

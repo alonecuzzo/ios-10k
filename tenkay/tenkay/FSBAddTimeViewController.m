@@ -10,7 +10,6 @@
 #import "FSBTasksViewController.h"
 
 @interface FSBAddTimeViewController ()
-@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
 
@@ -23,9 +22,6 @@
     BOOL isDatePickerOpen;
     BOOL isStartDateLabelSelected;
     BOOL isEndDateLabelSelected;
-    
-    UIButton *cancelButton;
-    UIButton *saveButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -167,7 +163,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
     
     isStartDateLabelSelected = NO;
     isEndDateLabelSelected = NO;
@@ -184,34 +180,48 @@
     NSDate *startDate = [[NSDate alloc] initWithTimeInterval:-3600 sinceDate:[NSDate date]];
 	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:startDate]];
     self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
-    
-    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(-4, -5, 91, 57)];
-    [cancelButton setImage:[UIImage imageNamed:@"addTimeCancelButton"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:cancelButton];
-    
+   
+    UIButton *saveButton;
     saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width -86, -5, 91, 57)];
     [saveButton setImage:[UIImage imageNamed:@"addTimeSaveButton"] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(onSavePress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
+    [backButton setImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [titleButton setFrame:CGRectMake(0, 0, 170, 35)];
+    [titleButton setTitle:@"Add Time"forState:UIControlStateNormal];
+    titleButton.enabled = NO;
+    
+    UIFont *font=[UIFont fontWithName:@"Gurmukhi MN" size:21];
+    titleButton.titleLabel.font =font;
+    
+    titleButton.titleLabel.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = titleButton;
 }
 
 - (void)onCancelPress:(id)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)onSavePress:(id)sender
 {
-    NSLog(@"hours added: %i", [self computeTimeDifference]);
     NSNumber *numSecondsToAdd = @(3600 * [self computeTimeDifference]);
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateStyle = NSDateFormatterMediumStyle;
-    df.timeStyle = NSDateFormatterShortStyle;
-    NSDate *startDate = [df dateFromString:self.startDateLabel.text];
-    NSDate *endDate = [df dateFromString:self.endDateLabel.text];
-    [self.delegate addTimeToTask:startDate endDate:endDate numSeconds:numSecondsToAdd taskToAddTimeTo:self.currentTask];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (numSecondsToAdd > 0) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = NSDateFormatterMediumStyle;
+        df.timeStyle = NSDateFormatterShortStyle;
+        NSDate *startDate = [df dateFromString:self.startDateLabel.text];
+        NSDate *endDate = [df dateFromString:self.endDateLabel.text];
+        [self.delegate addTimeToTask:startDate endDate:endDate numSeconds:numSecondsToAdd taskToAddTimeTo:self.currentTask];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
