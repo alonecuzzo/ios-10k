@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CKCalendarView.h"
 
+@class FSBCalendarViewController;
 @class Task;
 
+@protocol FSBCalendarViewControllerDelegate <NSObject>
+-(void)calendarViewControllerDidGoBack:(FSBCalendarViewController *)controller;
+@end
+
 @interface FSBCalendarViewController : UIViewController <CKCalendarDelegate>
+
+@property (nonatomic, weak) id <FSBCalendarViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
