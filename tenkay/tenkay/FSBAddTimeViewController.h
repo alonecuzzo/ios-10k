@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBTasksViewController.h"
+#import "Task.h"
 
 @interface FSBAddTimeViewController : UIViewController <UIPickerViewDelegate>
 
+@property (nonatomic, strong) Task *currentTask;
+@property (nonatomic, strong) id <FSBTasksViewDelegate> taskDelegate;
 
 @end

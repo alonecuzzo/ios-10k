@@ -13,8 +13,9 @@
 
 @required
 - (void)deleteTask:(Task *)task;
-- (void)addTime:(Task *)task;
+- (void)openAddTimeScreen:(Task *)task;
 - (void)openCalendar:(Task *)task;
+- (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task;
 @end
 
 @interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate, FSBTasksViewDelegate, UIActionSheetDelegate>

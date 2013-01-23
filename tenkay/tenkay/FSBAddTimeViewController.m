@@ -7,6 +7,7 @@
 //
 
 #import "FSBAddTimeViewController.h"
+#import "FSBTasksViewController.h"
 
 @interface FSBAddTimeViewController ()
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -213,6 +214,14 @@
 - (void)onSavePress:(id)sender
 {
     NSLog(@"hours added: %i", [self computeTimeDifference]);
+    NSNumber *numSecondsToAdd = @(3600 * [self computeTimeDifference]);
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterShortStyle;
+    NSDate *startDate = [df dateFromString:self.startDateLabel.text];
+    NSDate *endDate = [df dateFromString:self.endDateLabel.text];
+    [self.taskDelegate addTimeToTask:startDate endDate:endDate numSeconds:numSecondsToAdd taskToAddTimeTo:self.currentTask];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

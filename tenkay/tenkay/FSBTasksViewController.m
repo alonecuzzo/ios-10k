@@ -13,6 +13,7 @@
 #import "Task.h"
 #import "Session.h"
 #import "FSBTextUtil.h"
+#import "FSBAddTimeViewController.h"
 
 @interface FSBTasksViewController ()
 @end
@@ -78,8 +79,9 @@
    [self performSegueWithIdentifier:@"openCalendarView" sender:task];
 }
 
-- (void)addTime:(Task *)task
+- (void)openAddTimeScreen:(Task *)task
 {
+    currentTask = task;
     selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"addTime" sender:self];  
 }
@@ -120,6 +122,10 @@
         controller.managedObjectContext = managedObjectContext;
         Task *task = (Task *)sender;
         controller.taskToEdit = task;
+    } else if ([[segue identifier] isEqualToString:@"addTime"]) {
+        FSBAddTimeViewController *controller = (FSBAddTimeViewController *)segue.destinationViewController;
+        controller.taskDelegate = self;
+        controller.currentTask = currentTask;
     }
 }
 
@@ -154,6 +160,24 @@
         if(![self.managedObjectContext save:&error]) {
             NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
         }
+    }
+}
+
+- (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task
+{
+    NSLog(@"adding time to task: %@", seconds);
+  
+    Session *session = [NSEntityDescription insertNewObjectForEntityForName:@"Session" inManagedObjectContext:managedObjectContext];
+    session.startDate = startDate;
+    session.endDate = eDate;
+    [task addTaskSessionObject:session];
+    
+    task.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [seconds doubleValue])];
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        FATAL_CORE_DATA_ERROR(error);
+        return;
     }
 }
 
@@ -290,6 +314,7 @@
         return;
     }
 }
+
 
 /*
 // Override to support conditional editing of the table view.

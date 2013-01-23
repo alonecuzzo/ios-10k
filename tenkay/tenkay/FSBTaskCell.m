@@ -57,7 +57,7 @@
 }
 
 -(void)onAddTime:(id)sender{
-    [self.delegate addTime:self.task];
+    [self.delegate openAddTimeScreen:self.task];
 }
 
 -(void)onCalendarPress:(id)sender{
