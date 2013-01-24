@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jabari Bell and Dawson Blackhouse. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "FSBCalendarViewController.h"
 #import "FSBTextUtil.h"
-#import "FWTPopoverView.h"
 #import "Session.h"
 #import "Task.h"
 
@@ -20,32 +20,34 @@
     UILabel         *dailyStatTitle,
                     *dailyStatHours,
                     *dailyStatSessions;
-    FWTPopoverView  *popoverView;
 }
 
-@synthesize taskToEdit,
+@synthesize taskForCalendar,
             managedObjectContext,
-            titleLabel,
             delegate;
 
 - (void)buildTaskDetailView
 {
     //set title
-    titleLabel.text = taskToEdit.title;
+    self.title = taskForCalendar.title;
     
+    //style back button
+    [self.navigationController.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    /*
     //build nav
     CGRect navBackground = CGRectMake(0, 0, self.view.bounds.size.width, 44);
     UIView *navBgView = [[UIView alloc] initWithFrame:navBackground];
     UIImageView *navBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-header"]];
     [navBgView addSubview:navBgImageView];
     [self.view insertSubview:navBgImageView belowSubview:titleLabel];
-    
+    */
+    /*
     CGRect backButtonRect = CGRectMake(15, 10, 14, 22);
     UIButton *backButton = [[UIButton alloc] initWithFrame:backButtonRect];
     [backButton setBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
-    
+    */
     //calendar data view
     CGRect  calendarViewRect = CGRectMake(0, 50, 300, 300);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
@@ -53,7 +55,7 @@
     calendar.shouldFillCalendar = YES;
     
     //highlight dates with recorded time
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:[NSDate date]];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:[NSDate date]];
@@ -135,7 +137,7 @@
     [super viewDidLoad];
     if (self) {
         // Initialization code
-        if (self.taskToEdit != nil) {
+        if (self.taskForCalendar != nil) {
             [self buildTaskDetailView];
         }
     }
@@ -159,7 +161,7 @@
 -(void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
 {
     [self setDateLabelToDate:date];
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSTimeInterval totalTimeForDay;
     int numberOfSessions = 0;
     for (int i = 0; i < [taskSessions count];  i++) {
@@ -210,7 +212,7 @@
 
 -(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
 {
-    NSArray *taskSessions = [taskToEdit.taskSession allObjects];
+    NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:date];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:date];
