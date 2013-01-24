@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeAddedLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *startTimeSelectedBackground;
+@property (strong, nonatomic) IBOutlet UIImageView *endTimeSelectedBackground;
 
 - (IBAction)onStartDateSelectorPressed:(id)sender;
 - (IBAction)onEndDateSelectorPressed:(id)sender;
@@ -89,6 +91,9 @@
     datePicker.frame = datePickerTargetFrame;
     [UIView setAnimationDidStopSelector:@selector(removeDatePicker:)];
     [UIView commitAnimations];
+    [self.startTimeSelectedBackground setHidden:YES];
+    [self.endTimeSelectedBackground setHidden:YES];
+
 }
 
 - (void)hideDatePickerFromBackgroundPress:(id)sender
@@ -132,6 +137,7 @@
         isDatePickerOpen = NO;
         isStartDateLabelSelected = NO;
         [self hideDatePicker];
+        [self.startTimeSelectedBackground setHidden:YES];
     } else {
         isDatePickerOpen = YES;
         isStartDateLabelSelected = YES;
@@ -149,9 +155,9 @@
         datePicker.date = [df dateFromString:self.startDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
         [datePicker setMaximumDate:[df dateFromString:self.endDateLabel.text]];
+        [self.endTimeSelectedBackground setHidden:YES];
+        [self.startTimeSelectedBackground setHidden:NO];
     }
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
-
 }
 
 - (IBAction)onEndDateSelectorPressed:(id)sender
@@ -160,6 +166,7 @@
         isDatePickerOpen = NO;
         isEndDateLabelSelected = NO;
         [self hideDatePicker];
+        [self.endTimeSelectedBackground setHidden:YES];
     } else {
         isDatePickerOpen = YES;
         isEndDateLabelSelected = YES;
@@ -177,6 +184,8 @@
         datePicker.date = [df dateFromString:self.endDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:self.startDateLabel.text]];
         [datePicker setMaximumDate:[NSDate date]];
+        [self.endTimeSelectedBackground setHidden:NO];
+        [self.startTimeSelectedBackground setHidden:YES];
     }
 }
 
@@ -221,7 +230,8 @@
     titleLabel.text = @"Add Time";
     self.navigationItem.titleView = titleLabel;
     [self updateTimeAddedLabel];
-    
+    [self.startTimeSelectedBackground setHidden:YES];
+    [self.endTimeSelectedBackground setHidden:YES];
     UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDatePickerFromBackgroundPress:)];
     tapGestureRecognize.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGestureRecognize];

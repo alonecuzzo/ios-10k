@@ -7,11 +7,23 @@
         <!--Add Time View Controller - Add Time-->
         <scene sceneID="ek4-IZ-g8H">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l8Z-uH-JRM" customClass="FSBAddTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O9V-Er-2ND">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="addTimeDateSelectorBox@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="vmh-TX-veL">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="313" id="rzI-VF-6Jg"/>
+                                    <constraint firstAttribute="height" constant="28" id="z1N-ZB-Bi5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="addTimeDateSelectorBox@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lm2-KN-4rE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Sab-0U-GzC"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-YT-Ib6">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="Zcx-bW-A3o"/>
@@ -22,8 +34,8 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 3rd 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-Rs-obZ">
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KwY-jt-paN"/>
                                     <constraint firstAttribute="width" constant="199" id="UFq-iC-qXK"/>
-                                    <constraint firstAttribute="height" constant="21" id="mN7-Aw-5Ca"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +48,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tq5-qf-ipt">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="aQT-Va-2bW"/>
+                                    <constraint firstAttribute="height" constant="40" id="Lle-f5-Igc"/>
                                     <constraint firstAttribute="width" constant="280" id="j4D-ig-sb8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -53,7 +65,7 @@
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jan 5th 2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-1a-53U">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="hMO-JD-Vin"/>
+                                    <constraint firstAttribute="height" constant="21" id="xhL-vh-H2g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +90,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-yC-4fs">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="cBw-zu-sol"/>
-                                    <constraint firstAttribute="width" constant="282" id="dzq-c1-OFN"/>
+                                    <constraint firstAttribute="width" constant="282" id="ul0-VD-c42"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6 hours added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gi-hF-Adp">
@@ -89,36 +101,42 @@
                         </subviews>
                         <color key="backgroundColor" white="0.91000000000000003" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Lm2-KN-4rE" firstAttribute="top" secondItem="vmh-TX-veL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2k7-at-tB4"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="leading" secondItem="AKI-yC-4fs" secondAttribute="leading" type="default" id="38M-pA-Q0m"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="baseline" secondItem="XQk-1a-53U" secondAttribute="baseline" type="default" id="5Va-1G-WTA"/>
                             <constraint firstItem="WqZ-g3-4cf" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="AdX-E7-ofd"/>
-                            <constraint firstItem="WqZ-g3-4cf" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="77" id="BGr-b6-c8Y"/>
                             <constraint firstAttribute="trailing" secondItem="0lS-Rs-obZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWP-T0-6NE"/>
                             <constraint firstItem="Tq5-qf-ipt" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="37" id="CYA-jN-5Wz"/>
                             <constraint firstAttribute="trailing" secondItem="4Gi-hF-Adp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DSt-wl-dZA"/>
                             <constraint firstItem="XQk-1a-53U" firstAttribute="leading" secondItem="0lS-Rs-obZ" secondAttribute="leading" type="default" id="FFn-wr-zpa"/>
                             <constraint firstItem="4Gi-hF-Adp" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="15" id="HUM-Xc-Zfa"/>
+                            <constraint firstItem="SsB-YT-Ib6" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="51" id="JnH-L1-LQB"/>
                             <constraint firstItem="AKI-yC-4fs" firstAttribute="top" secondItem="Tq5-qf-ipt" secondAttribute="top" type="default" id="M0Z-hd-oz1"/>
-                            <constraint firstItem="SsB-YT-Ib6" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="51" id="VjS-w6-ofx"/>
+                            <constraint firstItem="Lm2-KN-4rE" firstAttribute="centerX" secondItem="WqZ-g3-4cf" secondAttribute="centerX" type="default" id="P3T-MB-CcA"/>
+                            <constraint firstItem="Lm2-KN-4rE" firstAttribute="leading" secondItem="vmh-TX-veL" secondAttribute="leading" type="default" id="WZP-L8-wnR"/>
                             <constraint firstAttribute="trailing" secondItem="AKI-yC-4fs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aYG-tB-B1V"/>
                             <constraint firstAttribute="trailing" secondItem="XQk-1a-53U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ctc-z6-mxg"/>
                             <constraint firstItem="4Gi-hF-Adp" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dr3-0p-fcz"/>
+                            <constraint firstItem="Lm2-KN-4rE" firstAttribute="trailing" secondItem="vmh-TX-veL" secondAttribute="trailing" type="default" id="eO6-bp-KlF"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXc-f4-Uj8"/>
-                            <constraint firstItem="XQk-1a-53U" firstAttribute="top" secondItem="VnC-1b-C0j" secondAttribute="top" type="default" id="koV-xh-84b"/>
-                            <constraint firstItem="XQk-1a-53U" firstAttribute="centerY" secondItem="WqZ-g3-4cf" secondAttribute="centerY" type="default" id="lpo-Jk-bt1"/>
+                            <constraint firstItem="XQk-1a-53U" firstAttribute="centerY" secondItem="Lm2-KN-4rE" secondAttribute="centerY" type="default" id="gPQ-bT-wwV"/>
+                            <constraint firstItem="VnC-1b-C0j" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="87" id="jJf-AR-iEx"/>
                             <constraint firstItem="VnC-1b-C0j" firstAttribute="trailing" secondItem="SsB-YT-Ib6" secondAttribute="trailing" type="default" id="miG-xc-pXX"/>
-                            <constraint firstItem="0lS-Rs-obZ" firstAttribute="baseline" secondItem="SsB-YT-Ib6" secondAttribute="baseline" type="default" id="qbv-TN-XSb"/>
+                            <constraint firstItem="0lS-Rs-obZ" firstAttribute="centerY" secondItem="SsB-YT-Ib6" secondAttribute="centerY" type="default" id="u86-wL-8oX"/>
                             <constraint firstAttribute="trailing" secondItem="WqZ-g3-4cf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="w7P-Pu-jE0"/>
                             <constraint firstItem="SsB-YT-Ib6" firstAttribute="leading" secondItem="O9V-Er-2ND" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xXb-14-iN3"/>
+                            <constraint firstItem="WqZ-g3-4cf" firstAttribute="top" secondItem="O9V-Er-2ND" secondAttribute="top" constant="77" id="yzQ-B4-FtJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Time" id="JAg-Eb-iid"/>
                     <connections>
                         <outlet property="endDateLabel" destination="XQk-1a-53U" id="PJa-D2-IhD"/>
+                        <outlet property="endTimeSelectedBackground" destination="Lm2-KN-4rE" id="Lyk-2S-ss7"/>
                         <outlet property="startDateLabel" destination="0lS-Rs-obZ" id="lnC-di-SEI"/>
+                        <outlet property="startTimeSelectedBackground" destination="vmh-TX-veL" id="1HG-kc-BPo"/>
                         <outlet property="timeAddedLabel" destination="4Gi-hF-Adp" id="hDu-2z-a05"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1277" y="-788"/>
         </scene>
@@ -321,50 +339,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addTimeDateSelectorBox@2x.png" width="616" height="57"/>
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
-    <classes>
-        <class className="FSBAddTaskViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onSave:"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FSBAddTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onEndDateSelectorPressed:"/>
-                <relationship kind="action" name="onStartDateSelectorPressed:"/>
-                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeAddedLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FSBCalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBCalendarViewController.h"/>
-        </class>
-        <class className="FSBNavigationBar" superclassName="UINavigationBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
-        </class>
-        <class className="FSBTaskCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FSBTasksViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

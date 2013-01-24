@@ -38,6 +38,7 @@
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
+		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -104,6 +105,7 @@
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
+		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */,
 				8837DBE816B08A0700282293 /* saveButton.png */,
 				BADB7B1716AE06AC007D53FF /* back-arrow.png */,
 				8863A7E916B085F80071B5FF /* saveButton@2x.png */,
@@ -374,6 +377,7 @@
 				BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */,
 				8863A7EA16B085F80071B5FF /* saveButton@2x.png in Resources */,
 				8837DBE916B08A0700282293 /* saveButton.png in Resources */,
+				88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
