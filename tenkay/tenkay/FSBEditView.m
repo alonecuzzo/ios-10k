@@ -35,9 +35,13 @@
         taskTitle.contentHorizontalAlignment = UIControlContentVerticalAlignmentCenter;
         [taskTitle addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [self addSubview:taskTitle];
-        [taskTitle becomeFirstResponder];
     }
     return self;
+}
+
+- (void)setKeyboardFirstResponder
+{
+    [taskTitle becomeFirstResponder];
 }
 
 - (void)textFieldFinished:(id)sender

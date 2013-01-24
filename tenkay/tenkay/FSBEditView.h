@@ -13,4 +13,6 @@
 
 @property(nonatomic, strong) id <FSBTasksViewDelegate> delegate;
 
+- (void)setKeyboardFirstResponder;
+
 @end

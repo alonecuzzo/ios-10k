@@ -73,8 +73,15 @@
     fadeUpAnimation.fromValue = @0.0;
     fadeUpAnimation.toValue = @1.0;
     fadeUpAnimation.delegate = self;
-//    editView.layer.opacity = 0.0;
+    [fadeUpAnimation setValue:@"editScreenfadeUpAnimation" forKey:@"id"];
     [editView.layer addAnimation:fadeUpAnimation forKey:@"animateOpacity"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if ([[anim valueForKey:@"id"] isEqual:@"editScreenfadeUpAnimation"]) {
+        [editView setKeyboardFirstResponder];
+    }
 }
 
 - (void)openAddTimeScreen:(Task *)task
