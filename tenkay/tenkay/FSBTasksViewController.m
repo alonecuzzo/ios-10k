@@ -57,7 +57,7 @@
 
 - (void)openCalendar:(Task *)task
 {
-    selectedRowNumber = -1;
+   selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"openCalendarView" sender:task];
 }
 
@@ -65,6 +65,7 @@
 {
     editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.window.bounds.size.width, self.view.bounds.size.height)];
     editView.delegate = self;
+    [editView setTask:task];
     [self.view addSubview:editView];
     self.tableView.userInteractionEnabled = FALSE;
     
@@ -94,10 +95,10 @@
 {
     currentTask = task;
     selectedRowNumber = -1;
-   [self performSegueWithIdentifier:@"addTime" sender:self];  
+    [self performSegueWithIdentifier:@"addTime" sender:self];  
 }
 
-- (void)dismissEditView
+- (void)dismissEditView:(NSString *)newTaskTitle
 {
     fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeOutAnimation.duration = 0.4;
@@ -107,6 +108,13 @@
     editView.alpha = 0.0;
     [fadeOutAnimation setValue:@"editScreenfadeOutAnimation" forKey:@"id"];
     [editView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    
+    //update model here
+    if ([newTaskTitle length] > 0) {
+        Task *task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:selectedRowNumber inSection:0]];
+        [task setValue:newTaskTitle forKey:@"title"];
+    }
+    selectedRowNumber = -1;
 }
 
 - (void)viewDidLoad
@@ -169,6 +177,7 @@
                                   destructiveButtonTitle:destructiveTitle
                                   otherButtonTitles:nil];
     [actionSheet showInView:self.view];
+    selectedRowNumber = -1;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -193,11 +202,7 @@
     
     task.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [seconds doubleValue])];
     
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        FATAL_CORE_DATA_ERROR(error);
-        return;
-    }
+    [self performFetch];
 }
 
 

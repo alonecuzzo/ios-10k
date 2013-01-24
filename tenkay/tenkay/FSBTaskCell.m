@@ -53,6 +53,7 @@
 }
 
 -(void)onEditTask:(id)sender{
+    NSLog(@"passing task: %@", self.task.title);
     [self.delegate openEditScreen:self.task];
 }
 

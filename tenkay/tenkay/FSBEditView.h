@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "FSBTasksViewController.h"
+#import "Task.h"
 
 @interface FSBEditView : UIView <UITextFieldDelegate>
 
 @property(nonatomic, strong) id <FSBTasksViewDelegate> delegate;
 
+- (void)setTask:(Task *)task;
+- (Task *)getTask;
 - (void)setKeyboardFirstResponder;
 
 @end
