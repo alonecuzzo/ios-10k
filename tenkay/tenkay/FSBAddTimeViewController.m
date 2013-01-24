@@ -43,13 +43,13 @@
     NSDate *startDate = [df dateFromString:self.startDateLabel.text];
     NSDate *endDate = [df dateFromString:self.endDateLabel.text];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:startDate toDate:endDate options:0];
-    return components.hour;
+    NSDateComponents *components = [calendar components:NSSecondCalendarUnit fromDate:startDate toDate:endDate options:0];
+    return components.second;
 }
 
 - (void)updateTimeAddedLabel
 {
-    NSInteger timeDifference = [self computeTimeDifference] * 3600;
+    NSInteger timeDifference = [self computeTimeDifference];
     self.timeAddedLabel.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:timeDifference] isTruncated:NO];
 }
 
@@ -234,7 +234,7 @@
 
 - (void)onSavePress:(id)sender
 {
-    NSNumber *numSecondsToAdd = @(3600 * [self computeTimeDifference]);
+    NSNumber *numSecondsToAdd = [NSNumber numberWithInt:[self computeTimeDifference]];
     if (numSecondsToAdd > 0) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateStyle = NSDateFormatterMediumStyle;
