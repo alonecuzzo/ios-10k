@@ -81,7 +81,8 @@
 	[self.view addSubview:datePicker];
 }
 
-- (void)hideDatePicker {
+- (void)hideDatePicker
+{
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
     [UIView beginAnimations:@"MoveOut" context:nil];
     [UIView setAnimationDelegate:self];
@@ -90,7 +91,13 @@
     [UIView commitAnimations];
 }
 
-- (void)showDatePicker {
+- (void)hideDatePickerFromBackgroundPress:(id)sender
+{
+    [self hideDatePicker];
+}
+
+- (void)showDatePicker
+{
     [self addDatePicker];
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
     [UIView beginAnimations:@"MoveIn" context:nil];
@@ -99,7 +106,8 @@
     [UIView commitAnimations];
 }
 
-- (void)showDatePickerPostSwap:(id)sender {
+- (void)showDatePickerPostSwap:(id)sender
+{
     [self addDatePicker];
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
     [UIView beginAnimations:@"MoveIn" context:nil];
@@ -108,7 +116,8 @@
     [UIView commitAnimations];
 }
 
-- (void)swapDatePicker {
+- (void)swapDatePicker
+{
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
     [UIView beginAnimations:@"MoveOut" context:nil];
     [UIView setAnimationDelegate:self];
@@ -193,7 +202,7 @@
     self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
    
     UIButton *saveButton;
-    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width -86, -5, 91, 57)];
+    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width - 6, -5, 91, 57)];
     [saveButton setImage:[UIImage imageNamed:@"saveButton"] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(onSavePress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
@@ -212,6 +221,10 @@
     titleLabel.text = @"Add Time";
     self.navigationItem.titleView = titleLabel;
     [self updateTimeAddedLabel];
+    
+    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDatePickerFromBackgroundPress:)];
+    tapGestureRecognize.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGestureRecognize];
 }
 
 - (void)onCancelPress:(id)sender
