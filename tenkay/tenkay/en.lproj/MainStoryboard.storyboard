@@ -131,8 +131,10 @@
                     <navigationItem key="navigationItem" title="Add Time" id="JAg-Eb-iid"/>
                     <connections>
                         <outlet property="endDateLabel" destination="XQk-1a-53U" id="PJa-D2-IhD"/>
+                        <outlet property="endTimeNameLabel" destination="VnC-1b-C0j" id="aa3-c2-Z77"/>
                         <outlet property="endTimeSelectedBackground" destination="Lm2-KN-4rE" id="Lyk-2S-ss7"/>
                         <outlet property="startDateLabel" destination="0lS-Rs-obZ" id="lnC-di-SEI"/>
+                        <outlet property="startTimeNameLabel" destination="SsB-YT-Ib6" id="QRm-UH-diX"/>
                         <outlet property="startTimeSelectedBackground" destination="vmh-TX-veL" id="1HG-kc-BPo"/>
                         <outlet property="timeAddedLabel" destination="4Gi-hF-Adp" id="hDu-2z-a05"/>
                     </connections>

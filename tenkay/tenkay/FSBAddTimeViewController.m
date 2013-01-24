@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeAddedLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *startTimeSelectedBackground;
 @property (strong, nonatomic) IBOutlet UIImageView *endTimeSelectedBackground;
+@property (strong, nonatomic) IBOutlet UILabel *startTimeNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endTimeNameLabel;
 
 - (IBAction)onStartDateSelectorPressed:(id)sender;
 - (IBAction)onEndDateSelectorPressed:(id)sender;
@@ -91,14 +93,17 @@
     datePicker.frame = datePickerTargetFrame;
     [UIView setAnimationDidStopSelector:@selector(removeDatePicker:)];
     [UIView commitAnimations];
-    [self.startTimeSelectedBackground setHidden:YES];
-    [self.endTimeSelectedBackground setHidden:YES];
-
 }
 
 - (void)hideDatePickerFromBackgroundPress:(id)sender
 {
     [self hideDatePicker];
+    [self.startTimeSelectedBackground setHidden:YES];
+    [self.endTimeSelectedBackground setHidden:YES];
+    self.endDateLabel.textColor = [UIColor darkGrayColor];
+    self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
+    self.startDateLabel.textColor = [UIColor darkGrayColor];
+    self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
 }
 
 - (void)showDatePicker
@@ -138,6 +143,8 @@
         isStartDateLabelSelected = NO;
         [self hideDatePicker];
         [self.startTimeSelectedBackground setHidden:YES];
+        self.startDateLabel.textColor = [UIColor darkGrayColor];
+        self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
     } else {
         isDatePickerOpen = YES;
         isStartDateLabelSelected = YES;
@@ -156,7 +163,11 @@
         [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
         [datePicker setMaximumDate:[df dateFromString:self.endDateLabel.text]];
         [self.endTimeSelectedBackground setHidden:YES];
+        self.endDateLabel.textColor = [UIColor darkGrayColor];
+        self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
         [self.startTimeSelectedBackground setHidden:NO];
+        self.startDateLabel.textColor = [UIColor whiteColor];
+        self.startTimeNameLabel.textColor = [UIColor whiteColor];
     }
 }
 
@@ -167,6 +178,8 @@
         isEndDateLabelSelected = NO;
         [self hideDatePicker];
         [self.endTimeSelectedBackground setHidden:YES];
+        self.endDateLabel.textColor = [UIColor darkGrayColor];
+        self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
     } else {
         isDatePickerOpen = YES;
         isEndDateLabelSelected = YES;
@@ -185,7 +198,11 @@
         [datePicker setMinimumDate:[df dateFromString:self.startDateLabel.text]];
         [datePicker setMaximumDate:[NSDate date]];
         [self.endTimeSelectedBackground setHidden:NO];
+        self.endDateLabel.textColor = [UIColor whiteColor];
+        self.endTimeNameLabel.textColor = [UIColor whiteColor];
         [self.startTimeSelectedBackground setHidden:YES];
+        self.startDateLabel.textColor = [UIColor darkGrayColor];
+        self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
     }
 }
 
