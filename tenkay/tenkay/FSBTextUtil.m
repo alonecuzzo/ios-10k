@@ -44,19 +44,16 @@
         }
         return returnString;
     }
-    
-    //hours
-    if(roundedSeconds < 86400) {
-        roundedSeconds = floor(roundedSeconds / 3600);
-        if (isStringTruncated == YES) {
-            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"h", nil] componentsJoinedByString:@""];
-        } else {
-            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"hours", nil] componentsJoinedByString:@" "];
-        }
-        return returnString;
+   
+    //everything else is just hours
+    roundedSeconds = floor(roundedSeconds / 3600);
+    if (isStringTruncated == YES) {
+        returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"h", nil] componentsJoinedByString:@""];
+    } else {
+        returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"hours", nil] componentsJoinedByString:@" "];
     }
-    
     return returnString;
+
 }
 
 @end

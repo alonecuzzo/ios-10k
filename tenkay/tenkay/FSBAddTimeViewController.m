@@ -8,10 +8,12 @@
 
 #import "FSBAddTimeViewController.h"
 #import "FSBTasksViewController.h"
+#import "FSBTextUtil.h"
 
 @interface FSBAddTimeViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeAddedLabel;
 
 - (IBAction)onStartDateSelectorPressed:(id)sender;
 - (IBAction)onEndDateSelectorPressed:(id)sender;
@@ -45,12 +47,19 @@
     return components.hour;
 }
 
+- (void)updateTimeAddedLabel
+{
+    NSInteger timeDifference = [self computeTimeDifference] * 3600;
+    self.timeAddedLabel.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:timeDifference] isTruncated:NO];
+}
+
 - (void)updateStartDateLabel:(id)sender
 {
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    [self updateTimeAddedLabel];
 }
 
 - (void)updateEndDateLabel:(id)sender
@@ -59,6 +68,7 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    [self updateTimeAddedLabel];
 }
 
 - (void)removeDatePicker:(id)sender
@@ -201,15 +211,7 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.text = @"Add Time";
     self.navigationItem.titleView = titleLabel;
-    
-    NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Gurmukhi MN"]);
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-//    UIImageView *bgNav = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"]];
-//    self.navigationItem.titleView = bgNav;
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
+    [self updateTimeAddedLabel];
 }
 
 - (void)onCancelPress:(id)sender
