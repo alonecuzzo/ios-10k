@@ -32,6 +32,7 @@
     NSInteger selectedRowNumber;
     FSBEditView *editView;
     CABasicAnimation *fadeUpAnimation;
+    CABasicAnimation *fadeOutAnimation;
 }
 
 #define kCellHeight 64.0 
@@ -62,7 +63,6 @@
 
 - (void)openEditScreen:(Task *)task
 {
-    selectedRowNumber = -1;
     editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.window.bounds.size.width, self.view.bounds.size.height)];
     editView.delegate = self;
     [self.view addSubview:editView];
@@ -81,6 +81,12 @@
 {
     if ([[anim valueForKey:@"id"] isEqual:@"editScreenfadeUpAnimation"]) {
         [editView setKeyboardFirstResponder];
+    } else if([[anim valueForKey:@"id"] isEqual:@"editScreenfadeOutAnimation"]) {
+        fadeOutAnimation = nil;
+        fadeUpAnimation = nil;
+        [editView removeFromSuperview];
+        editView = nil;
+        self.tableView.userInteractionEnabled = TRUE;
     }
 }
 
@@ -93,7 +99,14 @@
 
 - (void)dismissEditView
 {
-    NSLog(@"hide edit view");
+    fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOutAnimation.duration = 0.4;
+    fadeOutAnimation.fromValue = @1.0;
+    fadeOutAnimation.toValue = @0.0;
+    fadeOutAnimation.delegate = self;
+    editView.alpha = 0.0;
+    [fadeOutAnimation setValue:@"editScreenfadeOutAnimation" forKey:@"id"];
+    [editView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
 }
 
 - (void)viewDidLoad
@@ -106,8 +119,6 @@
     [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     selectedRowNumber = -1;
-    
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
