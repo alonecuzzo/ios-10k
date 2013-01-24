@@ -53,7 +53,7 @@
 }
 
 -(void)onEditTask:(id)sender{
-    NSLog(@"edit");
+    [self.delegate openEditScreen:self.task];
 }
 
 -(void)onAddTime:(id)sender{

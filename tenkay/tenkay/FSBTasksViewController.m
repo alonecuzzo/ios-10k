@@ -14,6 +14,8 @@
 #import "Session.h"
 #import "FSBTextUtil.h"
 #import "FSBAddTimeViewController.h"
+#import "FSBEditView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FSBTasksViewController ()
 @end
@@ -28,6 +30,8 @@
     NSTimer *sessionTimer;
     BOOL isTiming;
     NSInteger selectedRowNumber;
+    FSBEditView *editView;
+    CABasicAnimation *fadeUpAnimation;
 }
 
 #define kCellHeight 64.0 
@@ -56,11 +60,33 @@
    [self performSegueWithIdentifier:@"openCalendarView" sender:task];
 }
 
+- (void)openEditScreen:(Task *)task
+{
+    selectedRowNumber = -1;
+    editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.window.bounds.size.width, self.view.bounds.size.height)];
+    editView.delegate = self;
+    [self.view addSubview:editView];
+    self.tableView.userInteractionEnabled = FALSE;
+    
+    fadeUpAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeUpAnimation.duration = 0.4;
+    fadeUpAnimation.fromValue = @0.0;
+    fadeUpAnimation.toValue = @1.0;
+    fadeUpAnimation.delegate = self;
+//    editView.layer.opacity = 0.0;
+    [editView.layer addAnimation:fadeUpAnimation forKey:@"animateOpacity"];
+}
+
 - (void)openAddTimeScreen:(Task *)task
 {
     currentTask = task;
     selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"addTime" sender:self];  
+}
+
+- (void)dismissEditView
+{
+    NSLog(@"hide edit view");
 }
 
 - (void)viewDidLoad
@@ -73,6 +99,8 @@
     [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     selectedRowNumber = -1;
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

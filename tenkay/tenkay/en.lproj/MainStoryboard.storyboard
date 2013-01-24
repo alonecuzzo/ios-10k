@@ -7,7 +7,6 @@
         <!--Add Time View Controller - Add Time-->
         <scene sceneID="ek4-IZ-g8H">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l8Z-uH-JRM" customClass="FSBAddTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O9V-Er-2ND">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -139,6 +138,7 @@
                         <outlet property="timeAddedLabel" destination="4Gi-hF-Adp" id="hDu-2z-a05"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkW-XP-3q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1277" y="-788"/>
         </scene>

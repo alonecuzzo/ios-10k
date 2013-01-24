@@ -37,6 +37,8 @@
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
+		88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226E916B19BEC006E5001 /* FSBEditBackgroundView.m */; };
+		88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226EC16B1A296006E5001 /* FSBEditView.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
@@ -103,6 +105,10 @@
 		88C450F5168E32BB00210F1F /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		88C450FD168E356900210F1F /* FSBTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTasksViewController.h; sourceTree = "<group>"; };
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
+		88D226E816B19BEC006E5001 /* FSBEditBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBEditBackgroundView.h; sourceTree = "<group>"; };
+		88D226E916B19BEC006E5001 /* FSBEditBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBEditBackgroundView.m; sourceTree = "<group>"; };
+		88D226EB16B1A296006E5001 /* FSBEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBEditView.h; sourceTree = "<group>"; };
+		88D226EC16B1A296006E5001 /* FSBEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBEditView.m; sourceTree = "<group>"; };
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
 		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
@@ -225,6 +231,10 @@
 				88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */,
 				883FBF9A16ACBE56003CAD1B /* FSBCalendarViewController.h */,
 				883FBF9B16ACBE56003CAD1B /* FSBCalendarViewController.m */,
+				88D226EB16B1A296006E5001 /* FSBEditView.h */,
+				88D226EC16B1A296006E5001 /* FSBEditView.m */,
+				88D226E816B19BEC006E5001 /* FSBEditBackgroundView.h */,
+				88D226E916B19BEC006E5001 /* FSBEditBackgroundView.m */,
 				88715BD216A78B3900BB9A8E /* FSBNavigationBar.h */,
 				88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
@@ -402,6 +412,8 @@
 				88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */,
 				883FBF9C16ACBE56003CAD1B /* FSBCalendarViewController.m in Sources */,
 				883FBFA216ACC0DE003CAD1B /* FSBAddTaskViewController.m in Sources */,
+				88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */,
+				88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
