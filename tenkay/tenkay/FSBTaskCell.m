@@ -85,6 +85,7 @@
     animation.toValue = @1.0;
     animation.delegate = self;
     [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
+    [self.playButton setImage:[UIImage imageNamed:@"stopxButtonWhite"] forState:UIControlStateNormal];
 }
 
 - (void)showIsRecordingView
