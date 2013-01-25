@@ -158,6 +158,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="selectedTaskRecordingBackground@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="y8S-Dl-ciT">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="61" type="user" id="acA-1t-q9A"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1023" contentMode="right" text="0h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-bx-lqQ">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="106" id="SiY-ST-8Cm"/>
@@ -195,7 +200,8 @@
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="zaB-it-ppo">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="4" id="mLL-wg-Oes"/>
+                                                <constraint firstAttribute="height" constant="4" id="Eai-Zz-kPh"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" type="user" id="mLL-wg-Oes"/>
                                                 <constraint firstAttribute="width" constant="282" id="rF9-2r-zyF"/>
                                             </constraints>
                                         </imageView>
@@ -203,18 +209,22 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="BYb-c2-32r"/>
+                                    <constraint firstAttribute="bottom" secondItem="zaB-it-ppo" secondAttribute="bottom" constant="1" id="0h5-gy-tiy"/>
                                     <constraint firstAttribute="trailing" secondItem="zaB-it-ppo" secondAttribute="trailing" constant="20" type="default" id="Dya-d8-TXq"/>
                                     <constraint firstItem="OBn-0f-cv5" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" constant="20" type="default" id="KeG-s8-nxi"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="leading" secondItem="OBn-0f-cv5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Llu-gg-xqe"/>
+                                    <constraint firstItem="OBn-0f-cv5" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="16" id="cA6-bG-4CU"/>
                                     <constraint firstItem="zaB-it-ppo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OBn-0f-cv5" secondAttribute="bottom" constant="8" type="user" id="eLU-OA-vLh"/>
-                                    <constraint firstAttribute="bottom" secondItem="zaB-it-ppo" secondAttribute="bottom" constant="3" id="i74-ZW-z31"/>
-                                    <constraint firstItem="3dh-bx-lqQ" firstAttribute="bottom" secondItem="yYM-Y9-qie" secondAttribute="bottom" type="default" id="kCJ-aN-wgE"/>
+                                    <constraint firstItem="yYM-Y9-qie" firstAttribute="bottom" secondItem="3dh-bx-lqQ" secondAttribute="bottom" type="default" id="m9z-A4-6It"/>
+                                    <constraint firstItem="y8S-Dl-ciT" firstAttribute="leading" secondItem="HI2-X1-Cnw" secondAttribute="leading" type="default" id="ndy-UF-dlI"/>
+                                    <constraint firstItem="y8S-Dl-ciT" firstAttribute="trailing" secondItem="HI2-X1-Cnw" secondAttribute="trailing" type="default" id="nug-Kv-gVV"/>
                                     <constraint firstItem="yYM-Y9-qie" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" constant="20" type="default" id="oGc-dM-pXg"/>
+                                    <constraint firstItem="y8S-Dl-ciT" firstAttribute="top" secondItem="HI2-X1-Cnw" secondAttribute="top" type="default" id="pse-TF-ygw"/>
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="playButton" destination="OBn-0f-cv5" id="Rng-KC-897"/>
+                                    <outlet property="selectedBackground" destination="y8S-Dl-ciT" id="Vg1-Ay-1Fv"/>
                                     <outlet property="taskLabel" destination="yYM-Y9-qie" id="U5X-Ge-PPG"/>
                                     <outlet property="taskSeparator" destination="zaB-it-ppo" id="yKU-nQ-NYW"/>
                                     <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
@@ -348,8 +358,58 @@
     <resources>
         <image name="addTimeDateSelectorBox@2x.png" width="616" height="57"/>
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
+        <image name="selectedTaskRecordingBackground@2x.png" width="640" height="120"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
+    <classes>
+        <class className="FSBAddTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBAddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onEndDateSelectorPressed:"/>
+                <relationship kind="action" name="onStartDateSelectorPressed:"/>
+                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeSelectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeSelectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="timeAddedLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBCalendarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBCalendarViewController.h"/>
+        </class>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
+        </class>
+        <class className="FSBTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
+            <relationships>
+                <relationship kind="action" name="onPlayPress:"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="selectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="taskSeparator" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBTasksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

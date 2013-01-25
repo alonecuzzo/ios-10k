@@ -24,5 +24,6 @@
 - (void)toggleNav;
 - (void)hideNav;
 - (void)showIsRecordingView;
+- (void)showCurrentCellIsRecordingView;
 
 @end

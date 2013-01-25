@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface FSBTaskCell()
+@property (strong, nonatomic) IBOutlet UIImageView *selectedBackground;
 @property (strong, nonatomic) IBOutlet UIImageView *taskSeparator;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 - (IBAction)onPlayPress:(id)sender;
@@ -69,7 +70,21 @@
 
 - (IBAction)onPlayPress:(id)sender
 {
-    [self.delegate onPlayButtonPress:self.task];
+    NSIndexPath *indexPath = [(UITableView *)self.superview indexPathForCell:self];
+    [self.delegate onPlayButtonPress:self.task indexPath:indexPath];
+}
+
+- (void)showCurrentCellIsRecordingView
+{
+   //means current cell is recording
+    [self.selectedBackground setHidden:NO];
+    //lets animate it in
+    animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = 0.3;
+    animation.fromValue = @0.0;
+    animation.toValue = @1.0;
+    animation.delegate = self;
+    [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
 }
 
 - (void)showIsRecordingView

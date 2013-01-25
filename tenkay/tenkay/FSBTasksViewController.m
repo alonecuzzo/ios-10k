@@ -229,8 +229,9 @@
     
 }
 
-- (void)onPlayButtonPress:(Task *)task
+- (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
 {
+    currentIndexPath = selectedIndex;
     isRecording = YES;
     [self.tableView reloadData];
     [self startPulsing];
@@ -264,6 +265,9 @@
     
     if(isRecording) {
         [taskCell showIsRecordingView];
+        if (currentIndexPath.row == indexPath.row) {
+            [taskCell showCurrentCellIsRecordingView];
+        }
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -436,7 +440,6 @@
 //        [self stopCurrentSession];
 //    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     
     FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
