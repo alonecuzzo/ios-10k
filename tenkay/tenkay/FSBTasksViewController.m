@@ -231,10 +231,12 @@
 
 - (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
 {
-    currentIndexPath = selectedIndex;
-    isRecording = YES;
-    [self.tableView reloadData];
-    [self startPulsing];
+    if (!isRecording) {
+        currentIndexPath = selectedIndex;
+        isRecording = YES;
+        [self.tableView reloadData];
+        [self startPulsing];[self startTaskTimerAtIndexPath:currentIndexPath];
+    }
 }
 
 
