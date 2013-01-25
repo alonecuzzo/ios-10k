@@ -28,7 +28,7 @@
     //saving indexpath for stopCurrentSession upon gesture.
     NSIndexPath *currentIndexPath;
     NSTimer *sessionTimer;
-    BOOL isTiming;
+    BOOL isRecording;
     NSInteger selectedRowNumber;
     FSBEditView *editView;
     CABasicAnimation *fadeUpAnimation;
@@ -205,6 +205,11 @@
     [self performFetch];
 }
 
+- (BOOL)isRecording
+{
+    return isRecording;
+}
+
 - (void)startPulsing
 {
     [UIView animateWithDuration:1.0 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
@@ -226,6 +231,8 @@
 
 - (void)onPlayButtonPress:(Task *)task
 {
+    isRecording = YES;
+    [self.tableView reloadData];
     [self startPulsing];
 }
 
@@ -254,6 +261,10 @@
     taskCell.taskLabel.text = task.title;
     taskCell.isOpen = NO;
     [taskCell hideNav];
+    
+    if(isRecording) {
+        [taskCell showIsRecordingView];
+    }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
@@ -315,7 +326,7 @@
     sessionTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   invocation: invocation
                                                   repeats:YES];
-    isTiming = true;
+    isRecording = true;
 }
 
 - (void)stopCurrentSession
@@ -354,7 +365,7 @@
     [taskCell.taskProgress setProgress:prog];
     */
     
-    isTiming = false;
+    isRecording = false;
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
@@ -456,11 +467,11 @@
     return kCellHeight;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self stopCurrentSession];
-    
-}
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self stopCurrentSession];
+//    
+//}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {

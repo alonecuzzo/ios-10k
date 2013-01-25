@@ -20,6 +20,7 @@
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task;
 - (void)dismissEditView:(NSString *)newTaskTitle;
 - (void)onPlayButtonPress:(Task *)task;
+- (BOOL)isRecording;
 @end
 
 @interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate, FSBTasksViewDelegate, UIActionSheetDelegate, FSBCalendarViewControllerDelegate>

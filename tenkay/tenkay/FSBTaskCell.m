@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface FSBTaskCell()
+@property (strong, nonatomic) IBOutlet UIImageView *taskSeparator;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 - (IBAction)onPlayPress:(id)sender;
 @end
@@ -55,7 +56,6 @@
 }
 
 -(void)onEditTask:(id)sender{
-    NSLog(@"passing task: %@", self.task.title);
     [self.delegate openEditScreen:self.task];
 }
 
@@ -70,6 +70,15 @@
 - (IBAction)onPlayPress:(id)sender
 {
     [self.delegate onPlayButtonPress:self.task];
+}
+
+- (void)showIsRecordingView
+{
+    //changes everything to white
+    [self.taskLabel setTextColor:[UIColor whiteColor]];
+    [self.taskTime setTextColor:[UIColor whiteColor]];
+    [self.playButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
+    [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
 }
 
 -(void)showNav

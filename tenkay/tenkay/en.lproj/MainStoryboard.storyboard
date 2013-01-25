@@ -216,6 +216,7 @@
                                 <connections>
                                     <outlet property="playButton" destination="OBn-0f-cv5" id="Rng-KC-897"/>
                                     <outlet property="taskLabel" destination="yYM-Y9-qie" id="U5X-Ge-PPG"/>
+                                    <outlet property="taskSeparator" destination="zaB-it-ppo" id="yKU-nQ-NYW"/>
                                     <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
                                 </connections>
                             </tableViewCell>
@@ -349,53 +350,6 @@
         <image name="playButtonTeal@2x.png" width="55" height="53"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
-    <classes>
-        <class className="FSBAddTaskViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onSave:"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FSBAddTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onEndDateSelectorPressed:"/>
-                <relationship kind="action" name="onStartDateSelectorPressed:"/>
-                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTimeNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTimeSelectedBackground" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTimeNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTimeSelectedBackground" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="timeAddedLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FSBCalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBCalendarViewController.h"/>
-        </class>
-        <class className="FSBNavigationBar" superclassName="UINavigationBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
-        </class>
-        <class className="FSBTaskCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
-            <relationships>
-                <relationship kind="action" name="onPlayPress:"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FSBTasksViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
