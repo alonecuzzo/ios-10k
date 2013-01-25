@@ -19,6 +19,7 @@
 - (void)openEditScreen:(Task *)task;
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task;
 - (void)dismissEditView:(NSString *)newTaskTitle;
+- (void)onPlayButtonPress:(Task *)task;
 @end
 
 @interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate, FSBTasksViewDelegate, UIActionSheetDelegate, FSBCalendarViewControllerDelegate>

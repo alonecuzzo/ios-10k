@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface FSBTaskCell()
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
+- (IBAction)onPlayPress:(id)sender;
 @end
 
 @implementation FSBTaskCell {
@@ -63,6 +65,11 @@
 
 -(void)onCalendarPress:(id)sender{
     [self.delegate openCalendar:self.task];
+}
+
+- (IBAction)onPlayPress:(id)sender
+{
+    [self.delegate onPlayButtonPress:self.task];
 }
 
 -(void)showNav

@@ -205,6 +205,30 @@
     [self performFetch];
 }
 
+- (void)startPulsing
+{
+    [UIView animateWithDuration:1.0 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+        self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
+    } completion:^(BOOL finished){
+        self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
+        [UIView animateWithDuration:1.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse) animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:114.0f/255.0f green:208.0f/255.0f blue:248.0f/255.0f alpha:100.0];
+        } completion:^(BOOL finished){
+            
+        }];
+    }];
+}
+
+- (void)stopPulsing
+{
+    
+}
+
+- (void)onPlayButtonPress:(Task *)task
+{
+    [self startPulsing];
+}
+
 
 #pragma mark - Table view data source
 
