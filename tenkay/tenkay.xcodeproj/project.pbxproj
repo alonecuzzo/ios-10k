@@ -38,6 +38,10 @@
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
 		88C450FF168E356900210F1F /* FSBTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450FE168E356900210F1F /* FSBTasksViewController.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
+		BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333416B2E6A800C188E4 /* light-line-separator.png */; };
+		BA57333716B2E6A800C188E4 /* light-line-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */; };
+		BA57333A16B2EC2400C188E4 /* Myanmar MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */; };
+		BA57333B16B2EC2400C188E4 /* Myanmar Sangam MN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -51,10 +55,6 @@
 		BA9AA301169E841F00662CE5 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2FD169E841F00662CE5 /* right_arrow.png */; };
 		BA9AA302169E841F00662CE5 /* right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2FE169E841F00662CE5 /* right_arrow@2x.png */; };
 		BA9AA304169F373200662CE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9AA303169F373200662CE5 /* QuartzCore.framework */; };
-		BA9AA31016A0CC5100662CE5 /* FWTPopoverAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */; };
-		BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */; };
-		BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */; };
-		BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */; };
 		BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */; };
 		BADB7B1016AD22AB007D53FF /* stopwatch-teal.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */; };
 		BADB7B1116AD22AB007D53FF /* stopwatch-teal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B0F16AD22AB007D53FF /* stopwatch-teal@2x.png */; };
@@ -108,6 +108,10 @@
 		88C450FE168E356900210F1F /* FSBTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTasksViewController.m; sourceTree = "<group>"; };
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
+		BA57333416B2E6A800C188E4 /* light-line-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator.png"; sourceTree = "<group>"; };
+		BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator@2x.png"; sourceTree = "<group>"; };
+		BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar MN.ttc"; sourceTree = "<group>"; };
+		BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar Sangam MN.ttf"; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -123,15 +127,6 @@
 		BA9AA2FD169E841F00662CE5 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		BA9AA2FE169E841F00662CE5 /* right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow@2x.png"; sourceTree = "<group>"; };
 		BA9AA303169F373200662CE5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BA9AA30716A0CC4E00662CE5 /* FWTPopoverAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverAnimationHelper.h; sourceTree = "<group>"; };
-		BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverAnimationHelper.m; sourceTree = "<group>"; };
-		BA9AA30916A0CC4E00662CE5 /* FWTPopoverArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverArrow.h; sourceTree = "<group>"; };
-		BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverArrow.m; sourceTree = "<group>"; };
-		BA9AA30B16A0CC4F00662CE5 /* FWTPopoverBackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverBackgroundHelper.h; sourceTree = "<group>"; };
-		BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverBackgroundHelper.m; sourceTree = "<group>"; };
-		BA9AA30D16A0CC5000662CE5 /* FWTPopoverView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FWTPopoverView-Prefix.pch"; sourceTree = "<group>"; };
-		BA9AA30E16A0CC5000662CE5 /* FWTPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPopoverView.h; sourceTree = "<group>"; };
-		BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPopoverView.m; sourceTree = "<group>"; };
 		BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTaskCell.h; sourceTree = "<group>"; };
 		BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTaskCell.m; sourceTree = "<group>"; };
 		BADB7B0E16AD22AA007D53FF /* stopwatch-teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-teal.png"; sourceTree = "<group>"; };
@@ -192,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				88715BD116A74EA600BB9A8E /* CKCalendarView */,
-				88715BC016A72FCB00BB9A8E /* FWTPopover */,
 				88715BD016A74E9300BB9A8E /* Data */,
 				883FBF9E16ACBEC4003CAD1B /* Utilities */,
 				883FBF9F16ACBED9003CAD1B /* Views */,
@@ -247,22 +241,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		88715BC016A72FCB00BB9A8E /* FWTPopover */ = {
-			isa = PBXGroup;
-			children = (
-				BA9AA30716A0CC4E00662CE5 /* FWTPopoverAnimationHelper.h */,
-				BA9AA30816A0CC4E00662CE5 /* FWTPopoverAnimationHelper.m */,
-				BA9AA30916A0CC4E00662CE5 /* FWTPopoverArrow.h */,
-				BA9AA30A16A0CC4F00662CE5 /* FWTPopoverArrow.m */,
-				BA9AA30B16A0CC4F00662CE5 /* FWTPopoverBackgroundHelper.h */,
-				BA9AA30C16A0CC5000662CE5 /* FWTPopoverBackgroundHelper.m */,
-				BA9AA30D16A0CC5000662CE5 /* FWTPopoverView-Prefix.pch */,
-				BA9AA30E16A0CC5000662CE5 /* FWTPopoverView.h */,
-				BA9AA30F16A0CC5100662CE5 /* FWTPopoverView.m */,
-			);
-			name = FWTPopover;
-			sourceTree = "<group>";
-		};
 		88715BD016A74E9300BB9A8E /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +266,10 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */,
+				BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */,
+				BA57333416B2E6A800C188E4 /* light-line-separator.png */,
+				BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */,
 				8837DBE816B08A0700282293 /* saveButton.png */,
 				BADB7B1716AE06AC007D53FF /* back-arrow.png */,
 				8863A7E916B085F80071B5FF /* saveButton@2x.png */,
@@ -404,6 +386,10 @@
 				BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */,
 				8863A7EA16B085F80071B5FF /* saveButton@2x.png in Resources */,
 				8837DBE916B08A0700282293 /* saveButton.png in Resources */,
+				BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */,
+				BA57333716B2E6A800C188E4 /* light-line-separator@2x.png in Resources */,
+				BA57333A16B2EC2400C188E4 /* Myanmar MN.ttc in Resources */,
+				BA57333B16B2EC2400C188E4 /* Myanmar Sangam MN.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,10 +409,6 @@
 				BAB554DF1690CD4F004DEEE7 /* FSBTaskCell.m in Sources */,
 				BA9AA2E616951FAB00662CE5 /* Task.m in Sources */,
 				BA9AA2F9169E807300662CE5 /* CKCalendarView.m in Sources */,
-				BA9AA31016A0CC5100662CE5 /* FWTPopoverAnimationHelper.m in Sources */,
-				BA9AA31116A0CC5100662CE5 /* FWTPopoverArrow.m in Sources */,
-				BA9AA31216A0CC5100662CE5 /* FWTPopoverBackgroundHelper.m in Sources */,
-				BA9AA31316A0CC5100662CE5 /* FWTPopoverView.m in Sources */,
 				88715BCF16A74D9900BB9A8E /* FSBTextUtil.m in Sources */,
 				88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */,
 				88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */,

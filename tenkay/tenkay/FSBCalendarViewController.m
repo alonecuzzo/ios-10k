@@ -16,15 +16,19 @@
     UIView          *calendarSubView,
                     *statSubView,
                     *dailyStatSubView,
-                    *dailyStatsTextBoxView;
+                    *dailyStatsTextBoxView,
+                    *monthStatSubView,
+                    *monthStatsTextBoxView;
     UILabel         *dailyStatTitle,
                     *dailyStatHours,
-                    *dailyStatSessions;
+                    *dailyStatSessions,
+                    *monthStatHours,
+                    *monthStatSessions,
+                    *monthStatAverage;
 }
 
 @synthesize taskForCalendar,
-            managedObjectContext,
-            delegate;
+            managedObjectContext;
 
 - (void)buildTaskDetailView
 {
@@ -32,24 +36,20 @@
     self.title = taskForCalendar.title;
     
     //style back button
-    [self.navigationController.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    /*
-    //build nav
-    CGRect navBackground = CGRectMake(0, 0, self.view.bounds.size.width, 44);
-    UIView *navBgView = [[UIView alloc] initWithFrame:navBackground];
-    UIImageView *navBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-header"]];
-    [navBgView addSubview:navBgImageView];
-    [self.view insertSubview:navBgImageView belowSubview:titleLabel];
-    */
-    /*
-    CGRect backButtonRect = CGRectMake(15, 10, 14, 22);
-    UIButton *backButton = [[UIButton alloc] initWithFrame:backButtonRect];
-    [backButton setBackgroundImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backButton];
-    */
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
+    [backButton setImage:[UIImage imageNamed:@"back-arrow"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(onCancelPress:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    [self buildDailyStatBox];
+    [self buildMonthlyStatBox];
+    [self buildCalendarBox];
+}
+
+- (void) buildCalendarBox
+{
     //calendar data view
-    CGRect  calendarViewRect = CGRectMake(0, 50, 300, 300);
+    CGRect  calendarViewRect = CGRectMake(0, 0, 300, 300);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
     CKCalendarView *calendar = [[CKCalendarView alloc] init];
     calendar.shouldFillCalendar = YES;
@@ -59,6 +59,8 @@
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:[NSDate date]];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:[NSDate date]];
+    NSTimeInterval monthTimeInt = 0;
+    int sessionCount = 0;
     
     for (int i = 0; i < [taskSessions count]; i++) {
         Session *thisSession = (Session *)[taskSessions objectAtIndex:i];
@@ -68,68 +70,175 @@
             ([thisEndDate laterDate:calendarEndDate] == calendarEndDate)
             ) {
             [datesToHightlight addObject:thisStartDate];
+            monthTimeInt += [thisEndDate timeIntervalSinceDate:thisStartDate];
+            sessionCount++;
         }
     }
     UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
     [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
     
+    monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
+    if(sessionCount == 1)
+        monthStatSessions.text = [NSString stringWithFormat:@"%d session", sessionCount];
+    else
+        monthStatSessions.text = [NSString stringWithFormat:@"%d sessions", sessionCount];
+    [self adjustMonthLabels];
+    
     [calendarSubView addSubview:calendar];
     [self.view addSubview:calendarSubView];
     calendar.delegate = self;
-    
-    //TODO: show daily hours for task
-    CGRect dailyStatRect = CGRectMake(0, 345, self.view.bounds.size.width, 75);
+}
+
+- (void) buildDailyStatBox
+{
+    CGRect dailyStatRect = CGRectMake(0, 295, self.view.bounds.size.width, 75);
     dailyStatSubView = [[UIView alloc] initWithFrame:dailyStatRect];
     dailyStatSubView.backgroundColor = UIColorFromRGB(0xd7d7d7);
     
-    CGRect dailyStatTitleRect = CGRectMake(0, 5, self.view.bounds.size.width, 20);
+    CGRect dailyStatsTextBox = CGRectMake(0, 45, self.view.bounds.size.width, 30);
+    dailyStatsTextBoxView = [[UIView alloc] initWithFrame:dailyStatsTextBox];
+    [dailyStatSubView addSubview:dailyStatsTextBoxView];
+    
+    CGRect dailyStatTitleRect = CGRectMake(0, 10, self.view.bounds.size.width, 20);
     dailyStatTitle = [[UILabel alloc] initWithFrame:dailyStatTitleRect];
     dailyStatTitle.text = @"Daily Stats: 00-00";
     dailyStatTitle.backgroundColor = UIColorFromRGB(0xd7d7d7);
     dailyStatTitle.textColor = UIColorFromRGB(0x666666);
+    dailyStatTitle.font = [UIFont fontWithName:@"Myanmar MN" size:16];
     [dailyStatTitle setTextAlignment:NSTextAlignmentCenter];
     [dailyStatSubView addSubview:dailyStatTitle];
     
-    CGRect dailyStatsTextBox = CGRectMake(0, 30, self.view.bounds.size.width, 30);
-    dailyStatsTextBoxView = [[UIView alloc] initWithFrame:dailyStatsTextBox];
-    [dailyStatSubView addSubview:dailyStatsTextBoxView];
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
+    separator.frame = CGRectMake(dailyStatSubView.center.x - (separator.bounds.size.width / 2), 35, separator.frame.size.width, separator.frame.size.height);
+    [dailyStatSubView addSubview:separator];
     
     //hours stat
     dailyStatHours = [[UILabel alloc] init];
     [dailyStatHours setText:@"0 hours"];
     dailyStatHours.textColor = UIColorFromRGB(0xffffff);
     dailyStatHours.backgroundColor = UIColorFromRGB(0x4ca8cf);
+    dailyStatHours.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
     dailyStatHours.layer.cornerRadius = 4;
     dailyStatHours.textAlignment = NSTextAlignmentCenter;
-    [dailyStatHours sizeToFit];
-    dailyStatHours.bounds = CGRectMake(dailyStatHours.bounds.origin.x, dailyStatHours.bounds.origin.y, dailyStatHours.bounds.size.width + 5, dailyStatHours.bounds.size.height);
-    [dailyStatHours adjustsFontSizeToFitWidth];
     [dailyStatsTextBoxView addSubview:dailyStatHours];
     
     //sessions stat
     dailyStatSessions = [[UILabel alloc] init];
-    dailyStatSessions.frame = CGRectMake(dailyStatHours.frame.size.width + 10, dailyStatSessions.frame.origin.y, dailyStatSessions.frame.size.width, dailyStatSessions.frame.size.height);
     [dailyStatSessions setText:@"0 sessions"];
     dailyStatSessions.textColor = UIColorFromRGB(0xffffff);
     dailyStatSessions.backgroundColor = UIColorFromRGB(0x4ca8cf);
+    dailyStatSessions.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
     dailyStatSessions.layer.cornerRadius = 4;
     dailyStatSessions.textAlignment = NSTextAlignmentCenter;
-    [dailyStatSessions sizeToFit];
-    dailyStatSessions.bounds = CGRectMake(dailyStatSessions.bounds.origin.x, dailyStatSessions.bounds.origin.y, dailyStatSessions.bounds.size.width + 5, dailyStatSessions.bounds.size.height);
-    [dailyStatSessions adjustsFontSizeToFitWidth];
     [dailyStatsTextBoxView addSubview:dailyStatSessions];
     
-    float textBoxWidth = dailyStatHours.frame.size.width + dailyStatSessions.frame.size.width + 20;
-    dailyStatsTextBoxView.frame = CGRectMake(dailyStatSubView.center.x - (textBoxWidth / 2), dailyStatsTextBoxView.frame.origin.y, textBoxWidth, dailyStatHours.frame.size.height);
+    [self adjustDailyLabels];
     
     [self.view addSubview:dailyStatSubView];
-    
-    //TODO: show monthly total for task
 }
 
-- (void) backButtonHandler:(id)sender
+-(void)adjustDailyLabels
 {
-    [self.delegate calendarViewControllerDidGoBack:self];
+    [dailyStatHours sizeToFit];
+    dailyStatHours.bounds = CGRectMake(dailyStatHours.bounds.origin.x, dailyStatHours.bounds.origin.y, dailyStatHours.bounds.size.width + 5, dailyStatHours.bounds.size.height);
+    [dailyStatHours adjustsFontSizeToFitWidth];
+    
+    [dailyStatSessions sizeToFit];
+    dailyStatSessions.frame = CGRectMake(dailyStatHours.frame.size.width + 10, dailyStatSessions.frame.origin.y, dailyStatSessions.frame.size.width, dailyStatSessions.frame.size.height);
+    dailyStatSessions.bounds = CGRectMake(dailyStatSessions.bounds.origin.x, dailyStatSessions.bounds.origin.y, dailyStatSessions.bounds.size.width + 5, dailyStatSessions.bounds.size.height);
+    [dailyStatSessions adjustsFontSizeToFitWidth];
+    
+    float textBoxWidth = dailyStatHours.frame.size.width + dailyStatSessions.frame.size.width;
+    
+    dailyStatsTextBoxView.bounds = CGRectMake(dailyStatsTextBoxView.bounds.origin.x, dailyStatsTextBoxView.bounds.origin.y, textBoxWidth, dailyStatHours.bounds.size.height);
+    
+    dailyStatsTextBoxView.frame = CGRectMake(dailyStatSubView.center.x - (textBoxWidth / 2), dailyStatsTextBoxView.frame.origin.y, textBoxWidth, dailyStatHours.frame.size.height);
+}
+
+- (void)buildMonthlyStatBox
+{
+    CGRect monthStatRect = CGRectMake(0, 380, self.view.bounds.size.width, 75);
+    monthStatSubView = [[UIView alloc] initWithFrame:monthStatRect];
+    monthStatSubView.backgroundColor = UIColorFromRGB(0xd7d7d7);
+    
+    CGRect monthStatsTextBox = CGRectMake(0, 45, self.view.bounds.size.width, 30);
+    monthStatsTextBoxView = [[UIView alloc] initWithFrame:monthStatsTextBox];
+    monthStatsTextBoxView.backgroundColor = [UIColor clearColor];
+    [monthStatSubView addSubview:monthStatsTextBoxView];
+    
+    CGRect monthlyStatTitleRect = CGRectMake(0, 10, self.view.bounds.size.width, 20);
+    UILabel *monthStatTitle = [[UILabel alloc] initWithFrame:monthlyStatTitleRect];
+    monthStatTitle.text = @"Monthly Stats";
+    monthStatTitle.backgroundColor = UIColorFromRGB(0xd7d7d7);
+    monthStatTitle.textColor = UIColorFromRGB(0x666666);
+    monthStatTitle.font = [UIFont fontWithName:@"Myanmar MN" size:16];
+    [monthStatTitle setTextAlignment:NSTextAlignmentCenter];
+    [monthStatSubView addSubview:monthStatTitle];
+    
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
+    separator.frame = CGRectMake(monthStatSubView.center.x - (separator.bounds.size.width / 2), 35, separator.frame.size.width, separator.frame.size.height);
+    [monthStatSubView addSubview:separator];
+    
+    //show monthly hours
+    monthStatHours = [[UILabel alloc] init];
+    [monthStatHours setText:@"0 hours"];
+    monthStatHours.textColor = UIColorFromRGB(0xffffff);
+    monthStatHours.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    monthStatHours.backgroundColor = UIColorFromRGB(0x999999);
+    monthStatHours.layer.cornerRadius = 4;
+    monthStatHours.textAlignment = NSTextAlignmentCenter;
+    
+    //show session number
+    monthStatSessions = [[UILabel alloc] init];
+    monthStatSessions.frame = CGRectMake(monthStatHours.frame.size.width + 10, monthStatSessions.frame.origin.y, monthStatSessions.frame.size.width, monthStatSessions.frame.size.height);
+    [monthStatSessions setText:@"0 sessions"];
+    monthStatSessions.textColor = UIColorFromRGB(0xffffff);
+    monthStatSessions.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    monthStatSessions.backgroundColor = UIColorFromRGB(0x999999);
+    monthStatSessions.layer.cornerRadius = 4;
+    monthStatSessions.textAlignment = NSTextAlignmentCenter;
+    
+    //show monthly average
+    monthStatAverage = [[UILabel alloc] init];
+    monthStatAverage.frame = CGRectMake(monthStatSessions.frame.origin.x + monthStatSessions.frame.size.width + 12, monthStatAverage.frame.origin.y, monthStatAverage.frame.size.width, monthStatAverage.frame.size.height);
+    [monthStatAverage setText:@"0 average"];
+    monthStatAverage.textColor = UIColorFromRGB(0xffffff);
+    monthStatAverage.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    monthStatAverage.backgroundColor = UIColorFromRGB(0x999999);
+    monthStatAverage.layer.cornerRadius = 4;
+    monthStatAverage.textAlignment = NSTextAlignmentCenter;
+    
+    [self adjustMonthLabels];
+    
+    [self.view addSubview:monthStatSubView];
+}
+
+- (void)adjustMonthLabels
+{
+    [monthStatHours sizeToFit];
+    monthStatHours.frame = CGRectMake(monthStatHours.bounds.origin.x, monthStatHours.bounds.origin.y, monthStatHours.bounds.size.width + 5, monthStatHours.bounds.size.height);
+    [monthStatHours adjustsFontSizeToFitWidth];
+    [monthStatsTextBoxView addSubview:monthStatHours];
+    float textBoxWidth = monthStatHours.bounds.size.width;
+    
+    [monthStatSessions sizeToFit];
+    monthStatSessions.frame = CGRectMake(monthStatSessions.bounds.origin.x + monthStatHours.bounds.size.width + 10, monthStatSessions.bounds.origin.y, monthStatSessions.bounds.size.width + 5, monthStatSessions.bounds.size.height);
+    [monthStatSessions adjustsFontSizeToFitWidth];
+    [monthStatsTextBoxView addSubview:monthStatSessions];
+    textBoxWidth += monthStatSessions.bounds.size.width;
+    
+    [monthStatAverage sizeToFit];
+    monthStatAverage.frame = CGRectMake(monthStatAverage.bounds.origin.x + monthStatSessions.bounds.size.width + monthStatHours.bounds.size.width + 20, monthStatAverage.bounds.origin.y, monthStatAverage.bounds.size.width + 5, monthStatAverage.bounds.size.height);
+    [monthStatAverage adjustsFontSizeToFitWidth];
+    [monthStatsTextBoxView addSubview:monthStatAverage];
+    textBoxWidth += monthStatAverage.bounds.size.width;
+    
+    monthStatsTextBoxView.frame = CGRectMake(monthStatSubView.center.x - (textBoxWidth / 2), monthStatsTextBoxView.frame.origin.y, textBoxWidth, dailyStatHours.frame.size.height);
+}
+
+- (void)onCancelPress:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) viewDidLoad
@@ -212,11 +321,13 @@
 
 -(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
 {
+    //TODO: Use predicates
     NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
     NSMutableArray *datesToHightlight = [[NSMutableArray alloc] init];
     NSDate *calendarStartDate = [calendar firstDayOfMonthContainingDate:date];
     NSDate *calendarEndDate = [calendar firstDayOfNextMonthContainingDate:date];
-    
+    NSTimeInterval monthTimeInt = 0;
+    int sessionCount = 0;
     for (int i = 0; i < [taskSessions count]; i++) {
         Session *thisSession = (Session *)[taskSessions objectAtIndex:i];
         NSDate *thisStartDate = thisSession.startDate;
@@ -225,10 +336,20 @@
             ([thisEndDate laterDate:calendarEndDate] == calendarEndDate)
             ) {
             [datesToHightlight addObject:thisStartDate];
+            monthTimeInt += [thisEndDate timeIntervalSinceDate:thisStartDate];
+            sessionCount++;
         }
     }
-    UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal.png"];
+    
+    UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
     [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
+    
+    monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
+    if(sessionCount == 1)
+        monthStatSessions.text = [NSString stringWithFormat:@"%d session", sessionCount];
+    else
+        monthStatSessions.text = [NSString stringWithFormat:@"%d sessions", sessionCount];
+    [self adjustMonthLabels];
 }
 
 @end

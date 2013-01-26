@@ -45,5 +45,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Myanmar MN.ttc</string>
+		<string>Myanmar Sangam MN.ttf</string>
+	</array>
 </dict>
 </plist>

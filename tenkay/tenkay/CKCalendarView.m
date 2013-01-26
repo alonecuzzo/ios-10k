@@ -399,13 +399,13 @@
     self.backgroundColor   = UIColorFromRGB(0xe7e7e7);
     //[self setTitleColor:[UIColor whiteColor]];
     [self setTitleColor:UIColorFromRGB(0x666666)];
-    [self setTitleFont:[UIFont boldSystemFontOfSize:17.0]];
+    [self setTitleFont:[UIFont fontWithName:@"Myanmar MN" size:18]];
 
-    [self setDayOfWeekFont:[UIFont boldSystemFontOfSize:12.0]];
-    [self setDayOfWeekTextColor:UIColorFromRGB(0x999999)];
+    [self setDayOfWeekFont:[UIFont fontWithName:@"Helvetica Neue" size:12.0f]];
+    [self setDayOfWeekTextColor:UIColorFromRGB(0x666666)];
     //[self setDayOfWeekBottomColor:UIColorFromRGB(0xe7e7e7) topColor:UIColorFromRGB(0xe7e7e7)];
 
-    [self setDateFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [self setDateFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]];
     [self setDateTextColor:UIColorFromRGB(0x393B40)];
     [self setDateBackgroundColor:UIColorFromRGB(0xF2F2F2)];
     [self setDateBorderColor:UIColorFromRGB(0xDAE1E6)];
