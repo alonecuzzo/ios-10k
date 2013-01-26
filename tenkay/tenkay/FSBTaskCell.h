@@ -20,7 +20,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *taskTime;
 @property (strong, nonatomic) IBOutlet UIProgressView *taskProgress;
 
+
 - (void)toggleNav;
 - (void)hideNav;
+- (void)showIsRecordingView;
+- (void)showCurrentCellIsRecordingView;
 
 @end

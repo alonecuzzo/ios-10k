@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface FSBTaskCell()
+@property (strong, nonatomic) IBOutlet UIImageView *selectedBackground;
+@property (strong, nonatomic) IBOutlet UIImageView *taskSeparator;
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
+- (IBAction)onPlayPress:(id)sender;
 @end
 
 @implementation FSBTaskCell {
@@ -53,7 +57,7 @@
 }
 
 -(void)onEditTask:(id)sender{
-    NSLog(@"edit");
+    [self.delegate openEditScreen:self.task];
 }
 
 -(void)onAddTime:(id)sender{
@@ -62,6 +66,35 @@
 
 -(void)onCalendarPress:(id)sender{
     [self.delegate openCalendar:self.task];
+}
+
+- (IBAction)onPlayPress:(id)sender
+{
+    NSIndexPath *indexPath = [(UITableView *)self.superview indexPathForCell:self];
+    [self.delegate onPlayButtonPress:self.task indexPath:indexPath];
+}
+
+- (void)showCurrentCellIsRecordingView
+{
+   //means current cell is recording
+    [self.selectedBackground setHidden:NO];
+    //lets animate it in
+    animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = 0.3;
+    animation.fromValue = @0.0;
+    animation.toValue = @1.0;
+    animation.delegate = self;
+    [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
+    [self.playButton setImage:[UIImage imageNamed:@"stopxButtonWhite"] forState:UIControlStateNormal];
+}
+
+- (void)showIsRecordingView
+{
+    //changes everything to white
+    [self.taskLabel setTextColor:[UIColor whiteColor]];
+    [self.taskTime setTextColor:[UIColor whiteColor]];
+    [self.playButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
+    [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
 }
 
 -(void)showNav

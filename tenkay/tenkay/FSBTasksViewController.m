@@ -14,6 +14,8 @@
 #import "Session.h"
 #import "FSBTextUtil.h"
 #import "FSBAddTimeViewController.h"
+#import "FSBEditView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FSBTasksViewController ()
 @end
@@ -26,8 +28,11 @@
     //saving indexpath for stopCurrentSession upon gesture.
     NSIndexPath *currentIndexPath;
     NSTimer *sessionTimer;
-    BOOL isTiming;
+    BOOL isRecording;
     NSInteger selectedRowNumber;
+    FSBEditView *editView;
+    CABasicAnimation *fadeUpAnimation;
+    CABasicAnimation *fadeOutAnimation;
 }
 
 #define kCellHeight 64.0 
@@ -52,15 +57,64 @@
 
 - (void)openCalendar:(Task *)task
 {
-    selectedRowNumber = -1;
+   selectedRowNumber = -1;
    [self performSegueWithIdentifier:@"openCalendarView" sender:task];
+}
+
+- (void)openEditScreen:(Task *)task
+{
+    editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.window.bounds.size.width, self.view.bounds.size.height)];
+    editView.delegate = self;
+    [editView setTask:task];
+    [self.view addSubview:editView];
+    self.tableView.userInteractionEnabled = FALSE;
+    
+    fadeUpAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeUpAnimation.duration = 0.4;
+    fadeUpAnimation.fromValue = @0.0;
+    fadeUpAnimation.toValue = @1.0;
+    fadeUpAnimation.delegate = self;
+    [fadeUpAnimation setValue:@"editScreenfadeUpAnimation" forKey:@"id"];
+    [editView.layer addAnimation:fadeUpAnimation forKey:@"animateOpacity"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if ([[anim valueForKey:@"id"] isEqual:@"editScreenfadeUpAnimation"]) {
+        [editView setKeyboardFirstResponder];
+    } else if([[anim valueForKey:@"id"] isEqual:@"editScreenfadeOutAnimation"]) {
+        fadeOutAnimation = nil;
+        fadeUpAnimation = nil;
+        [editView removeFromSuperview];
+        editView = nil;
+        self.tableView.userInteractionEnabled = TRUE;
+    }
 }
 
 - (void)openAddTimeScreen:(Task *)task
 {
     currentTask = task;
     selectedRowNumber = -1;
-   [self performSegueWithIdentifier:@"addTime" sender:self];  
+    [self performSegueWithIdentifier:@"addTime" sender:self];  
+}
+
+- (void)dismissEditView:(NSString *)newTaskTitle
+{
+    fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOutAnimation.duration = 0.4;
+    fadeOutAnimation.fromValue = @1.0;
+    fadeOutAnimation.toValue = @0.0;
+    fadeOutAnimation.delegate = self;
+    editView.alpha = 0.0;
+    [fadeOutAnimation setValue:@"editScreenfadeOutAnimation" forKey:@"id"];
+    [editView.layer addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+    
+    //update model here
+    if ([newTaskTitle length] > 0) {
+        Task *task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:selectedRowNumber inSection:0]];
+        [task setValue:newTaskTitle forKey:@"title"];
+    }
+    selectedRowNumber = -1;
 }
 
 - (void)viewDidLoad
@@ -123,6 +177,7 @@
                                   destructiveButtonTitle:destructiveTitle
                                   otherButtonTitles:nil];
     [actionSheet showInView:self.view];
+    selectedRowNumber = -1;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -147,10 +202,40 @@
     
     task.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [seconds doubleValue])];
     
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        FATAL_CORE_DATA_ERROR(error);
-        return;
+    [self performFetch];
+}
+
+- (BOOL)isRecording
+{
+    return isRecording;
+}
+
+- (void)startPulsing
+{
+    [UIView animateWithDuration:1.0 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+        self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
+    } completion:^(BOOL finished){
+        self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
+        [UIView animateWithDuration:1.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse) animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:114.0f/255.0f green:208.0f/255.0f blue:248.0f/255.0f alpha:100.0];
+        } completion:^(BOOL finished){
+            
+        }];
+    }];
+}
+
+- (void)stopPulsing
+{
+    
+}
+
+- (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
+{
+    if (!isRecording) {
+        currentIndexPath = selectedIndex;
+        isRecording = YES;
+        [self.tableView reloadData];
+        [self startPulsing];[self startTaskTimerAtIndexPath:currentIndexPath];
     }
 }
 
@@ -179,6 +264,13 @@
     taskCell.taskLabel.text = task.title;
     taskCell.isOpen = NO;
     [taskCell hideNav];
+    
+    if(isRecording) {
+        [taskCell showIsRecordingView];
+        if (currentIndexPath.row == indexPath.row) {
+            [taskCell showCurrentCellIsRecordingView];
+        }
+    }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
@@ -240,7 +332,7 @@
     sessionTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   invocation: invocation
                                                   repeats:YES];
-    isTiming = true;
+    isRecording = true;
 }
 
 - (void)stopCurrentSession
@@ -279,7 +371,7 @@
     [taskCell.taskProgress setProgress:prog];
     */
     
-    isTiming = false;
+    isRecording = false;
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
@@ -351,7 +443,6 @@
 //    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
     FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     // if it's already selected
@@ -381,11 +472,11 @@
     return kCellHeight;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self stopCurrentSession];
-    
-}
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self stopCurrentSession];
+//    
+//}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {

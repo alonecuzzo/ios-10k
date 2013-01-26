@@ -29,7 +29,11 @@
         if(isStringTruncated == YES) {
             returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"s", nil] componentsJoinedByString:@""];
         } else {
-            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"seconds", nil] componentsJoinedByString:@" "];
+            if (roundedSeconds == 1) {
+                returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"second", nil] componentsJoinedByString:@" "];
+            } else {
+                returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"seconds", nil] componentsJoinedByString:@" "];
+            }
         }
         return returnString;
     }
@@ -40,23 +44,28 @@
         if (isStringTruncated == YES) {
             returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"m", nil] componentsJoinedByString:@""];
         } else {
-            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"minutes", nil] componentsJoinedByString:@" "];
+            if (roundedSeconds == 1) {
+                returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"minute", nil] componentsJoinedByString:@" "];
+            } else {
+                returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"minutes", nil] componentsJoinedByString:@" "];
+            }
         }
         return returnString;
     }
-    
-    //hours
-    if(roundedSeconds < 86400) {
-        roundedSeconds = floor(roundedSeconds / 3600);
-        if (isStringTruncated == YES) {
-            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"h", nil] componentsJoinedByString:@""];
+   
+    //everything else is just hours
+    roundedSeconds = floor(roundedSeconds / 3600);
+    if (isStringTruncated == YES) {
+        returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"h", nil] componentsJoinedByString:@""];
+    } else {
+        if (roundedSeconds == 1) {
+            returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"hour", nil] componentsJoinedByString:@" "];
         } else {
             returnString = [[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", roundedSeconds], @"hours", nil] componentsJoinedByString:@" "];
         }
-        return returnString;
     }
-    
     return returnString;
+
 }
 
 @end

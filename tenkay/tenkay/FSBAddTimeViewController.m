@@ -8,10 +8,16 @@
 
 #import "FSBAddTimeViewController.h"
 #import "FSBTasksViewController.h"
+#import "FSBTextUtil.h"
 
 @interface FSBAddTimeViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeAddedLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *startTimeSelectedBackground;
+@property (strong, nonatomic) IBOutlet UIImageView *endTimeSelectedBackground;
+@property (strong, nonatomic) IBOutlet UILabel *startTimeNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endTimeNameLabel;
 
 - (IBAction)onStartDateSelectorPressed:(id)sender;
 - (IBAction)onEndDateSelectorPressed:(id)sender;
@@ -41,8 +47,14 @@
     NSDate *startDate = [df dateFromString:self.startDateLabel.text];
     NSDate *endDate = [df dateFromString:self.endDateLabel.text];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:startDate toDate:endDate options:0];
-    return components.hour;
+    NSDateComponents *components = [calendar components:NSSecondCalendarUnit fromDate:startDate toDate:endDate options:0];
+    return components.second;
+}
+
+- (void)updateTimeAddedLabel
+{
+    NSInteger timeDifference = [self computeTimeDifference];
+    self.timeAddedLabel.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:timeDifference] isTruncated:NO];
 }
 
 - (void)updateStartDateLabel:(id)sender
@@ -51,6 +63,7 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.startDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    [self updateTimeAddedLabel];
 }
 
 - (void)updateEndDateLabel:(id)sender
@@ -59,6 +72,7 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	df.timeStyle = NSDateFormatterShortStyle;
 	self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
+    [self updateTimeAddedLabel];
 }
 
 - (void)removeDatePicker:(id)sender
@@ -71,7 +85,8 @@
 	[self.view addSubview:datePicker];
 }
 
-- (void)hideDatePicker {
+- (void)hideDatePicker
+{
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
     [UIView beginAnimations:@"MoveOut" context:nil];
     [UIView setAnimationDelegate:self];
@@ -80,7 +95,19 @@
     [UIView commitAnimations];
 }
 
-- (void)showDatePicker {
+- (void)hideDatePickerFromBackgroundPress:(id)sender
+{
+    [self hideDatePicker];
+    [self.startTimeSelectedBackground setHidden:YES];
+    [self.endTimeSelectedBackground setHidden:YES];
+    self.endDateLabel.textColor = [UIColor darkGrayColor];
+    self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
+    self.startDateLabel.textColor = [UIColor darkGrayColor];
+    self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
+}
+
+- (void)showDatePicker
+{
     [self addDatePicker];
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
     [UIView beginAnimations:@"MoveIn" context:nil];
@@ -89,7 +116,8 @@
     [UIView commitAnimations];
 }
 
-- (void)showDatePickerPostSwap:(id)sender {
+- (void)showDatePickerPostSwap:(id)sender
+{
     [self addDatePicker];
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216, 325, 250);
     [UIView beginAnimations:@"MoveIn" context:nil];
@@ -98,7 +126,8 @@
     [UIView commitAnimations];
 }
 
-- (void)swapDatePicker {
+- (void)swapDatePicker
+{
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height, 325, 250);
     [UIView beginAnimations:@"MoveOut" context:nil];
     [UIView setAnimationDelegate:self];
@@ -113,6 +142,9 @@
         isDatePickerOpen = NO;
         isStartDateLabelSelected = NO;
         [self hideDatePicker];
+        [self.startTimeSelectedBackground setHidden:YES];
+        self.startDateLabel.textColor = [UIColor darkGrayColor];
+        self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
     } else {
         isDatePickerOpen = YES;
         isStartDateLabelSelected = YES;
@@ -130,9 +162,13 @@
         datePicker.date = [df dateFromString:self.startDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:@"Jan 1, 1970"]];
         [datePicker setMaximumDate:[df dateFromString:self.endDateLabel.text]];
+        [self.endTimeSelectedBackground setHidden:YES];
+        self.endDateLabel.textColor = [UIColor darkGrayColor];
+        self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
+        [self.startTimeSelectedBackground setHidden:NO];
+        self.startDateLabel.textColor = [UIColor whiteColor];
+        self.startTimeNameLabel.textColor = [UIColor whiteColor];
     }
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
-
 }
 
 - (IBAction)onEndDateSelectorPressed:(id)sender
@@ -141,6 +177,9 @@
         isDatePickerOpen = NO;
         isEndDateLabelSelected = NO;
         [self hideDatePicker];
+        [self.endTimeSelectedBackground setHidden:YES];
+        self.endDateLabel.textColor = [UIColor darkGrayColor];
+        self.endTimeNameLabel.textColor = [UIColor darkGrayColor];
     } else {
         isDatePickerOpen = YES;
         isEndDateLabelSelected = YES;
@@ -158,6 +197,12 @@
         datePicker.date = [df dateFromString:self.endDateLabel.text];
         [datePicker setMinimumDate:[df dateFromString:self.startDateLabel.text]];
         [datePicker setMaximumDate:[NSDate date]];
+        [self.endTimeSelectedBackground setHidden:NO];
+        self.endDateLabel.textColor = [UIColor whiteColor];
+        self.endTimeNameLabel.textColor = [UIColor whiteColor];
+        [self.startTimeSelectedBackground setHidden:YES];
+        self.startDateLabel.textColor = [UIColor darkGrayColor];
+        self.startTimeNameLabel.textColor = [UIColor darkGrayColor];
     }
 }
 
@@ -183,7 +228,7 @@
     self.endDateLabel.text = [NSString stringWithFormat:@"%@", [df stringFromDate:datePicker.date]];
    
     UIButton *saveButton;
-    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width -86, -5, 91, 57)];
+    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width - 6, -5, 91, 57)];
     [saveButton setImage:[UIImage imageNamed:@"saveButton"] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(onSavePress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
@@ -201,15 +246,12 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.text = @"Add Time";
     self.navigationItem.titleView = titleLabel;
-    
-    NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Gurmukhi MN"]);
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-//    UIImageView *bgNav = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"]];
-//    self.navigationItem.titleView = bgNav;
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"addTimeNavBackgroundTeal"] forBarMetrics:UIBarMetricsDefault];
+    [self updateTimeAddedLabel];
+    [self.startTimeSelectedBackground setHidden:YES];
+    [self.endTimeSelectedBackground setHidden:YES];
+    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDatePickerFromBackgroundPress:)];
+    tapGestureRecognize.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGestureRecognize];
 }
 
 - (void)onCancelPress:(id)sender
@@ -219,7 +261,7 @@
 
 - (void)onSavePress:(id)sender
 {
-    NSNumber *numSecondsToAdd = @(3600 * [self computeTimeDifference]);
+    NSNumber *numSecondsToAdd = [NSNumber numberWithInt:[self computeTimeDifference]];
     if (numSecondsToAdd > 0) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateStyle = NSDateFormatterMediumStyle;
