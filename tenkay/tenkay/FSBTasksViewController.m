@@ -239,6 +239,7 @@
 {
     if (!isRecording) {
         currentIndexPath = selectedIndex;
+        selectedRowNumber = -1;
         isRecording = YES;
         [self.tableView reloadData];
         [self startPulsing];
