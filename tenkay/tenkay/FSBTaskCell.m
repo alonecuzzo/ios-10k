@@ -86,6 +86,7 @@
     animation.delegate = self;
     [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
     [self.playButton setImage:[UIImage imageNamed:@"stopButtonWhite"] forState:UIControlStateNormal];
+    self.taskSeparator.alpha = 0.0;
 }
 
 - (void)showIsRecordingView
@@ -95,6 +96,7 @@
     [self.taskTime setTextColor:[UIColor whiteColor]];
     [self.playButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
     [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
+    self.taskSeparator.alpha = 1.0;
 }
 
 -(void)showNav
