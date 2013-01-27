@@ -79,6 +79,7 @@
     [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparator"]];
     self.taskSeparator.alpha = 1.0;
     [self.selectedBackground setHidden:YES];
+    self.playStopButton.enabled = YES;
 }
 
 - (IBAction)onPlayStopPress:(id)sender
@@ -98,6 +99,7 @@
 - (void)showCurrentCellIsRecordingView
 {
    //means current cell is recording
+    self.playStopButton.enabled = YES;
     [self.selectedBackground setHidden:NO];
     //lets animate it in
     animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -118,6 +120,7 @@
     [self.playStopButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
     [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
     self.taskSeparator.alpha = 1.0;
+    self.playStopButton.enabled = NO;
 }
 
 -(void)showNav

@@ -33,6 +33,7 @@
     FSBEditView *editView;
     CABasicAnimation *fadeUpAnimation;
     CABasicAnimation *fadeOutAnimation;
+    UIButton *addButton;
 }
 
 #define kCellHeight 64.0 
@@ -122,7 +123,7 @@
     [super viewDidLoad];
     [self performFetch];
     
-    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
+    addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 41, 40)];
     [addButton setImage:[UIImage imageNamed:@"addTaskButton"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
@@ -241,6 +242,7 @@
         currentIndexPath = selectedIndex;
         selectedRowNumber = -1;
         isRecording = YES;
+        addButton.enabled = NO;
         [self.tableView reloadData];
         [self startPulsing];
         [self startTaskTimerAtIndexPath:currentIndexPath];
@@ -249,9 +251,12 @@
 
 - (void)onStopButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
 {
-    isRecording = NO;
-    [self stopPulsing];
-    [self stopCurrentSession];
+    if(isRecording) {
+        addButton.enabled = YES;
+        isRecording = NO;
+        [self stopPulsing];
+        [self stopCurrentSession];
+    }
 }
 
 
@@ -461,21 +466,22 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    // if it's already selected
-    if(selectedRowNumber == indexPath.row) {
-        selectedRowNumber = -1;
-    } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
-        //need to close currently open one!
-        FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
-        [currentlySelectedCell hideNav];
-        currentlySelectedCell.isOpen = NO;
-        selectedRowNumber = indexPath.row;
-    } else {
-        selectedRowNumber = indexPath.row;
+    if (!isRecording) {
+        // if it's already selected
+        if(selectedRowNumber == indexPath.row) {
+            selectedRowNumber = -1;
+        } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
+            //need to close currently open one!
+            FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
+            [currentlySelectedCell hideNav];
+            currentlySelectedCell.isOpen = NO;
+            selectedRowNumber = indexPath.row;
+        } else {
+            selectedRowNumber = indexPath.row;
+        }
+        
+        [selectedCell toggleNav];
     }
-    
-    [selectedCell toggleNav];
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
