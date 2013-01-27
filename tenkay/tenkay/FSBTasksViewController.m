@@ -226,7 +226,13 @@
 
 - (void)stopPulsing
 {
-    
+    [self.tableView reloadData]; 
+    [UIView animateWithDuration:0.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+        //animation here
+        self.view.backgroundColor = [UIColor colorWithRed:231.0f/255.0f green:231.0f/255.0f blue:231.0f/255.0f alpha:100.0];
+    } completion:^(BOOL finished){
+       
+    }];
 }
 
 - (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
@@ -235,8 +241,16 @@
         currentIndexPath = selectedIndex;
         isRecording = YES;
         [self.tableView reloadData];
-        [self startPulsing];[self startTaskTimerAtIndexPath:currentIndexPath];
+        [self startPulsing];
+        [self startTaskTimerAtIndexPath:currentIndexPath];
     }
+}
+
+- (void)onStopButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex
+{
+    isRecording = NO;
+    [self stopPulsing];
+    [self stopCurrentSession];
 }
 
 
@@ -270,6 +284,8 @@
         if (currentIndexPath.row == indexPath.row) {
             [taskCell showCurrentCellIsRecordingView];
         }
+    } else {
+        [taskCell showCurrentCellIsNotRecordingView];
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

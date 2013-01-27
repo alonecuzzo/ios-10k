@@ -195,7 +195,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="onPlayPress:" destination="HI2-X1-Cnw" eventType="touchUpInside" id="Rgg-hd-zBu"/>
+                                                <action selector="onPlayStopPress:" destination="HI2-X1-Cnw" eventType="touchUpInside" id="m5g-Fc-YdD"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="zaB-it-ppo">
@@ -223,7 +223,7 @@
                                     <constraint firstAttribute="trailing" secondItem="3dh-bx-lqQ" secondAttribute="trailing" constant="20" type="default" id="xZV-Ai-1OJ"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="playButton" destination="OBn-0f-cv5" id="Rng-KC-897"/>
+                                    <outlet property="playStopButton" destination="OBn-0f-cv5" id="sBB-ZE-4Kq"/>
                                     <outlet property="selectedBackground" destination="y8S-Dl-ciT" id="Vg1-Ay-1Fv"/>
                                     <outlet property="taskLabel" destination="yYM-Y9-qie" id="U5X-Ge-PPG"/>
                                     <outlet property="taskSeparator" destination="zaB-it-ppo" id="yKU-nQ-NYW"/>

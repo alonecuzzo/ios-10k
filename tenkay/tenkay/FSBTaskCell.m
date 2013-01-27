@@ -12,8 +12,8 @@
 @interface FSBTaskCell()
 @property (strong, nonatomic) IBOutlet UIImageView *selectedBackground;
 @property (strong, nonatomic) IBOutlet UIImageView *taskSeparator;
-@property (strong, nonatomic) IBOutlet UIButton *playButton;
-- (IBAction)onPlayPress:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *playStopButton;
+- (IBAction)onPlayStopPress:(id)sender;
 @end
 
 @implementation FSBTaskCell {
@@ -35,6 +35,8 @@
     CABasicAnimation *animation;
     CABasicAnimation *fadeOutAnimation;
     CABasicAnimation *translationAnimation;
+    
+    BOOL isRecording;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -68,10 +70,29 @@
     [self.delegate openCalendar:self.task];
 }
 
-- (IBAction)onPlayPress:(id)sender
+- (void)showCurrentCellIsNotRecordingView
+{
+    //resets cell to defaults
+    [self.taskLabel setTextColor:[UIColor darkGrayColor]];
+    [self.taskTime setTextColor:[UIColor lightGrayColor]];
+    [self.playStopButton setImage:[UIImage imageNamed:@"playButtonTeal"] forState:UIControlStateNormal];
+    [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparator"]];
+    self.taskSeparator.alpha = 1.0;
+    [self.selectedBackground setHidden:YES];
+}
+
+- (IBAction)onPlayStopPress:(id)sender
 {
     NSIndexPath *indexPath = [(UITableView *)self.superview indexPathForCell:self];
-    [self.delegate onPlayButtonPress:self.task indexPath:indexPath];
+    if (isRecording) {
+        //isRecording, needs to be stopped
+        isRecording = NO;
+        [self showCurrentCellIsNotRecordingView];
+        [self.delegate onStopButtonPress:self.task indexPath:indexPath];
+    } else {
+        isRecording = YES;
+        [self.delegate onPlayButtonPress:self.task indexPath:indexPath];
+    }
 }
 
 - (void)showCurrentCellIsRecordingView
@@ -85,7 +106,7 @@
     animation.toValue = @1.0;
     animation.delegate = self;
     [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
-    [self.playButton setImage:[UIImage imageNamed:@"stopButtonWhite"] forState:UIControlStateNormal];
+    [self.playStopButton setImage:[UIImage imageNamed:@"stopButtonWhite"] forState:UIControlStateNormal];
     self.taskSeparator.alpha = 0.0;
 }
 
@@ -94,7 +115,7 @@
     //changes everything to white
     [self.taskLabel setTextColor:[UIColor whiteColor]];
     [self.taskTime setTextColor:[UIColor whiteColor]];
-    [self.playButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
+    [self.playStopButton setImage:[UIImage imageNamed:@"playButtonWhite"] forState:UIControlStateNormal];
     [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
     self.taskSeparator.alpha = 1.0;
 }

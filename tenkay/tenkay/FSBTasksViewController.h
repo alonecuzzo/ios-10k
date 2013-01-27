@@ -20,6 +20,7 @@
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task;
 - (void)dismissEditView:(NSString *)newTaskTitle;
 - (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex;
+- (void)onStopButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex;
 - (BOOL)isRecording;
 @end
 
