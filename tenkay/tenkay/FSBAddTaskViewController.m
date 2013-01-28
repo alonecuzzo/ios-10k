@@ -16,9 +16,7 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @end
 
-@implementation FSBAddTaskViewController {
-    UIBarButtonItem *cancelButton;
-}
+@implementation FSBAddTaskViewController
 
 @synthesize managedObjectContext;
 
@@ -66,8 +64,13 @@
     [saveButton addTarget:self action:@selector(onSave:) forControlEvents:UIControlEventTouchUpInside];
     UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Add Task"];
     navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    navItem.hidesBackButton = YES;
+    UIButton *cancelButton;
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width - 6, -5, 91, 57)];
+    [cancelButton setImage:[UIImage imageNamed:@"cancelButton"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(onCancel:) forControlEvents:UIControlEventTouchUpInside];
+    navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
     [self.navigationBar pushNavigationItem:navItem animated:NO];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
 }
 
 - (void)didReceiveMemoryWarning

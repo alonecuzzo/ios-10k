@@ -37,6 +37,8 @@
 		888F472316B30BC50044A62F /* taskSeparatorWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F472216B30BC50044A62F /* taskSeparatorWhite.png */; };
 		888F472616B30C110044A62F /* playButtonWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F472516B30C110044A62F /* playButtonWhite@2x.png */; };
 		888F472816B3128B0044A62F /* selectedTaskRecordingBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F472716B3128B0044A62F /* selectedTaskRecordingBackground@2x.png */; };
+		88B72EF516B6DEC700510FC4 /* cancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B72EF316B6DEC700510FC4 /* cancelButton.png */; };
+		88B72EF616B6DEC700510FC4 /* cancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B72EF416B6DEC700510FC4 /* cancelButton@2x.png */; };
 		88C417E416B31A66008AE6E1 /* stopButtonWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C417E316B31A66008AE6E1 /* stopButtonWhite@2x.png */; };
 		88C450F3168E32BA00210F1F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F2168E32BA00210F1F /* Tag.m */; };
 		88C450F6168E32BB00210F1F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C450F5168E32BB00210F1F /* Session.m */; };
@@ -44,11 +46,11 @@
 		88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226E916B19BEC006E5001 /* FSBEditBackgroundView.m */; };
 		88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226EC16B1A296006E5001 /* FSBEditView.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
+		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
 		BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333416B2E6A800C188E4 /* light-line-separator.png */; };
 		BA57333716B2E6A800C188E4 /* light-line-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */; };
 		BA57333A16B2EC2400C188E4 /* Myanmar MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */; };
 		BA57333B16B2EC2400C188E4 /* Myanmar Sangam MN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */; };
-		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
 		BA9AA2E616951FAB00662CE5 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9AA2E516951FAB00662CE5 /* Task.m */; };
 		BA9AA2EF169B36B300662CE5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EB169B36B200662CE5 /* Icon-72.png */; };
 		BA9AA2F0169B36B300662CE5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA9AA2EC169B36B300662CE5 /* Icon-72@2x.png */; };
@@ -110,6 +112,8 @@
 		888F472216B30BC50044A62F /* taskSeparatorWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskSeparatorWhite.png; sourceTree = "<group>"; };
 		888F472516B30C110044A62F /* playButtonWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButtonWhite@2x.png"; sourceTree = "<group>"; };
 		888F472716B3128B0044A62F /* selectedTaskRecordingBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedTaskRecordingBackground@2x.png"; sourceTree = "<group>"; };
+		88B72EF316B6DEC700510FC4 /* cancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelButton.png; sourceTree = "<group>"; };
+		88B72EF416B6DEC700510FC4 /* cancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancelButton@2x.png"; sourceTree = "<group>"; };
 		88C417E316B31A66008AE6E1 /* stopButtonWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopButtonWhite@2x.png"; sourceTree = "<group>"; };
 		88C450F1168E32BA00210F1F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		88C450F2168E32BA00210F1F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
@@ -123,11 +127,11 @@
 		88D226EC16B1A296006E5001 /* FSBEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBEditView.m; sourceTree = "<group>"; };
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
+		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
 		BA57333416B2E6A800C188E4 /* light-line-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator.png"; sourceTree = "<group>"; };
 		BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator@2x.png"; sourceTree = "<group>"; };
 		BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar MN.ttc"; sourceTree = "<group>"; };
 		BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar Sangam MN.ttf"; sourceTree = "<group>"; };
-		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
 		BA9AA2E416951FAB00662CE5 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		BA9AA2E516951FAB00662CE5 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BA9AA2EB169B36B200662CE5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				88B72EF316B6DEC700510FC4 /* cancelButton.png */,
+				88B72EF416B6DEC700510FC4 /* cancelButton@2x.png */,
 				BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */,
 				BA57333916B2EC2400C188E4 /* Myanmar Sangam MN.ttf */,
 				BA57333416B2E6A800C188E4 /* light-line-separator.png */,
@@ -420,6 +426,8 @@
 				888F472616B30C110044A62F /* playButtonWhite@2x.png in Resources */,
 				888F472816B3128B0044A62F /* selectedTaskRecordingBackground@2x.png in Resources */,
 				88C417E416B31A66008AE6E1 /* stopButtonWhite@2x.png in Resources */,
+				88B72EF516B6DEC700510FC4 /* cancelButton.png in Resources */,
+				88B72EF616B6DEC700510FC4 /* cancelButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
