@@ -13,11 +13,12 @@
 #import "FSBTasksViewController.h"
 
 @interface FSBAddTaskViewController ()
-- (IBAction)onCancel:(id)sender;
-- (IBAction)onSave:(id)sender;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @end
 
-@implementation FSBAddTaskViewController
+@implementation FSBAddTaskViewController {
+    UIBarButtonItem *cancelButton;
+}
 
 @synthesize managedObjectContext;
 
@@ -30,24 +31,13 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onCancel:(id)sender
+- (void)onCancel:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onSave:(id)sender
+- (void)onSave:(id)sender
 {
     NSLog(@"***** - onSave:");
     Task *task = nil;
@@ -63,6 +53,27 @@
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }
     }
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navBackground"] forBarMetrics:UIBarMetricsDefault];
+    
+    UIButton *saveButton;
+    saveButton = [[UIButton alloc] initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width - 6, -5, 91, 57)];
+    [saveButton setImage:[UIImage imageNamed:@"saveButton"] forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(onSave:) forControlEvents:UIControlEventTouchUpInside];
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Add Task"];
+    navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    [self.navigationBar pushNavigationItem:navItem animated:NO];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
