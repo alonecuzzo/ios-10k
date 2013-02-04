@@ -65,7 +65,7 @@ typedef int startDay;
 - (void)setDateBorderColor:(UIColor *)color;
 - (UIColor *)dateBorderColor;
 
-- (void)highlightDatesInArray:(NSArray *)dates withImage:(UIImage *)image;
+- (void)highlightDatesInArray:(NSArray *)dates;
 
 // Helpers
 - (BOOL)date:(NSDate *)date1 isSameDayAsDate:(NSDate *)date2;
@@ -77,6 +77,7 @@ typedef int startDay;
 @property (nonatomic, strong) UIColor *dateTextColor;
 @property (nonatomic, strong) UIColor *selectedDateTextColor;
 @property (nonatomic, strong) UIColor *selectedDateBackgroundColor;
+@property (nonatomic, strong) UIColor *iconDateTextColor;
 @property (nonatomic, strong) UIColor *currentDateTextColor;
 @property (nonatomic, strong) UIColor *currentDateBackgroundColor;
 @property (nonatomic, strong) UIColor *nonCurrentMonthDateTextColor;

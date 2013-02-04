@@ -49,7 +49,7 @@
 - (void) buildCalendarBox
 {
     //calendar data view
-    CGRect  calendarViewRect = CGRectMake(0, 0, 300, 300);
+    CGRect  calendarViewRect = CGRectMake(0, 0, 305, 310);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
     CKCalendarView *calendar = [[CKCalendarView alloc] init];
     calendar.shouldFillCalendar = YES;
@@ -74,8 +74,8 @@
             sessionCount++;
         }
     }
-    UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
-    [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
+    
+    [calendar highlightDatesInArray:datesToHightlight];
     
     monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
     if(sessionCount == 1)
@@ -341,8 +341,8 @@
         }
     }
     
-    UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
-    [calendar highlightDatesInArray:datesToHightlight withImage:tenKIcon];
+    //UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
+    [calendar highlightDatesInArray:datesToHightlight];
     
     monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
     if(sessionCount == 1)
