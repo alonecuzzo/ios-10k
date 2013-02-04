@@ -341,7 +341,6 @@
         }
     }
     
-    //UIImage *tenKIcon = [UIImage imageNamed:@"stopwatch-teal"];
     [calendar highlightDatesInArray:datesToHightlight];
     
     monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
@@ -349,6 +348,11 @@
         monthStatSessions.text = [NSString stringWithFormat:@"%d session", sessionCount];
     else
         monthStatSessions.text = [NSString stringWithFormat:@"%d sessions", sessionCount];
+    
+    NSTimeInterval secondsInMonth = [calendarEndDate timeIntervalSinceDate:calendarStartDate];
+    int days = secondsInMonth / 86400;
+    double timePerDay = monthTimeInt / days;
+    monthStatAverage.text = [NSString stringWithFormat:@"%@ avg", [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:timePerDay] isTruncated:NO]];
     [self adjustMonthLabels];
 }
 

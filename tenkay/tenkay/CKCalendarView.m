@@ -344,6 +344,8 @@
             //UIImage *strechableButtonImage = [self.icon resizableImageWithCapInsets:UIEdgeInsetsMake(40,40,30,30)];
             [dateButton setBackgroundImage:self.icon forState:UIControlStateNormal];
             [dateButton setTitleColor:self.iconDateTextColor forState:UIControlStateNormal];
+        } else {
+            [dateButton setBackgroundImage:nil forState:UIControlStateNormal];
         }
 
         dateButton.frame = [self calculateDayCellFrame:date];
@@ -465,6 +467,7 @@
 - (void)dateButtonPressed:(id)sender {
     DateButton *dateButton = sender;
     NSDate *date = dateButton.date;
+    NSDate *thisMonth = self.monthShowing;
     if (self.minimumDate && [date compare:self.minimumDate] == NSOrderedAscending) {
         return;
     } else if (self.maximumDate && [date compare:self.maximumDate] == NSOrderedDescending) {
@@ -472,6 +475,9 @@
     } else {
         self.selectedDate = date;
         [self.delegate calendar:self didSelectDate:self.selectedDate atButton:dateButton];
+        if ([thisMonth compare:self.monthShowing] != NSOrderedSame) {
+            [self.delegate calendar:self didChangeMonth:self.monthShowing];
+        }
     }
 }
 
@@ -582,7 +588,7 @@
     NSUInteger dateButtonPosition = 0;
     while ([date laterDate:endDate] != date) {
         DateButton *dateButton = [self.dateButtons objectAtIndex:dateButtonPosition];
-        [dateButton setBackgroundImage:nil forState:UIControlStateNormal];
+        dateButton.showIcon = NO;
         date = [self nextDay:date];
         dateButtonPosition++;
     }
