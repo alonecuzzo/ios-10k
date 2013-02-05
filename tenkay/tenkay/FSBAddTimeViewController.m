@@ -54,7 +54,7 @@
 - (void)updateTimeAddedLabel
 {
     NSInteger timeDifference = [self computeTimeDifference];
-    self.timeAddedLabel.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:timeDifference] isTruncated:NO];
+    self.timeAddedLabel.text = [NSString stringWithFormat:@"%@ added", [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:timeDifference] isTruncated:NO]];
 }
 
 - (void)updateStartDateLabel:(id)sender

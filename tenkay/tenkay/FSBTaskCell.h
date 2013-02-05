@@ -26,5 +26,6 @@
 - (void)showIsRecordingView;
 - (void)showCurrentCellIsRecordingView;
 - (void)showCurrentCellIsNotRecordingView;
+- (void)hideSeparator;
 
 @end

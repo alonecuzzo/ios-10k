@@ -536,10 +536,12 @@
 		88146F531683BC9900B0ABED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F3842DAA-94CC-4201-A35D-71D35B503E78";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -547,10 +549,12 @@
 		88146F541683BC9900B0ABED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F3842DAA-94CC-4201-A35D-71D35B503E78";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

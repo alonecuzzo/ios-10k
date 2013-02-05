@@ -82,6 +82,11 @@
     self.playStopButton.enabled = YES;
 }
 
+- (void)hideSeparator
+{
+    self.taskSeparator.alpha = 0.0;
+}
+
 - (IBAction)onPlayStopPress:(id)sender
 {
     NSIndexPath *indexPath = [(UITableView *)self.superview indexPathForCell:self];
@@ -164,22 +169,27 @@
     animation.fromValue = @0.0;
     animation.toValue = @1.0;
     animation.delegate = self;
+    [animation setValue:@"animateAddTime" forKey:@"id"];
     addTimeButtonImageView.layer.opacity = 0.0;
     [addTimeButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
 
     animation.beginTime = CACurrentMediaTime() + 0.20f;
+    [animation setValue:@"animateEdit" forKey:@"id"];
     editTaskButtonImageView.layer.opacity = 0.0;
     [editTaskButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
     animation.beginTime = CACurrentMediaTime() + 0.25f;
+    [animation setValue:@"animateCalendar" forKey:@"id"];
     calendarButtonImageView.layer.opacity = 0.0;
     [calendarButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
     animation.beginTime = CACurrentMediaTime() + 0.30f;
+    [animation setValue:@"animateTrash" forKey:@"id"];
     trashButtonImageView.layer.opacity = 0.0;
     [trashButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
     
     translationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    translationAnimation.delegate = self;
     translationAnimation.duration = 0.10;
     translationAnimation.beginTime = CACurrentMediaTime() + 0.15f;
     translationAnimation.autoreverses = NO;
@@ -195,8 +205,8 @@
     translationAnimation.fromValue = @10.0;
     [calendarButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
     translationAnimation.beginTime = CACurrentMediaTime() + 0.35f;
+    [translationAnimation setValue:@"trashTranslation" forKey:@"id"];
     [trashButtonImageView.layer addAnimation:translationAnimation forKey:@"animateLayer"];
-    
 }
 
 -(void)removeButtons
@@ -225,8 +235,7 @@
 {
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
-    } else {
-        // once our fake buttons fade in, we set them to invisible and then swap our real buttons in!!!
+    } else if([[anim valueForKey:@"id"] isEqual:@"trashTranslation"]){
         [self.viewForBaselineLayout addSubview:addTimeButton];
         [self.viewForBaselineLayout addSubview:editTaskButton];
         [self.viewForBaselineLayout addSubview:calendarButton];
