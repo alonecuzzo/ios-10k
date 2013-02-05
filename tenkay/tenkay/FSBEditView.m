@@ -12,7 +12,7 @@
 #import "Task.h"
 
 @implementation FSBEditView {
-    UITextField *taskTitle;
+    UITextField *taskTitleTextField;
     Task *currentTask;
 }
 
@@ -25,18 +25,18 @@
         FSBEditBackgroundView *backgroundView = [[FSBEditBackgroundView alloc] initWithFrame:CGRectMake(0.0, 0.0, delegate.window.bounds.size.width, delegate.window.bounds.size.height)];
         backgroundView.alpha = 0.85;
         [self addSubview:backgroundView];
-        taskTitle = [[UITextField alloc] initWithFrame:CGRectMake(10.0, 10.0, 300.0, 31.0)];
-        taskTitle.backgroundColor = [UIColor clearColor];
+        taskTitleTextField = [[UITextField alloc] initWithFrame:CGRectMake(10.0, 10.0, 300.0, 31.0)];
+        taskTitleTextField.backgroundColor = [UIColor clearColor];
         
         UIFont *font=[UIFont fontWithName:@"GurmukhiMN-Bold" size:21];
-        taskTitle.font = font;
-        taskTitle.textColor = [UIColor darkGrayColor];
-        taskTitle.delegate = self;
-        taskTitle.keyboardType = UIKeyboardTypeDefault;
-        taskTitle.returnKeyType = UIReturnKeyDefault;
-        taskTitle.contentHorizontalAlignment = UIControlContentVerticalAlignmentCenter;
-        [taskTitle addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        [self addSubview:taskTitle];
+        taskTitleTextField.font = font;
+        taskTitleTextField.textColor = [UIColor darkGrayColor];
+        taskTitleTextField.delegate = self;
+        taskTitleTextField.keyboardType = UIKeyboardTypeDefault;
+        taskTitleTextField.returnKeyType = UIReturnKeyDone;
+        taskTitleTextField.contentHorizontalAlignment = UIControlContentVerticalAlignmentCenter;
+        [taskTitleTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [self addSubview:taskTitleTextField];
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (void)setTask:(Task *)task
 {
     currentTask = task;
-    taskTitle.text = currentTask.title;
+    taskTitleTextField.text = currentTask.title;
 }
 
 - (Task *)getTask
@@ -54,12 +54,12 @@
 
 - (void)setKeyboardFirstResponder
 {
-    [taskTitle becomeFirstResponder];
+    [taskTitleTextField becomeFirstResponder];
 }
 
 - (void)textFieldFinished:(id)sender
 {
-    [self.delegate dismissEditView:taskTitle.text];
+    [self.delegate dismissEditView:taskTitleTextField.text];
 }
 
 /*
