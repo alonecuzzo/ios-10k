@@ -180,7 +180,7 @@
                                   destructiveButtonTitle:destructiveTitle
                                   otherButtonTitles:nil];
     [actionSheet showInView:self.view];
-    selectedRowNumber = -1;
+//    selectedRowNumber = -1;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -188,12 +188,12 @@
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
     if  ([buttonTitle isEqualToString:@"Delete Task"]) {
         [managedObjectContext deleteObject:taskToDelete];
+        selectedRowNumber = -1;
         NSError *error;
         if(![self.managedObjectContext save:&error]) {
             NSLog(@"Error Value: %@", [taskToDelete valueForKey:@"title"]);
         }
     }
-    selectedRowNumber = -1;
 }
 
 - (void)addTimeToTask:(NSDate *)startDate endDate:(NSDate *)eDate numSeconds:(NSNumber *)seconds taskToAddTimeTo:(Task *)task
