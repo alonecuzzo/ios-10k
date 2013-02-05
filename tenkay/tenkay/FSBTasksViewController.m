@@ -180,7 +180,6 @@
                                   destructiveButtonTitle:destructiveTitle
                                   otherButtonTitles:nil];
     [actionSheet showInView:self.view];
-//    selectedRowNumber = -1;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
