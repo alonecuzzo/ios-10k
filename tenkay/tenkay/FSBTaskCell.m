@@ -82,6 +82,11 @@
     self.playStopButton.enabled = YES;
 }
 
+- (void)hideSeparator
+{
+    self.taskSeparator.alpha = 0.0;
+}
+
 - (IBAction)onPlayStopPress:(id)sender
 {
     NSIndexPath *indexPath = [(UITableView *)self.superview indexPathForCell:self];

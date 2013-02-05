@@ -290,6 +290,10 @@
         if (currentIndexPath.row == indexPath.row) {
             [taskCell showCurrentCellIsRecordingView];
         }
+        if (indexPath.row == (currentIndexPath.row - 1)) {
+            [taskCell hideSeparator];
+            NSLog(@"calling hide separator %d", indexPath.row);
+        }
     } else {
         [taskCell showCurrentCellIsNotRecordingView];
     }
