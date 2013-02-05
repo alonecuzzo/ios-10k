@@ -492,6 +492,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -507,6 +508,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -520,6 +522,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -528,6 +531,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -536,12 +540,12 @@
 		88146F531683BC9900B0ABED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Curtis Dawson (B252225729)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F3842DAA-94CC-4201-A35D-71D35B503E78";
+				PROVISIONING_PROFILE = "348C007D-E120-4BDE-A8AD-AAC6E01CA1F4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -549,12 +553,12 @@
 		88146F541683BC9900B0ABED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Curtis Dawson (B252225729)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F3842DAA-94CC-4201-A35D-71D35B503E78";
+				PROVISIONING_PROFILE = "348C007D-E120-4BDE-A8AD-AAC6E01CA1F4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
