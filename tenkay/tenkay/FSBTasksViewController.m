@@ -77,6 +77,7 @@
     fadeUpAnimation.delegate = self;
     [fadeUpAnimation setValue:@"editScreenfadeUpAnimation" forKey:@"id"];
     [editView.layer addAnimation:fadeUpAnimation forKey:@"animateOpacity"];
+    addButton.alpha = 0.0;
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -89,6 +90,7 @@
         [editView removeFromSuperview];
         editView = nil;
         self.tableView.userInteractionEnabled = TRUE;
+        addButton.alpha = 1.0;
     }
 }
 
