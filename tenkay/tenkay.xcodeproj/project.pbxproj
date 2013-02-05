@@ -71,6 +71,7 @@
 		BADB7B1616ADFC3F007D53FF /* nav-header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */; };
 		BADB7B1916AE06AC007D53FF /* back-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1716AE06AC007D53FF /* back-arrow.png */; };
 		BADB7B1A16AE06AC007D53FF /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */; };
+		BAF140BF16C19D2200E3896B /* stopwatch-with-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BAF140BE16C19D2100E3896B /* stopwatch-with-bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +156,7 @@
 		BADB7B1416ADFC3F007D53FF /* nav-header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-header@2x.png"; sourceTree = "<group>"; };
 		BADB7B1716AE06AC007D53FF /* back-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow.png"; sourceTree = "<group>"; };
 		BADB7B1816AE06AC007D53FF /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
+		BAF140BE16C19D2100E3896B /* stopwatch-with-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch-with-bg.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BAF140BE16C19D2100E3896B /* stopwatch-with-bg.png */,
 				88B72EF316B6DEC700510FC4 /* cancelButton.png */,
 				88B72EF416B6DEC700510FC4 /* cancelButton@2x.png */,
 				BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */,
@@ -428,6 +431,7 @@
 				88C417E416B31A66008AE6E1 /* stopButtonWhite@2x.png in Resources */,
 				88B72EF516B6DEC700510FC4 /* cancelButton.png in Resources */,
 				88B72EF616B6DEC700510FC4 /* cancelButton@2x.png in Resources */,
+				BAF140BF16C19D2200E3896B /* stopwatch-with-bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

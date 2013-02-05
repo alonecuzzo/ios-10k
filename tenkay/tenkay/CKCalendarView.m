@@ -172,7 +172,7 @@
     [self addSubview:highlight];
     self.highlight = highlight;
     
-    self.icon = [UIImage imageNamed:@"stopwatch-teal.png"];
+    self.icon = [UIImage imageNamed:@"stopwatch-with-bg.png"];
 
     // SET UP THE HEADER
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -341,8 +341,12 @@
         }
         
         if (dateButton.showIcon) {
-            //UIImage *strechableButtonImage = [self.icon resizableImageWithCapInsets:UIEdgeInsetsMake(40,40,30,30)];
+            //UIImage *strechableButtonImage = [self.icon resizableImageWithCapInsets:UIEdgeInsetsMake(5,5,20,20)];
+            //[[dateButton imageView] setImage:self.icon];
+            //[dateButton setImage:self.icon forState:UIControlStateNormal];
+            //UIImageView *icon = [[UIImageView alloc] initWithImage:self.icon];
             [dateButton setBackgroundImage:self.icon forState:UIControlStateNormal];
+            
             [dateButton setTitleColor:self.iconDateTextColor forState:UIControlStateNormal];
         } else {
             [dateButton setBackgroundImage:nil forState:UIControlStateNormal];
@@ -423,7 +427,7 @@
 
     [self setDateFont:[UIFont fontWithName:@"Helvetica Neue" size:18.0f]];
     [self setDateTextColor:UIColorFromRGB(0x393B40)];
-    [self setDateBackgroundColor:UIColorFromRGB(0xF2F2F2)];
+    [self setDateBackgroundColor:UIColorFromRGB(0xDDDDDD)];
     [self setDateBorderColor:UIColorFromRGB(0xe7e7e7)];
 
     [self setSelectedDateTextColor:UIColorFromRGB(0x88B6DB)];
@@ -433,7 +437,7 @@
 
     [self setCurrentDateTextColor:UIColorFromRGB(0x393B40)];
     //[self setCurrentDateBackgroundColor:[UIColor lightGrayColor]];
-    [self setCurrentDateBackgroundColor:UIColorFromRGB(0xF2F2F2)];
+    [self setCurrentDateBackgroundColor:UIColorFromRGB(0xDDDDDD)];
     
     self.nonCurrentMonthDateTextColor = [UIColor lightGrayColor];
 
