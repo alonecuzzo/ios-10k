@@ -47,6 +47,7 @@
 		88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226EC16B1A296006E5001 /* FSBEditView.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
+		8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */; };
 		BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333416B2E6A800C188E4 /* light-line-separator.png */; };
 		BA57333716B2E6A800C188E4 /* light-line-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */; };
 		BA57333A16B2EC2400C188E4 /* Myanmar MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */; };
@@ -129,6 +130,8 @@
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
 		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
+		8E8C74B816C2F4B40020A6AF /* FSBAddTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskCell.h; sourceTree = "<group>"; };
+		8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskCell.m; sourceTree = "<group>"; };
 		BA57333416B2E6A800C188E4 /* light-line-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator.png"; sourceTree = "<group>"; };
 		BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator@2x.png"; sourceTree = "<group>"; };
 		BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar MN.ttc"; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				88D226E916B19BEC006E5001 /* FSBEditBackgroundView.m */,
 				88715BD216A78B3900BB9A8E /* FSBNavigationBar.h */,
 				88715BD316A78B3900BB9A8E /* FSBNavigationBar.m */,
+				8E8C74B816C2F4B40020A6AF /* FSBAddTaskCell.h */,
+				8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */,
 				BAB554DD1690CD4F004DEEE7 /* FSBTaskCell.h */,
 				BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */,
 				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
@@ -458,6 +463,7 @@
 				883FBFA216ACC0DE003CAD1B /* FSBAddTaskViewController.m in Sources */,
 				88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */,
 				88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */,
+				8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

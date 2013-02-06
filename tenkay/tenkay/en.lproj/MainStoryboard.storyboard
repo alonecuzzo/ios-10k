@@ -151,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="64" id="HI2-X1-Cnw" customClass="FSBTaskCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" rowHeight="64" id="HI2-X1-Cnw" customClass="FSBTaskCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -229,6 +229,37 @@
                                     <outlet property="taskSeparator" destination="zaB-it-ppo" id="yKU-nQ-NYW"/>
                                     <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AddTaskCell" id="dQd-cB-JCX" customClass="FSBAddTaskCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="taskSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="R5M-9S-Vcz">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="I7Q-lh-PIL"/>
+                                                <constraint firstAttribute="width" constant="282" id="T9O-eR-SfQ"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" type="user" id="hei-bx-8ZG"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add New Task" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-Px-FAw">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="289" id="4be-qI-bD1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="R5M-9S-Vcz" firstAttribute="top" secondItem="dQd-cB-JCX" secondAttribute="top" constant="59" id="5ed-3c-GIB"/>
+                                    <constraint firstItem="nGg-Px-FAw" firstAttribute="centerY" secondItem="dQd-cB-JCX" secondAttribute="centerY" type="default" id="Yfb-yW-6C6"/>
+                                    <constraint firstAttribute="trailing" secondItem="nGg-Px-FAw" secondAttribute="trailing" constant="20" type="default" id="Yq1-05-b18"/>
+                                    <constraint firstAttribute="trailing" secondItem="R5M-9S-Vcz" secondAttribute="trailing" constant="20" type="default" id="njV-Os-gUO"/>
+                                </constraints>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

@@ -16,6 +16,7 @@
 #import "FSBAddTimeViewController.h"
 #import "FSBEditView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FSBAddTaskCell.h"
 
 @interface FSBTasksViewController ()
 @end
@@ -273,7 +274,8 @@
 {
     // Return the number of rows in the section.
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    NSInteger *numRows = [sectionInfo numberOfObjects] + 1;
+    return numRows;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -293,7 +295,6 @@
         }
         if (indexPath.row == (currentIndexPath.row - 1)) {
             [taskCell hideSeparator];
-            NSLog(@"calling hide separator %d", indexPath.row);
         }
     } else {
         [taskCell showCurrentCellIsNotRecordingView];
@@ -319,10 +320,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
+    if (indexPath.row >= [sectionInfo numberOfObjects]) {
+        NSLog(@"in there: %d", [sectionInfo numberOfObjects]);
+        static NSString *CellIdentifier = @"AddTaskCell";
+        FSBAddTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        return cell;
+    } else {
+        static NSString *CellIdentifier = @"TaskCell";
+        FSBTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [self configureCell:cell atIndexPath:indexPath];
+        return cell;
+    }
 }
 
 - (void)updateTimerAtIndexPath:(NSIndexPath *)indexPath
