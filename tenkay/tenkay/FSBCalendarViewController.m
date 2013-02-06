@@ -12,6 +12,9 @@
 #import "Session.h"
 #import "Task.h"
 
+#define DAILY_STAT_VIEW_HEIGHT 50
+#define MONTH_STAT_VIEW_HEIGHT 50
+
 @implementation FSBCalendarViewController {
     UIView          *calendarSubView,
                     *statSubView,
@@ -25,6 +28,7 @@
                     *monthStatHours,
                     *monthStatSessions,
                     *monthStatAverage;
+    CKCalendarView  *calendar;
 }
 
 @synthesize taskForCalendar,
@@ -51,7 +55,7 @@
     //calendar data view
     CGRect  calendarViewRect = CGRectMake(0, 0, 305, 310);
     calendarSubView = [[UIView alloc] initWithFrame:calendarViewRect];
-    CKCalendarView *calendar = [[CKCalendarView alloc] init];
+    calendar = [[CKCalendarView alloc] init];
     calendar.shouldFillCalendar = YES;
     
     //highlight dates with recorded time
@@ -93,15 +97,19 @@
 
 - (void) buildDailyStatBox
 {
-    CGRect dailyStatRect = CGRectMake(0, 295, self.view.bounds.size.width, 75);
+    CGRect dailyStatRect = CGRectMake(0, 295, self.view.bounds.size.width, DAILY_STAT_VIEW_HEIGHT);
     dailyStatSubView = [[UIView alloc] initWithFrame:dailyStatRect];
     dailyStatSubView.backgroundColor = UIColorFromRGB(0xd7d7d7);
     
-    CGRect dailyStatsTextBox = CGRectMake(0, 45, self.view.bounds.size.width, 30);
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
+    separator.frame = CGRectMake(dailyStatSubView.center.x - (separator.bounds.size.width / 2), DAILY_STAT_VIEW_HEIGHT / 2, separator.frame.size.width, separator.frame.size.height);
+    [dailyStatSubView addSubview:separator];
+    
+    CGRect dailyStatsTextBox = CGRectMake(0, separator.frame.origin.y + 3, self.view.bounds.size.width, 30);
     dailyStatsTextBoxView = [[UIView alloc] initWithFrame:dailyStatsTextBox];
     [dailyStatSubView addSubview:dailyStatsTextBoxView];
     
-    CGRect dailyStatTitleRect = CGRectMake(0, 10, self.view.bounds.size.width, 20);
+    CGRect dailyStatTitleRect = CGRectMake(0, separator.frame.origin.y - 20, self.view.bounds.size.width, 20);
     dailyStatTitle = [[UILabel alloc] initWithFrame:dailyStatTitleRect];
     dailyStatTitle.text = @"Daily Stats: 00-00";
     dailyStatTitle.backgroundColor = UIColorFromRGB(0xd7d7d7);
@@ -109,10 +117,6 @@
     dailyStatTitle.font = [UIFont fontWithName:@"Myanmar MN" size:16];
     [dailyStatTitle setTextAlignment:NSTextAlignmentCenter];
     [dailyStatSubView addSubview:dailyStatTitle];
-    
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
-    separator.frame = CGRectMake(dailyStatSubView.center.x - (separator.bounds.size.width / 2), 35, separator.frame.size.width, separator.frame.size.height);
-    [dailyStatSubView addSubview:separator];
     
     //hours stat
     dailyStatHours = [[UILabel alloc] init];
@@ -152,23 +156,27 @@
     
     float textBoxWidth = dailyStatHours.frame.size.width + dailyStatSessions.frame.size.width;
     
-    dailyStatsTextBoxView.bounds = CGRectMake(dailyStatsTextBoxView.bounds.origin.x, dailyStatsTextBoxView.bounds.origin.y, textBoxWidth, dailyStatHours.bounds.size.height);
+    dailyStatsTextBoxView.bounds = CGRectMake(dailyStatsTextBoxView.bounds.origin.x, calendarSubView.bounds.origin.y + 5, textBoxWidth, dailyStatHours.bounds.size.height);
     
     dailyStatsTextBoxView.frame = CGRectMake(dailyStatSubView.center.x - (textBoxWidth / 2), dailyStatsTextBoxView.frame.origin.y, textBoxWidth, dailyStatHours.frame.size.height);
 }
 
 - (void)buildMonthlyStatBox
 {
-    CGRect monthStatRect = CGRectMake(0, 380, self.view.bounds.size.width, 75);
+    CGRect monthStatRect = CGRectMake(0, 380, self.view.bounds.size.width, MONTH_STAT_VIEW_HEIGHT);
     monthStatSubView = [[UIView alloc] initWithFrame:monthStatRect];
     monthStatSubView.backgroundColor = UIColorFromRGB(0xd7d7d7);
     
-    CGRect monthStatsTextBox = CGRectMake(0, 45, self.view.bounds.size.width, 30);
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
+    separator.frame = CGRectMake(monthStatSubView.center.x - (separator.frame.size.width / 2), MONTH_STAT_VIEW_HEIGHT / 2, separator.frame.size.width, separator.frame.size.height);
+    [monthStatSubView addSubview:separator];
+    
+    CGRect monthStatsTextBox = CGRectMake(0, separator.frame.origin.y + 3, self.view.bounds.size.width, 30);
     monthStatsTextBoxView = [[UIView alloc] initWithFrame:monthStatsTextBox];
     monthStatsTextBoxView.backgroundColor = [UIColor clearColor];
     [monthStatSubView addSubview:monthStatsTextBoxView];
     
-    CGRect monthlyStatTitleRect = CGRectMake(0, 10, self.view.bounds.size.width, 20);
+    CGRect monthlyStatTitleRect = CGRectMake(0, separator.frame.origin.y - 20, self.view.bounds.size.width, 20);
     UILabel *monthStatTitle = [[UILabel alloc] initWithFrame:monthlyStatTitleRect];
     monthStatTitle.text = @"Monthly Stats";
     monthStatTitle.backgroundColor = UIColorFromRGB(0xd7d7d7);
@@ -176,10 +184,6 @@
     monthStatTitle.font = [UIFont fontWithName:@"Myanmar MN" size:16];
     [monthStatTitle setTextAlignment:NSTextAlignmentCenter];
     [monthStatSubView addSubview:monthStatTitle];
-    
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light-line-separator"]];
-    separator.frame = CGRectMake(monthStatSubView.center.x - (separator.bounds.size.width / 2), 35, separator.frame.size.width, separator.frame.size.height);
-    [monthStatSubView addSubview:separator];
     
     //show monthly hours
     monthStatHours = [[UILabel alloc] init];
@@ -269,17 +273,17 @@
     dailyStatTitle.text = [NSString stringWithFormat:@"Daily Stats: %d-%d", components.month, components.day];
 }
 
--(void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
+-(void)calendar:(CKCalendarView *)thisCalendar didSelectDate:(NSDate *)date atButton:(UIButton *)button
 {
     [self setDateLabelToDate:date];
     NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
-    NSTimeInterval totalTimeForDay;
+    NSTimeInterval totalTimeForDay = 0;
     int numberOfSessions = 0;
     for (int i = 0; i < [taskSessions count];  i++) {
         Session *thisSession = (Session *)[taskSessions objectAtIndex:i];
         NSDate *thisStartDate = thisSession.startDate;
         NSDate *thisEndDate = thisSession.endDate;
-        if( [calendar date:thisStartDate isSameDayAsDate:date] ) {
+        if( [thisCalendar date:thisStartDate isSameDayAsDate:date] ) {
             totalTimeForDay += [thisEndDate timeIntervalSinceDate:thisStartDate];
             numberOfSessions++;
         }
@@ -313,6 +317,7 @@
     float textWidth = dailyStatHours.frame.size.width + dailyStatSessions.frame.size.width + 10;
     
     dailyStatsTextBoxView.frame = CGRectMake(dailyStatsTextBoxView.center.x - (textWidth / 2), dailyStatsTextBoxView.frame.origin.y, textWidth, dailyStatsTextBoxView.frame.size.height);
+    [self adjustMonthLabels];
 }
 
 -(CGRect)addPadding:(int)padding toFrame:(CGRect)frameToAdjust
@@ -321,7 +326,7 @@
     return returnFrame;
 }
 
--(void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date
+-(void)calendar:(CKCalendarView *)thisCalendar didChangeMonth:(NSDate *)date
 {
     //TODO: Use predicates
     NSArray *taskSessions = [taskForCalendar.taskSession allObjects];
@@ -343,7 +348,7 @@
         }
     }
     
-    [calendar highlightDatesInArray:datesToHightlight];
+    [thisCalendar highlightDatesInArray:datesToHightlight];
     
     monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
     if(sessionCount == 1)
@@ -356,6 +361,13 @@
     double timePerDay = monthTimeInt / days;
     monthStatAverage.text = [NSString stringWithFormat:@"%@ avg", [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:timePerDay] isTruncated:NO]];
     [self adjustMonthLabels];
+}
+
+- (void)viewChangeInCalendar:(CKCalendarView *)thisCalendar
+{
+    NSLog(@"calendar.bounds.size.height: %f", calendar.bounds.size.height);
+    dailyStatSubView.frame = CGRectMake(dailyStatSubView.frame.origin.x, calendar.frame.origin.y + calendar.frame.size.height + 5, dailyStatSubView.frame.size.width, dailyStatSubView.frame.size.height);
+    monthStatSubView.frame = CGRectMake(monthStatSubView.frame.origin.x, dailyStatSubView.frame.origin.y + dailyStatSubView.frame.size.height + 5, monthStatSubView.frame.size.width, monthStatSubView.frame.size.height);
 }
 
 @end

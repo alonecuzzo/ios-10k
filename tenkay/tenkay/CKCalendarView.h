@@ -90,5 +90,5 @@ typedef int startDay;
 
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date atButton:(UIButton *)dateButton;
 - (void)calendar:(CKCalendarView *)calendar didChangeMonth:(NSDate *)date;
-
+- (void)viewChangeInCalendar:(CKCalendarView *)calendar;
 @end

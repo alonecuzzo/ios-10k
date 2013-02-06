@@ -359,6 +359,8 @@
         date = [self nextDay:date];
         dateButtonPosition++;
     }
+    
+    [self.delegate viewChangeInCalendar:self];
 }
 
 - (void)updateDayOfWeekLabels {
