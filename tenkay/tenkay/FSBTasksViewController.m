@@ -36,6 +36,7 @@
     UIButton *addButton;
     BOOL isAddCellSelected;
     BOOL isScrollTimerStarted;
+    BOOL isScrollTimerNeeded;
 }
 
 #define kCellHeight 64.0 
@@ -55,7 +56,14 @@
 - (void)onAddButtonPress:(id)sender
 {
     selectedRowNumber = -1;
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    if ([self.tableView indexPathForCell:addTaskCell]) {
+        isAddCellSelected = NO;
+        [addTaskCell.taskNameTextField becomeFirstResponder];
+    } else {
+        isScrollTimerNeeded = YES;
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (void)hideAddCellKeyboard
@@ -67,11 +75,11 @@
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
-    [addTaskCell.taskNameTextField becomeFirstResponder];
-    
-    if(!isScrollTimerStarted) {
+    if(!isScrollTimerStarted && !isAddCellSelected) {
+        FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+        [addTaskCell.taskNameTextField becomeFirstResponder];
         isScrollTimerStarted = YES;
+        //hack that waits for keyboard of add task keyboard to slide into place
         NSTimer *scrollListenerTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setScrollListener:) userInfo:nil repeats:NO];
     }
 }
