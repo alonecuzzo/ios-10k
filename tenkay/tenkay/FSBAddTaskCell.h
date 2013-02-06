@@ -10,7 +10,7 @@
 #import "FSBTasksViewController.h"
 
 @interface FSBAddTaskCell : UITableViewCell <UITextFieldDelegate>
-
+@property (strong, nonatomic) IBOutlet UITextField *taskNameTextField;
 @property(nonatomic, strong) id <FSBTasksViewDelegate> delegate;
 
 @end

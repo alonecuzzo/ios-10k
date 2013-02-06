@@ -54,7 +54,13 @@
 - (void)onAddButtonPress:(id)sender
 {
     selectedRowNumber = -1;
-   [self performSegueWithIdentifier:@"addTask" sender:self]; 
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    [addTaskCell.taskNameTextField becomeFirstResponder];
 }
 
 - (void)openCalendar:(Task *)task
