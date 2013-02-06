@@ -7,7 +7,6 @@
 //
 
 #import "FSBTasksViewController.h"
-#import "FSBAddTaskViewController.h"
 #import "FSBCalendarViewController.h"
 #import "FSBTaskCell.h"
 #import "Task.h"
@@ -181,10 +180,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"addTask"]) {
-        FSBAddTaskViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.managedObjectContext = managedObjectContext;
-    } else if ([[segue identifier] isEqualToString:@"openCalendarView"]) {
+    if ([[segue identifier] isEqualToString:@"openCalendarView"]) {
         FSBCalendarViewController *controller = (FSBCalendarViewController *)segue.destinationViewController;
         controller.managedObjectContext = managedObjectContext;
         Task *task = (Task *)sender;

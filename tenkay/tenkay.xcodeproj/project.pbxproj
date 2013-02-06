@@ -21,7 +21,6 @@
 		88146F591683BE7D00B0ABED /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88146F571683BE7D00B0ABED /* Tasks.xcdatamodeld */; };
 		8837DBE916B08A0700282293 /* saveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8837DBE816B08A0700282293 /* saveButton.png */; };
 		883FBF9C16ACBE56003CAD1B /* FSBCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883FBF9B16ACBE56003CAD1B /* FSBCalendarViewController.m */; };
-		883FBFA216ACC0DE003CAD1B /* FSBAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883FBFA116ACC0DE003CAD1B /* FSBAddTaskViewController.m */; };
 		885F42ED16A9BD4600B42DED /* editTimeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */; };
 		885F42F116A9C1FD00B42DED /* trashIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */; };
 		885F42F216A9C1FD00B42DED /* calendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */; };
@@ -95,8 +94,6 @@
 		8837DBE816B08A0700282293 /* saveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveButton.png; sourceTree = "<group>"; };
 		883FBF9A16ACBE56003CAD1B /* FSBCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBCalendarViewController.h; sourceTree = "<group>"; };
 		883FBF9B16ACBE56003CAD1B /* FSBCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBCalendarViewController.m; sourceTree = "<group>"; };
-		883FBFA016ACC0DE003CAD1B /* FSBAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskViewController.h; sourceTree = "<group>"; };
-		883FBFA116ACC0DE003CAD1B /* FSBAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskViewController.m; sourceTree = "<group>"; };
 		885F42EC16A9BD4600B42DED /* editTimeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editTimeIcon@2x.png"; sourceTree = "<group>"; };
 		885F42EF16A9C1FD00B42DED /* trashIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashIcon@2x.png"; sourceTree = "<group>"; };
 		885F42F016A9C1FD00B42DED /* calendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendarIcon@2x.png"; sourceTree = "<group>"; };
@@ -250,8 +247,6 @@
 		883FBF9F16ACBED9003CAD1B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				883FBFA016ACC0DE003CAD1B /* FSBAddTaskViewController.h */,
-				883FBFA116ACC0DE003CAD1B /* FSBAddTaskViewController.m */,
 				88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */,
 				88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */,
 				883FBF9A16ACBE56003CAD1B /* FSBCalendarViewController.h */,
@@ -460,7 +455,6 @@
 				88715BD416A78B3900BB9A8E /* FSBNavigationBar.m in Sources */,
 				88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */,
 				883FBF9C16ACBE56003CAD1B /* FSBCalendarViewController.m in Sources */,
-				883FBFA216ACC0DE003CAD1B /* FSBAddTaskViewController.m in Sources */,
 				88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */,
 				88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */,
 				8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */,
