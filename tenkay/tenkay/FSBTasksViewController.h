@@ -22,6 +22,8 @@
 - (void)onPlayButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex;
 - (void)onStopButtonPress:(Task *)task indexPath:(NSIndexPath *)selectedIndex;
 - (BOOL)isRecording;
+- (void)hideOpenCell;
+- (void)onSaveNewTask:(NSString *)taskName;
 @end
 
 @interface FSBTasksViewController : UITableViewController <NSFetchedResultsControllerDelegate, FSBTasksViewDelegate, UIActionSheetDelegate, FSBCalendarViewControllerDelegate>

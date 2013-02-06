@@ -7,6 +7,11 @@
 //
 
 #import "FSBAddTaskCell.h"
+#import "FSBTasksViewController.h"
+
+@interface FSBAddTaskCell()
+@property (strong, nonatomic) IBOutlet UITextField *taskNameTextField;
+@end
 
 @implementation FSBAddTaskCell
 
@@ -24,6 +29,27 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)layoutSubviews
+{
+    [self.taskNameTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+}
+
+- (void)textFieldFinished:(id)sender
+{
+    [self.delegate onSaveNewTask:self.taskNameTextField.text];
+    self.taskNameTextField.text = @"";
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.delegate hideOpenCell];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSLog(@"hitsomething");
 }
 
 @end

@@ -261,6 +261,33 @@
     }
 }
 
+- (void)hideOpenCell
+{
+    NSLog(@"should be hididng");
+    FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
+    [currentlySelectedCell hideNav];
+    currentlySelectedCell.isOpen = NO;
+    selectedRowNumber = -1;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];    
+}
+
+- (void)onSaveNewTask:(NSString *)taskName
+{
+    NSLog(@"***** - onSave:");
+    Task *task = nil;
+    if(self.managedObjectContext) {
+        if ([taskName length] > 0) {
+            task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+            task.title = taskName;
+            NSError *error;
+            if(![self.managedObjectContext save:&error]) {
+                NSLog(@"Error Value: %@", [task valueForKey:@"title"]);
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view data source
 
@@ -322,9 +349,9 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     if (indexPath.row >= [sectionInfo numberOfObjects]) {
-        NSLog(@"in there: %d", [sectionInfo numberOfObjects]);
         static NSString *CellIdentifier = @"AddTaskCell";
         FSBAddTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.delegate = self;
         return cell;
     } else {
         static NSString *CellIdentifier = @"TaskCell";
@@ -477,28 +504,32 @@
 //    else {
 //        [self stopCurrentSession];
 //    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    if (!isRecording) {
-        // if it's already selected
-        if(selectedRowNumber == indexPath.row) {
-            selectedRowNumber = -1;
-        } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
-            //need to close currently open one!
-            FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
-            [currentlySelectedCell hideNav];
-            currentlySelectedCell.isOpen = NO;
-            selectedRowNumber = indexPath.row;
-        } else {
-            selectedRowNumber = indexPath.row;
+    if(indexPath.row < [sectionInfo numberOfObjects]) {
+        FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        if (!isRecording) {
+            // if it's already selected
+            if(selectedRowNumber == indexPath.row) {
+                selectedRowNumber = -1;
+            } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
+                //need to close currently open one!
+                FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
+                [currentlySelectedCell hideNav];
+                currentlySelectedCell.isOpen = NO;
+                selectedRowNumber = indexPath.row;
+            } else {
+                selectedRowNumber = indexPath.row;
+            }
+            
+            [selectedCell toggleNav];
         }
-        
-        [selectedCell toggleNav];
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    } else {
+        [self hideOpenCell];
     }
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

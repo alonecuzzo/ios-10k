@@ -230,7 +230,7 @@
                                     <outlet property="taskTime" destination="3dh-bx-lqQ" id="kpl-Dj-5px"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AddTaskCell" id="dQd-cB-JCX" customClass="FSBAddTaskCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddTaskCell" id="dQd-cB-JCX" customClass="FSBAddTaskCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -244,22 +244,30 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" type="user" id="hei-bx-8ZG"/>
                                             </constraints>
                                         </imageView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add New Task" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-Px-FAw">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-Px-FAw">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="289" id="4be-qI-bD1"/>
+                                                <constraint firstAttribute="height" constant="65" id="K3L-3x-U3h"/>
+                                                <constraint firstAttribute="width" constant="271" id="W0d-9z-81f"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="22"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="dQd-cB-JCX" id="2Ep-fn-OLx"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="R5M-9S-Vcz" firstAttribute="top" secondItem="dQd-cB-JCX" secondAttribute="top" constant="59" id="5ed-3c-GIB"/>
-                                    <constraint firstItem="nGg-Px-FAw" firstAttribute="centerY" secondItem="dQd-cB-JCX" secondAttribute="centerY" type="default" id="Yfb-yW-6C6"/>
-                                    <constraint firstAttribute="trailing" secondItem="nGg-Px-FAw" secondAttribute="trailing" constant="20" type="default" id="Yq1-05-b18"/>
+                                    <constraint firstAttribute="bottom" secondItem="R5M-9S-Vcz" secondAttribute="bottom" constant="1" id="gPV-RI-WDk"/>
+                                    <constraint firstItem="nGg-Px-FAw" firstAttribute="top" secondItem="dQd-cB-JCX" secondAttribute="top" constant="3" id="hxB-GM-T3J"/>
                                     <constraint firstAttribute="trailing" secondItem="R5M-9S-Vcz" secondAttribute="trailing" constant="20" type="default" id="njV-Os-gUO"/>
+                                    <constraint firstItem="nGg-Px-FAw" firstAttribute="leading" secondItem="dQd-cB-JCX" secondAttribute="leading" constant="20" type="default" id="spH-JO-QB2"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="taskNameTextField" destination="nGg-Px-FAw" id="uwi-HF-GDi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -367,6 +375,59 @@
         <image name="selectedTaskRecordingBackground@2x.png" width="640" height="120"/>
         <image name="taskSeparator.png" width="585" height="7"/>
     </resources>
+    <classes>
+        <class className="FSBAddTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="taskNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBAddTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTaskViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="taskTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FSBAddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBAddTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onEndDateSelectorPressed:"/>
+                <relationship kind="action" name="onStartDateSelectorPressed:"/>
+                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeSelectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeSelectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="timeAddedLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBCalendarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBCalendarViewController.h"/>
+        </class>
+        <class className="FSBNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBNavigationBar.h"/>
+        </class>
+        <class className="FSBTaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTaskCell.h"/>
+            <relationships>
+                <relationship kind="action" name="onPlayStopPress:"/>
+                <relationship kind="outlet" name="playStopButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="selectedBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="taskLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="taskSeparator" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="taskTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FSBTasksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSBTasksViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

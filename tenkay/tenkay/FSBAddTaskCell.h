@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBTasksViewController.h"
 
-@interface FSBAddTaskCell : UITableViewCell
+@interface FSBAddTaskCell : UITableViewCell <UITextFieldDelegate>
+
+@property(nonatomic, strong) id <FSBTasksViewDelegate> delegate;
 
 @end
