@@ -75,6 +75,8 @@
         }
     }
     
+    [self setDateLabelToDate:[NSDate date]];
+    
     [calendar highlightDatesInArray:datesToHightlight];
     
     monthStatHours.text = [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:monthTimeInt] isTruncated:NO];
