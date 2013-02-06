@@ -35,6 +35,8 @@
     CABasicAnimation *fadeUpAnimation;
     CABasicAnimation *fadeOutAnimation;
     UIButton *addButton;
+    BOOL isAddCellSelected;
+    BOOL isScrollTimerStarted;
 }
 
 #define kCellHeight 64.0 
@@ -57,10 +59,35 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+- (void)hideAddCellKeyboard
+{
+    FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    [addTaskCell.taskNameTextField resignFirstResponder];
+    isAddCellSelected = NO;
+}
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
     [addTaskCell.taskNameTextField becomeFirstResponder];
+    
+    if(!isScrollTimerStarted) {
+        isScrollTimerStarted = YES;
+        NSTimer *scrollListenerTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setScrollListener:) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)setScrollListener:(id)sender
+{
+    isScrollTimerStarted = NO;
+    isAddCellSelected = YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(isAddCellSelected == YES){
+        [self hideAddCellKeyboard];
+    }
 }
 
 - (void)openCalendar:(Task *)task
@@ -137,6 +164,7 @@
     [addButton addTarget:self action:@selector(onAddButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     selectedRowNumber = -1;
+    isAddCellSelected = NO;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -269,13 +297,12 @@
 
 - (void)hideOpenCell
 {
-    NSLog(@"should be hididng");
     FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
     [currentlySelectedCell hideNav];
     currentlySelectedCell.isOpen = NO;
     selectedRowNumber = -1;
     [self.tableView beginUpdates];
-    [self.tableView endUpdates];    
+    [self.tableView endUpdates];
 }
 
 - (void)onSaveNewTask:(NSString *)taskName
@@ -530,6 +557,7 @@
             
             [selectedCell toggleNav];
         }
+        [self hideAddCellKeyboard];
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
     } else {

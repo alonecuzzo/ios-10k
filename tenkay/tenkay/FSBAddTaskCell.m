@@ -46,9 +46,4 @@
     [self.delegate hideOpenCell];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    NSLog(@"hitsomething");
-}
-
 @end
