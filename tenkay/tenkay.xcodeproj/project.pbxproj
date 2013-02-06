@@ -75,7 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		88146F2E1683BC9800B0ABED /* tenkay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tenkay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88146F2E1683BC9800B0ABED /* 10K.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 10K.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88146F321683BC9800B0ABED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88146F341683BC9800B0ABED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88146F361683BC9800B0ABED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,7 +188,7 @@
 		88146F2F1683BC9800B0ABED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88146F2E1683BC9800B0ABED /* tenkay.app */,
+				88146F2E1683BC9800B0ABED /* 10K.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,7 +353,7 @@
 			);
 			name = tenkay;
 			productName = tenkay;
-			productReference = 88146F2E1683BC9800B0ABED /* tenkay.app */;
+			productReference = 88146F2E1683BC9800B0ABED /* 10K.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -540,12 +540,12 @@
 		88146F531683BC9900B0ABED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Curtis Dawson (B252225729)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "348C007D-E120-4BDE-A8AD-AAC6E01CA1F4";
+				PRODUCT_NAME = 10K;
+				PROVISIONING_PROFILE = "3EFA4B5A-F818-4262-8DFD-AAC9D3FE5F24";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -553,12 +553,12 @@
 		88146F541683BC9900B0ABED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Curtis Dawson (B252225729)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric J Bell (ATWNTD3UX7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tenkay/tenkay-Prefix.pch";
 				INFOPLIST_FILE = "tenkay/tenkay-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "348C007D-E120-4BDE-A8AD-AAC6E01CA1F4";
+				PRODUCT_NAME = 10K;
+				PROVISIONING_PROFILE = "3EFA4B5A-F818-4262-8DFD-AAC9D3FE5F24";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
