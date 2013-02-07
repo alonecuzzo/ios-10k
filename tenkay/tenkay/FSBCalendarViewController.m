@@ -93,6 +93,12 @@
     [calendarSubView addSubview:calendar];
     [self.view addSubview:calendarSubView];
     calendar.delegate = self;
+    
+    NSTimeInterval secondsInMonth = [calendarEndDate timeIntervalSinceDate:calendarStartDate];
+    int days = secondsInMonth / 86400;
+    double timePerDay = monthTimeInt / days;
+    monthStatAverage.text = [NSString stringWithFormat:@"%@ avg", [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithDouble:timePerDay] isTruncated:NO]];
+    [self adjustMonthLabels];
 }
 
 - (void) buildDailyStatBox
@@ -365,7 +371,6 @@
 
 - (void)viewChangeInCalendar:(CKCalendarView *)thisCalendar
 {
-    NSLog(@"calendar.bounds.size.height: %f", calendar.bounds.size.height);
     dailyStatSubView.frame = CGRectMake(dailyStatSubView.frame.origin.x, calendar.frame.origin.y + calendar.frame.size.height + 5, dailyStatSubView.frame.size.width, dailyStatSubView.frame.size.height);
     monthStatSubView.frame = CGRectMake(monthStatSubView.frame.origin.x, dailyStatSubView.frame.origin.y + dailyStatSubView.frame.size.height + 5, monthStatSubView.frame.size.width, monthStatSubView.frame.size.height);
 }
