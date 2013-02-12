@@ -105,7 +105,7 @@
 
 - (void)openEditScreen:(Task *)task
 {
-    editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.window.bounds.size.width, self.view.bounds.size.height)];
+    editView = [[FSBEditView alloc] initWithFrame:CGRectMake(0.0, self.tableView.contentOffset.y, self.view.window.bounds.size.width, self.view.bounds.size.height)];
     editView.delegate = self;
     [editView setTask:task];
     [self.view addSubview:editView];
