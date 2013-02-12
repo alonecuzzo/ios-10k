@@ -173,6 +173,11 @@
     selectedRowNumber = -1;
     isAddCellSelected = NO;
     
+    UIImage *logoImage = [UIImage imageNamed:@"header-logo"];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
+    logoImageView.frame = CGRectMake(0, 0, 70, 27);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoImageView];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

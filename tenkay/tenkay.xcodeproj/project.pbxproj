@@ -47,6 +47,7 @@
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
 		8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */; };
+		8E94192016CAB41F00623287 /* header-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E94191F16CAB41F00623287 /* header-logo@2x.png */; };
 		BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333416B2E6A800C188E4 /* light-line-separator.png */; };
 		BA57333716B2E6A800C188E4 /* light-line-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */; };
 		BA57333A16B2EC2400C188E4 /* Myanmar MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */; };
@@ -129,6 +130,7 @@
 		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
 		8E8C74B816C2F4B40020A6AF /* FSBAddTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskCell.h; sourceTree = "<group>"; };
 		8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskCell.m; sourceTree = "<group>"; };
+		8E94191F16CAB41F00623287 /* header-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-logo@2x.png"; sourceTree = "<group>"; };
 		BA57333416B2E6A800C188E4 /* light-line-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator.png"; sourceTree = "<group>"; };
 		BA57333516B2E6A800C188E4 /* light-line-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-line-separator@2x.png"; sourceTree = "<group>"; };
 		BA57333816B2EC2400C188E4 /* Myanmar MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myanmar MN.ttc"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8E94191F16CAB41F00623287 /* header-logo@2x.png */,
 				BAF140BE16C19D2100E3896B /* stopwatch-with-bg.png */,
 				88B72EF316B6DEC700510FC4 /* cancelButton.png */,
 				88B72EF416B6DEC700510FC4 /* cancelButton@2x.png */,
@@ -432,6 +435,7 @@
 				88B72EF516B6DEC700510FC4 /* cancelButton.png in Resources */,
 				88B72EF616B6DEC700510FC4 /* cancelButton@2x.png in Resources */,
 				BAF140BF16C19D2200E3896B /* stopwatch-with-bg.png in Resources */,
+				8E94192016CAB41F00623287 /* header-logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
