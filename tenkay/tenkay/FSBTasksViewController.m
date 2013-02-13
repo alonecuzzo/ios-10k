@@ -18,6 +18,7 @@
 #import "FSBAddTaskCell.h"
 
 @interface FSBTasksViewController ()
+- (void)hideOpenCell;
 @end
 
 @implementation FSBTasksViewController{
@@ -55,7 +56,7 @@
 
 - (void)onAddButtonPress:(id)sender
 {
-    selectedRowNumber = -1;
+    [self hideOpenCell];
     FSBAddTaskCell *addTaskCell = (FSBAddTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
     if ([self.tableView indexPathForCell:addTaskCell]) {
         isAddCellSelected = NO;
