@@ -213,6 +213,12 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    //close the open cell
+    [self hideOpenCell];
+}
+
 - (void)deleteTask:(Task *)task
 {
     taskToDelete = task;
