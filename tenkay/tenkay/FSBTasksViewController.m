@@ -258,7 +258,7 @@
 
 - (void)startPulsing
 {
-    [UIView animateWithDuration:1.0 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+    [UIView animateWithDuration:0.05 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
         self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
     } completion:^(BOOL finished){
         self.view.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:168.0f/255.0f blue:207.0f/255.0f alpha:100.0];
@@ -273,7 +273,7 @@
 - (void)stopPulsing
 {
     [self.tableView reloadData]; 
-    [UIView animateWithDuration:0.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+    [UIView animateWithDuration:0.05 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
         //animation here
         self.view.backgroundColor = [UIColor colorWithRed:231.0f/255.0f green:231.0f/255.0f blue:231.0f/255.0f alpha:100.0];
     } completion:^(BOOL finished){
