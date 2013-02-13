@@ -546,6 +546,10 @@
 //    else {
 //        [self stopCurrentSession];
 //    }
+    CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:indexPath];
+    CGFloat offsetPosition = -self.tableView.contentOffset.y + rectInTableView.origin.y;
+    BOOL isShifting = NO;
+    //if offsetpos is > 393.5 then we need to shift and only if it's opening the cell
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row < [sectionInfo numberOfObjects]) {
@@ -560,8 +564,14 @@
                 [currentlySelectedCell hideNav];
                 currentlySelectedCell.isOpen = NO;
                 selectedRowNumber = indexPath.row;
+                if (offsetPosition > 393.5f) {
+                    isShifting = YES;
+                }
             } else {
                 selectedRowNumber = indexPath.row;
+                if (offsetPosition > 393.5f) {
+                    isShifting = YES;
+                }
             }
             
             [selectedCell toggleNav];
@@ -569,6 +579,10 @@
         [self hideAddCellKeyboard];
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
+        if (isShifting == YES) {
+            //if last item is opened this shifts the list so that the open cell is left opened
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
     } else {
         [self hideOpenCell];
     }
