@@ -362,6 +362,7 @@
     taskCell.delegate = self;
     taskCell.taskLabel.text = task.title;
     taskCell.isOpen = NO;
+    taskCell.isCellAnimating = NO;
     [taskCell hideNav];
     
     if(isRecording) {
@@ -561,7 +562,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row < [sectionInfo numberOfObjects]) {
         FSBTaskCell *selectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        if (!isRecording) {
+        NSLog(@"is cell animating: %d", selectedCell.isCellAnimating);
+        if (!isRecording && !selectedCell.isCellAnimating) {
             // if it's already selected
             if(selectedRowNumber == indexPath.row) {
                 selectedRowNumber = -1;
@@ -580,7 +582,7 @@
                     isShifting = YES;
                 }
             }
-            
+            selectedCell.isCellAnimating = YES;
             [selectedCell toggleNav];
         }
         [self hideAddCellKeyboard];

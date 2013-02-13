@@ -130,6 +130,7 @@
 
 -(void)showNav
 {
+//    self.isCellAnimating = YES;
     addTimeIcon = [UIImage imageNamed:@"addTimeIcon"];
     addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
     addTimeButtonImageView.image = addTimeIcon;
@@ -235,11 +236,14 @@
 {
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
+        NSLog(@"fade out animation done");
+        self.isCellAnimating = NO;
     } else if([[anim valueForKey:@"id"] isEqual:@"trashTranslation"]){
         [self.viewForBaselineLayout addSubview:addTimeButton];
         [self.viewForBaselineLayout addSubview:editTaskButton];
         [self.viewForBaselineLayout addSubview:calendarButton];
         [self.viewForBaselineLayout addSubview:trashButton];
+        self.isCellAnimating = NO;
     }
 }
 

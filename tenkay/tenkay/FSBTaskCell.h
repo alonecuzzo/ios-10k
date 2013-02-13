@@ -14,6 +14,7 @@
 @interface FSBTaskCell : UITableViewCell 
 
 @property (nonatomic) BOOL isOpen;
+@property (nonatomic) BOOL isCellAnimating;
 @property (nonatomic, strong) id <FSBTasksViewDelegate> delegate;
 @property (nonatomic, strong) Task *task;
 @property (nonatomic, strong) IBOutlet UILabel *taskLabel;
