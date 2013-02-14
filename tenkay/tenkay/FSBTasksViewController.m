@@ -329,6 +329,7 @@
         if ([taskName length] > 0) {
             task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
             task.title = taskName;
+            task.creationDate = [NSDate date];
             NSError *error;
             if(![self.managedObjectContext save:&error]) {
                 NSLog(@"Error Value: %@", [task valueForKey:@"title"]);
@@ -623,7 +624,7 @@
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES];
         [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
         
         [fetchRequest setFetchBatchSize:5];
