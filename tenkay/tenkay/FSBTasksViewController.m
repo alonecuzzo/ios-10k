@@ -367,15 +367,18 @@
     [taskCell hideNav];
     
     if(isRecording) {
-        [taskCell showIsRecordingView];
         if (currentIndexPath.row == indexPath.row) {
             [taskCell showCurrentCellIsRecordingView];
+        } else {
+            [taskCell showIsRecordingView];
         }
         if (indexPath.row == (currentIndexPath.row - 1)) {
             [taskCell hideSeparator];
         }
+        self.tableView.scrollEnabled = NO;
     } else {
         [taskCell showCurrentCellIsNotRecordingView];
+        self.tableView.scrollEnabled = YES;
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -403,6 +406,11 @@
         static NSString *CellIdentifier = @"AddTaskCell";
         FSBAddTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.delegate = self;
+        if (isRecording) {
+            [cell setHidden:YES];
+        } else {
+            [cell setHidden:NO];
+        }
         return cell;
     } else {
         static NSString *CellIdentifier = @"TaskCell";

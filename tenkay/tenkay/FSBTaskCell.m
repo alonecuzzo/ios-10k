@@ -43,6 +43,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]; if (self) {
         // Initialization code
+        NSLog(@"initing!");
     }
     return self;
 }
@@ -101,22 +102,6 @@
     }
 }
 
-- (void)showCurrentCellIsRecordingView
-{
-   //means current cell is recording
-    self.playStopButton.enabled = YES;
-    [self.selectedBackground setHidden:NO];
-    //lets animate it in
-    animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.duration = 0.3;
-    animation.fromValue = @0.0;
-    animation.toValue = @1.0;
-    animation.delegate = self;
-    [self.selectedBackground.layer addAnimation:animation forKey:@"animateOpacity"];
-    [self.playStopButton setImage:[UIImage imageNamed:@"stopButtonWhite"] forState:UIControlStateNormal];
-    self.taskSeparator.alpha = 0.0;
-}
-
 - (void)showIsRecordingView
 {
     //changes everything to white
@@ -126,6 +111,19 @@
     [self.taskSeparator setImage:[UIImage imageNamed:@"taskSeparatorWhite"]];
     self.taskSeparator.alpha = 1.0;
     self.playStopButton.enabled = NO;
+    self.selectedBackground.alpha = 0;
+    [self.selectedBackground setHidden:YES];
+}
+
+- (void)showCurrentCellIsRecordingView
+{
+    [self showIsRecordingView];
+    self.selectedBackground.alpha = 1;
+    //means current cell is recording
+    self.playStopButton.enabled = YES;
+    [self.selectedBackground setHidden:NO];
+    [self.playStopButton setImage:[UIImage imageNamed:@"stopButtonWhite"] forState:UIControlStateNormal];
+    self.taskSeparator.alpha = 0.0;
 }
 
 -(void)showNav
@@ -277,5 +275,12 @@
         [self hideNav];
     }
 }
+
+-(void)layoutSubviews
+{
+//    self.selectedBackground.alpha = 0;
+
+}
+
 
 @end
