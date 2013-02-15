@@ -473,7 +473,10 @@
     NSNumber *sessionIntervalNum = [NSNumber numberWithDouble:sessionInterval];
     currentTask.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [sessionIntervalNum doubleValue])];
 
-    NSLog(@"just added %f", [sessionIntervalNum doubleValue]);
+//    NSLog(@"just added %f", [sessionIntervalNum integerValue]);
+    NSString *saveBannerText = [NSString stringWithFormat:@"%@ recorded!", [FSBTextUtil stringFromNumSeconds:[NSNumber numberWithInt:[sessionIntervalNum integerValue]] isTruncated:NO]];
+    [saveAlertBanner setSaveText:saveBannerText];
+    
     //animate banner to y coordinate 63
     [UIView animateWithDuration:0.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
         [saveAlertBanner setFrame:CGRectMake(0, 63, saveAlertBanner.frame.size.width, saveAlertBanner.frame.size.height)];

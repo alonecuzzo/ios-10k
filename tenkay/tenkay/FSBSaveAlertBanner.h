@@ -10,4 +10,6 @@
 
 @interface FSBSaveAlertBanner : UIView
 
+- (void)setSaveText:(NSString *)saveText;
+
 @end
