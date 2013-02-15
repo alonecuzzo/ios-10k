@@ -16,6 +16,7 @@
 #import "FSBEditView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FSBAddTaskCell.h"
+#import "FSBSaveAlertBanner.h"
 
 @interface FSBTasksViewController ()
 - (void)hideOpenCell;
@@ -38,6 +39,7 @@
     BOOL isAddCellSelected;
     BOOL isScrollTimerStarted;
     BOOL isScrollTimerNeeded;
+    FSBSaveAlertBanner *saveAlertBanner;
 }
 
 #define kCellHeight 64.0 
@@ -178,6 +180,9 @@
     UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
     logoImageView.frame = CGRectMake(0, 0, 70, 27);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoImageView];
+    
+    saveAlertBanner = [[FSBSaveAlertBanner alloc] initWithFrame:CGRectMake(0, 0, 640, 61)];
+    [self.parentViewController.view insertSubview:saveAlertBanner atIndex:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -467,6 +472,19 @@
     NSTimeInterval sessionInterval = [currentSession.endDate timeIntervalSinceDate:currentSession.startDate];
     NSNumber *sessionIntervalNum = [NSNumber numberWithDouble:sessionInterval];
     currentTask.totalTime = [NSNumber numberWithDouble:([currentTask.totalTime doubleValue] + [sessionIntervalNum doubleValue])];
+
+    NSLog(@"just added %f", [sessionIntervalNum doubleValue]);
+    //animate banner to y coordinate 63
+    [UIView animateWithDuration:0.5 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+        [saveAlertBanner setFrame:CGRectMake(0, 63, saveAlertBanner.frame.size.width, saveAlertBanner.frame.size.height)];
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.5 delay:1.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear) animations:^{
+            [saveAlertBanner setFrame:CGRectMake(0, 0, saveAlertBanner.frame.size.width, saveAlertBanner.frame.size.height)];
+        } completion:^(BOOL finished){
+            
+        }];
+    }];
+   
     
     [sessionTimer invalidate];
     sessionTimer = nil;

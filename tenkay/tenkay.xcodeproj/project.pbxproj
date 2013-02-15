@@ -46,6 +46,9 @@
 		88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D226EC16B1A296006E5001 /* FSBEditView.m */; };
 		88D71F2216AB759800F6DDA3 /* FSBAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */; };
 		88FB096716B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */; };
+		8E3B1D0B16CECE1000D775EF /* FSBSaveAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B1D0A16CECE1000D775EF /* FSBSaveAlertBanner.m */; };
+		8E3B1D0E16CED0B000D775EF /* saveAlertBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3B1D0C16CED0B000D775EF /* saveAlertBackground.png */; };
+		8E3B1D0F16CED0B000D775EF /* saveAlertBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3B1D0D16CED0B000D775EF /* saveAlertBackground@2x.png */; };
 		8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */; };
 		8E94192016CAB41F00623287 /* header-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E94191F16CAB41F00623287 /* header-logo@2x.png */; };
 		BA57333616B2E6A800C188E4 /* light-line-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = BA57333416B2E6A800C188E4 /* light-line-separator.png */; };
@@ -128,6 +131,10 @@
 		88D71F2016AB759800F6DDA3 /* FSBAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTimeViewController.h; sourceTree = "<group>"; };
 		88D71F2116AB759800F6DDA3 /* FSBAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTimeViewController.m; sourceTree = "<group>"; };
 		88FB096616B0D99B00CCF89C /* addTimeDateSelectorBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addTimeDateSelectorBox@2x.png"; sourceTree = "<group>"; };
+		8E3B1D0916CECE1000D775EF /* FSBSaveAlertBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBSaveAlertBanner.h; sourceTree = "<group>"; };
+		8E3B1D0A16CECE1000D775EF /* FSBSaveAlertBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBSaveAlertBanner.m; sourceTree = "<group>"; };
+		8E3B1D0C16CED0B000D775EF /* saveAlertBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveAlertBackground.png; sourceTree = "<group>"; };
+		8E3B1D0D16CED0B000D775EF /* saveAlertBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveAlertBackground@2x.png"; sourceTree = "<group>"; };
 		8E8C74B816C2F4B40020A6AF /* FSBAddTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBAddTaskCell.h; sourceTree = "<group>"; };
 		8E8C74B916C2F4B40020A6AF /* FSBAddTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBAddTaskCell.m; sourceTree = "<group>"; };
 		8E94191F16CAB41F00623287 /* header-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-logo@2x.png"; sourceTree = "<group>"; };
@@ -265,6 +272,8 @@
 				BAB554DE1690CD4F004DEEE7 /* FSBTaskCell.m */,
 				88C450FD168E356900210F1F /* FSBTasksViewController.h */,
 				88C450FE168E356900210F1F /* FSBTasksViewController.m */,
+				8E3B1D0916CECE1000D775EF /* FSBSaveAlertBanner.h */,
+				8E3B1D0A16CECE1000D775EF /* FSBSaveAlertBanner.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -294,6 +303,8 @@
 		BA9AA2FA169E841F00662CE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8E3B1D0C16CED0B000D775EF /* saveAlertBackground.png */,
+				8E3B1D0D16CED0B000D775EF /* saveAlertBackground@2x.png */,
 				8E94191F16CAB41F00623287 /* header-logo@2x.png */,
 				BAF140BE16C19D2100E3896B /* stopwatch-with-bg.png */,
 				88B72EF316B6DEC700510FC4 /* cancelButton.png */,
@@ -436,6 +447,8 @@
 				88B72EF616B6DEC700510FC4 /* cancelButton@2x.png in Resources */,
 				BAF140BF16C19D2200E3896B /* stopwatch-with-bg.png in Resources */,
 				8E94192016CAB41F00623287 /* header-logo@2x.png in Resources */,
+				8E3B1D0E16CED0B000D775EF /* saveAlertBackground.png in Resources */,
+				8E3B1D0F16CED0B000D775EF /* saveAlertBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +475,7 @@
 				88D226EA16B19BEC006E5001 /* FSBEditBackgroundView.m in Sources */,
 				88D226ED16B1A296006E5001 /* FSBEditView.m in Sources */,
 				8E8C74BA16C2F4B40020A6AF /* FSBAddTaskCell.m in Sources */,
+				8E3B1D0B16CECE1000D775EF /* FSBSaveAlertBanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
