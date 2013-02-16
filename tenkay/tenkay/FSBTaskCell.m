@@ -128,14 +128,13 @@
 
 -(void)showNav
 {
-//    self.isCellAnimating = YES;
     addTimeIcon = [UIImage imageNamed:@"addTimeIcon"];
     addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
     addTimeButtonImageView.image = addTimeIcon;
-    [self.viewForBaselineLayout addSubview:addTimeButtonImageView];
     addTimeButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
     [addTimeButton setImage:addTimeIcon forState:UIControlStateNormal];
     [addTimeButton addTarget:self action:@selector(onAddTime:) forControlEvents:UIControlEventTouchUpInside];
+    [self.viewForBaselineLayout addSubview:addTimeButtonImageView];
     
     editTaskIcon = [UIImage imageNamed:@"editTimeIcon"];
     editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
@@ -234,8 +233,8 @@
 {
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
-        NSLog(@"fade out animation done");
         self.isCellAnimating = NO;
+        self.isOpen = NO;
     } else if([[anim valueForKey:@"id"] isEqual:@"trashTranslation"]){
         [self.viewForBaselineLayout addSubview:addTimeButton];
         [self.viewForBaselineLayout addSubview:editTaskButton];
@@ -278,8 +277,6 @@
 
 -(void)layoutSubviews
 {
-//    self.selectedBackground.alpha = 0;
-
 }
 
 

@@ -369,9 +369,9 @@
     taskCell.taskLabel.text = task.title;
     taskCell.isOpen = NO;
     taskCell.isCellAnimating = NO;
-    [taskCell hideNav];
     
     if(isRecording) {
+        [taskCell hideNav];
         if (currentIndexPath.row == indexPath.row) {
             [taskCell showCurrentCellIsRecordingView];
         } else {
@@ -384,6 +384,10 @@
     } else {
         [taskCell showCurrentCellIsNotRecordingView];
         self.tableView.scrollEnabled = YES;
+        if (selectedRowNumber == indexPath.row && taskCell.frame.size.height == kCellOpenedHeight) {
+        } else {
+            [taskCell hideNav];
+        }
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -597,6 +601,8 @@
             // if it's already selected
             if(selectedRowNumber == indexPath.row) {
                 selectedRowNumber = -1;
+                [selectedCell hideNav];
+                NSLog(@"LMOA");
             } else if(selectedRowNumber > -1 && selectedRowNumber != indexPath.row){
                 //need to close currently open one!
                 FSBTaskCell *currentlySelectedCell = (FSBTaskCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRowNumber inSection:0]];
@@ -606,14 +612,15 @@
                 if (offsetPosition > 393.5f) {
                     isShifting = YES;
                 }
+                [selectedCell toggleNav];
             } else {
                 selectedRowNumber = indexPath.row;
                 if (offsetPosition > 393.5f) {
                     isShifting = YES;
                 }
+                [selectedCell toggleNav];
             }
             selectedCell.isCellAnimating = YES;
-            [selectedCell toggleNav];
         }
         [self hideAddCellKeyboard];
         [self.tableView beginUpdates];
