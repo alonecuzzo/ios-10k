@@ -28,6 +28,7 @@
                     *monthStatHours,
                     *monthStatSessions,
                     *monthStatAverage;
+    UIScrollView    *scrollView;
     CKCalendarView  *calendar;
 }
 
@@ -91,7 +92,7 @@
     [self adjustMonthLabels];
     
     [calendarSubView addSubview:calendar];
-    [self.view addSubview:calendarSubView];
+    [scrollView addSubview:calendarSubView];
     calendar.delegate = self;
     
     NSTimeInterval secondsInMonth = [calendarEndDate timeIntervalSinceDate:calendarStartDate];
@@ -146,7 +147,7 @@
     
     [self adjustDailyLabels];
     
-    [self.view addSubview:dailyStatSubView];
+    [scrollView addSubview:dailyStatSubView];
 }
 
 -(void)adjustDailyLabels
@@ -222,7 +223,7 @@
     
     [self adjustMonthLabels];
     
-    [self.view addSubview:monthStatSubView];
+    [scrollView addSubview:monthStatSubView];
 }
 
 - (void)adjustMonthLabels
@@ -259,6 +260,11 @@
     if (self) {
         // Initialization code
         if (self.taskForCalendar != nil) {
+            
+            scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
+            [scrollView setContentSize:self.view.frame.size];
+            [self.view addSubview:scrollView];
+            
             [self buildTaskDetailView];
         }
     }
