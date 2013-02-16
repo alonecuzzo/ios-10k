@@ -39,6 +39,55 @@
     BOOL isRecording;
 }
 
+- (void)commonInit
+{
+    addTimeIcon = [UIImage imageNamed:@"addTimeIcon"];
+    addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
+    addTimeButtonImageView.image = addTimeIcon;
+    addTimeButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
+    [addTimeButton setImage:addTimeIcon forState:UIControlStateNormal];
+    [addTimeButton addTarget:self action:@selector(onAddTime:) forControlEvents:UIControlEventTouchUpInside];
+    
+    editTaskIcon = [UIImage imageNamed:@"editTimeIcon"];
+    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
+    editTaskButtonImageView.image = editTaskIcon;
+    editTaskButton = [[UIButton alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
+    [editTaskButton setImage:editTaskIcon forState:UIControlStateNormal];
+    [editTaskButton addTarget:self action:@selector(onEditTask:) forControlEvents:UIControlEventTouchUpInside];
+    
+    calendarIcon = [UIImage imageNamed:@"calendarIcon"];
+    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
+    calendarButtonImageView.image = calendarIcon;
+    calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
+    [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
+    [calendarButton addTarget:self action:@selector(onCalendarPress:) forControlEvents:UIControlEventTouchUpInside];
+    
+    trashIcon = [UIImage imageNamed:@"trashIcon"];
+    trashButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
+    trashButtonImageView.image = trashIcon;
+    trashButton = [[UIButton alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
+    [trashButton setImage:trashIcon forState:UIControlStateNormal];
+    [trashButton addTarget:self action:@selector(onTaskDelete:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame])
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]; if (self) {
@@ -46,6 +95,12 @@
         NSLog(@"initing!");
     }
     return self;
+}
+
+-(void)layoutSubviews
+{
+//    self.selectedBackground.alpha = 0;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -128,37 +183,11 @@
 
 -(void)showNav
 {
-    addTimeIcon = [UIImage imageNamed:@"addTimeIcon"];
-    addTimeButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
-    addTimeButtonImageView.image = addTimeIcon;
-    addTimeButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 68, 27.5, 26)];
-    [addTimeButton setImage:addTimeIcon forState:UIControlStateNormal];
-    [addTimeButton addTarget:self action:@selector(onAddTime:) forControlEvents:UIControlEventTouchUpInside];
+    self.isCellAnimating = YES;
     [self.viewForBaselineLayout addSubview:addTimeButtonImageView];
-    
-    editTaskIcon = [UIImage imageNamed:@"editTimeIcon"];
-    editTaskButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
-    editTaskButtonImageView.image = editTaskIcon;
     [self.viewForBaselineLayout addSubview:editTaskButtonImageView];
-    editTaskButton = [[UIButton alloc] initWithFrame:CGRectMake(105, 68, 27.5, 26)];
-    [editTaskButton setImage:editTaskIcon forState:UIControlStateNormal];
-    [editTaskButton addTarget:self action:@selector(onEditTask:) forControlEvents:UIControlEventTouchUpInside];
-    
-    calendarIcon = [UIImage imageNamed:@"calendarIcon"];
-    calendarButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
-    calendarButtonImageView.image = calendarIcon;
     [self.viewForBaselineLayout addSubview:calendarButtonImageView];
-    calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(190, 68, 27.5, 26)];
-    [calendarButton setImage:calendarIcon forState:UIControlStateNormal];
-    [calendarButton addTarget:self action:@selector(onCalendarPress:) forControlEvents:UIControlEventTouchUpInside];
-    
-    trashIcon = [UIImage imageNamed:@"trashIcon"];
-    trashButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
-    trashButtonImageView.image = trashIcon;
     [self.viewForBaselineLayout addSubview:trashButtonImageView];
-    trashButton = [[UIButton alloc] initWithFrame:CGRectMake(275, 68, 27.5, 26)];
-    [trashButton setImage:trashIcon forState:UIControlStateNormal];
-    [trashButton addTarget:self action:@selector(onTaskDelete:) forControlEvents:UIControlEventTouchUpInside];
     
     animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 0.4;
@@ -169,6 +198,7 @@
     animation.delegate = self;
     [animation setValue:@"animateAddTime" forKey:@"id"];
     addTimeButtonImageView.layer.opacity = 0.0;
+    [addTimeButtonImageView setHidden:NO];
     [addTimeButtonImageView.layer addAnimation:animation forKey:@"animateOpacity"];
 
     animation.beginTime = CACurrentMediaTime() + 0.20f;
@@ -213,20 +243,6 @@
     [editTaskButtonImageView removeFromSuperview];
     [calendarButtonImageView removeFromSuperview];
     [trashButtonImageView removeFromSuperview];
-    addTimeButtonImageView = nil;
-    addTimeButton = nil;
-    addTimeIcon = nil;
-    editTaskButtonImageView = nil;
-    editTaskButton = nil;
-    editTaskIcon = nil;
-    calendarButtonImageView = nil;
-    calendarButton = nil;
-    calendarIcon = nil;
-    trashButtonImageView = nil;
-    trashButton = nil;
-    trashIcon = nil;
-    animation = nil;
-    fadeOutAnimation = nil;
 }
 
 -(void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -234,6 +250,7 @@
     if ([[anim valueForKey:@"id"] isEqual:@"fadeOutAnimation"]) {
         [self removeButtons];
         self.isCellAnimating = NO;
+        NSLog(@"finished fading out");
         self.isOpen = NO;
     } else if([[anim valueForKey:@"id"] isEqual:@"trashTranslation"]){
         [self.viewForBaselineLayout addSubview:addTimeButton];
@@ -244,8 +261,20 @@
     }
 }
 
+- (void)forceShowNav
+{
+    self.isOpen = YES;
+    [self.viewForBaselineLayout addSubview:addTimeButton];
+    [self.viewForBaselineLayout addSubview:editTaskButton];
+    [self.viewForBaselineLayout addSubview:calendarButton];
+    [self.viewForBaselineLayout addSubview:trashButton];
+}
+
 -(void)hideNav
 {
+
+    self.isCellAnimating = NO;
+    NSLog(@"should be hiding");
     fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeOutAnimation.duration = 0.10;
     [fadeOutAnimation setValue:@"fadeOutAnimation" forKey:@"id"];
@@ -275,9 +304,6 @@
     }
 }
 
--(void)layoutSubviews
-{
-}
 
 
 @end

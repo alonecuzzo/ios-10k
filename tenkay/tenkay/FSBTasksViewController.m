@@ -385,6 +385,8 @@
         [taskCell showCurrentCellIsNotRecordingView];
         self.tableView.scrollEnabled = YES;
         if (selectedRowNumber == indexPath.row && taskCell.frame.size.height == kCellOpenedHeight) {
+            NSLog(@"skipping index: %d", indexPath.row);
+            [taskCell forceShowNav];
         } else {
             [taskCell hideNav];
         }
